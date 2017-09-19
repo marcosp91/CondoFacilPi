@@ -1,0 +1,63 @@
+*{
+	
+	margin:0;
+	padding:0;
+}
+
+html, body {
+	width: 100%;
+	background-color: #E0F2F7;
+}
+
+a {
+	  color: #0A2229;
+	  font-size: 14px;
+	  -webkit-transition: all 0.2s;
+	  -moz-transition: all 0.2s;
+	  transition: all 0.2s;
+ }
+  a:focus, a:hover {
+    color: #0080FF; 
+}
+
+h2 {
+	color: #334045;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.container{
+	max-height: auto;
+	max-width: 350px;
+	border-radius: 10px;
+	background-color:#fff;
+	margin-top: 15px;
+}
+
+.painel-portal{
+	text-align:center;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #ddd;
+}
+
+.btn-acess{
+	color: white;
+	font-size: 14px;
+	font-weight: 700;
+	background-color: #2FBC2D;
+	border-style: none;
+	/*margin: 0 0 15px 127px;*/
+}
+
+.input-group  .btn-acess:hover{
+	background-color: #08D604;
+	box-shadow: 1px 2px 5px #000000;
+}
+
+.input-group-addon{
+	background-color: #007bff;
+}
