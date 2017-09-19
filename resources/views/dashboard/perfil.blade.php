@@ -41,7 +41,7 @@
             <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span> {{$_SESSION['usuario']->nome}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="{{route('dashboard.condominio')}}">Cadastrar Condomínio</a></li>
+                  <li><a href="{{route('condominio.index')}}">Cadastrar Condomínio</a></li>
                   <li><a href="{{route('perfil.editar')}}">Editar</a></li>
                   <li class="divider"></li>
                   <li><a href="{{route('dashboard.logout')}}">Sair <span class="glyphicon glyphicon-log-in"></span></a>

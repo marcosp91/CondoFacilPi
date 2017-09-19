@@ -32,10 +32,10 @@
             <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span> {{$_SESSION['usuario']->nome}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="{{route('dashboard.condominio')}}">Cadastrar Condomínio</a></li>
+                  <li><a href="{{route('condominio.index')}}">Cadastrar Condomínio</a></li>
                   <li><a href="{{route('perfil.editar')}}">Editar</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Sair <span class="glyphicon glyphicon-log-in"></span></a>
+                  <li><a href="{{route('dashboard.logout')}}">Sair <span class="glyphicon glyphicon-log-in"></span></a>
                 </ul>
             </li>
           </ul>
@@ -71,26 +71,42 @@
               <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastrar Condomínio</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal" action="#">
+                <form class="form-horizontal" method="POST" action="{{route('condominio.cadastro')}}">
+                    {{ csrf_field() }}
 					<div class="row" style="margin-bottom: 15px;">
-						<div class="col-xs-4 col-md-4">
-						  	<label for="nomeUsuario" class="control-label">Nome:</label>
-						  	<input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome Fantasia">
-						</div>
-						<div class="col-xs-6 col-md-4">
-						  	<label for="cnpjUsuario" class="control-label">CNPJ:</label>
+						<div class="col-xs-4 col-md-4{{ $errors->has('nome') ? ' has-error' : '' }}">
+						  	<label for="nome" class="control-label">Nome:</label>
+						  	<input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome do Condominio">
+                                                        @if ($errors->has('nome'))
+                                                            <span class="help-block">
+                                                                    <strong>{{ $errors->first('nome') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                </div>
+						<div class="col-xs-6 col-md-4{{ $errors->has('cnpj') ? ' has-error' : '' }}">
+						  	<label for="cnpj" class="control-label">CNPJ:</label>
 						  	<input type="text" id="cnpjUsuario" name="cnpj" class="form-control" placeholder="CNPJ">
-						</div>
-						<div class="col-xs-6 col-md-4">
-                      		<label for="tel" class="control-label">Telefone:</label>
-                        	<input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone">
-                    	</div>
+                                                        @if ($errors->has('cnpj'))
+                                                            <span class="help-block">
+                                                                    <strong>{{ $errors->first('cnpj') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                </div>
+						<div class="col-xs-6 col-md-4{{ $errors->has('telefone') ? ' has-error' : '' }}">
+                                                        <label for="telefone" class="control-label">Telefone:</label>
+                                                        <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone">
+                                                        @if ($errors->has('telefone'))
+                                                            <span class="help-block">
+                                                                    <strong>{{ $errors->first('telefone') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                </div>
 					</div>
 					<div class="row">
-						<div class="col-xs-2">
+						<div class="col-xs-2{{ $errors->has('tipo') ? ' has-error' : '' }}">
 						  <label for="tipo" class="control-label">Tipo:</label>
 							<select name="tipo" class="form-control">
-								<option value="" disabled>Escolha o tipo</option>
+								<option value="" disabled selected="selected">Tipo</option>
 								<option value="Avenida">Avenida</option>
 								<option value="Conjunto">Conjunto</option>
 								<option value="Estrada">Estrada</option>
@@ -98,36 +114,61 @@
 								<option value="Praça">Praça</option>
 								<option value="Quadra">Quadra</option>
 								<option value="Rodovia">Rodovia</option>
-								<option value="Rua" selected="selected">Rua</option>
+								<option value="Rua">Rua</option>
 								<option value="Servidao">Servidão</option>
 								<option value="Travessa">Travessa</option>
 							</select>	
-						</div>
-						<div class="col-xs-5">
-						  <label for="numUsuario" class="control-label">Endereço:</label>
-						  <input type="text" id="numUsuario" name="numres" class="form-control" placeholder="Numero">
-						</div>
-						<div class="col-xs-2">
-						  <label for="numUsuario" class="control-label">Num:</label>
-						  <input type="text" id="numUsuario" name="numres" class="form-control" placeholder="Numero">
-						</div>
-						<div class="col-xs-3">
-						  <label for="compUsuario" class="control-label">Complemento:</label>
+                                                        @if ($errors->has('tipo'))
+                                                            <span class="help-block">
+                                                                    <strong>{{ $errors->first('tipo') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                </div>
+						<div class="col-xs-5{{ $errors->has('endereco') ? ' has-error' : '' }}">
+						  <label for="endereco" class="control-label">Endereço:</label>
+						  <input type="text" id="numUsuario" name="endereco" class="form-control" placeholder="Numero">
+                                                    @if ($errors->has('endereco'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('endereco') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+						<div class="col-xs-2{{ $errors->has('numero') ? ' has-error' : '' }}">
+                                                    <label for="numero" class="control-label">Num:</label>
+                                                    <input type="text" id="numUsuario" name="numero" class="form-control" placeholder="Numero">
+                                                    @if ($errors->has('endereco'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('endereco') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+						<div class="col-xs-3{{ $errors->has('complemento') ? ' has-error' : '' }}">
+						  <label for="complemento" class="control-label">Complemento:</label>
 							<select name="complemento" class="form-control">
-								<option value="" disabled>Escolha o complemento</option>
+                                                            <option value="" disabled selected="selected">Escolha o complemento</option>
 								<option value="Predial">Predial</option>
-								<option value="Residencial" selected="selected">Residencial</option>
+								<option value="Residencial">Residencial</option>
 							</select>
-						</div>
+                                                    @if ($errors->has('complemento'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('complemento') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
 					</div>
 					<div class="row">
-							<div class="col-xs-4">
-								<label for="cidadeUsuario" class="control-label">Cidade:</label>
-								<input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Cidade">
-							</div>
-						<div class="col-xs-4">
-						  <label for="estados" class="control-label">UF:</label>
-						  <select name="estados" class="form-control">
+							<div class="col-xs-4{{ $errors->has('cidade') ? ' has-error' : '' }}">
+								<label for="cidade" class="control-label">Cidade:</label>
+								<input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade">
+                                                                @if ($errors->has('cidade'))
+                                                                    <span class="help-block">
+                                                                        <strong>{{ $errors->first('cidade') }}</strong>
+                                                                    </span>
+                                                                @endif
+                                                        </div>
+						<div class="col-xs-4{{ $errors->has('estado') ? ' has-error' : '' }}">
+						  <label for="estado" class="control-label">UF:</label>
+						  <select name="estado" class="form-control">
 							<option value="" selected="selectd" disabled>Escolha seu Estado</option>
 							<option value="AC">Acre</option>
 							<option value="AL">Alagoas</option>
@@ -157,14 +198,24 @@
 							<option value="SE">Sergipe</option>
 							<option value="TO">Tocantins</option>
 						  </select>
-						</div>
-						<div class="col-xs-4">
-						  <label for="cepUsuario" class="control-label">CEP:</label>
-						  <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP">
-						</div>
+                                                        @if ($errors->has('estado'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('estado') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                </div>
+						<div class="col-xs-4{{ $errors->has('cep') ? ' has-error' : '' }}">
+                                                    <label for="cep" class="control-label">CEP:</label>
+                                                    <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP">
+                                                    @if ($errors->has('cep'))
+                                                        <span class="help-block">
+                                                                <strong>{{ $errors->first('cep') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
 					</div> <!-- Row Cidade -->
 					<div class="text-center">
-						<button type="button" class="btn btn-primary" style="margin-top: 15px;">Atualizar Cadastro</button>
+						<button type="submit" class="btn btn-primary" style="margin-top: 15px;">Atualizar Cadastro</button>
 					</div>
                 </form>
             </div><!-- Painel Body -->

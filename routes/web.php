@@ -29,10 +29,8 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');
     Route::post('/perfil', 'UsuarioController@update')->name('perfil.atualizar');
     
-    Route::get('/condominio', function(){
-        return view('dashboard.condominio');
-    });
-    Route::get('/condominio', 'DashboardController@condominio')->name('dashboard.condominio');
+    Route::get('/condominio', 'DashboardController@condominio')->name('condominio.index');
+    Route::post('/condominio', 'DashboardController@cadastrarCondominio')->name('condominio.cadastro');
             
     Route::get('/logout', 'DashboardController@logout')->name('dashboard.logout');
 });
