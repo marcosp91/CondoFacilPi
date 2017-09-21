@@ -57,11 +57,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', 'localhost'),
+            'host' => env('DB_HOST', 'ec2-54-225-88-199.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'condofacil'),
-            'username' => env('DB_USERNAME', 'condofacil'),
-            'password' => env('DB_PASSWORD', '123456'),
+            'database' => env('DB_DATABASE', 'd476f3m3n6btm7'),
+            'username' => env('DB_USERNAME', 'ugbxxnoynipbbe'),
+            'password' => env('DB_PASSWORD', '81dd5903cc7d61fe1bc357373fdecda99d8b34943289ae98686ca63559163835'),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
