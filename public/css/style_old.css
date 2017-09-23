@@ -72,7 +72,6 @@ body{
 /* Custom */
 .main-color-bg{
   background-color: #3736FF !important;
-  border-color: #2928ba !important;
   color:#ffffff !important;
 }
 
@@ -108,16 +107,23 @@ body{
   text-align:center;
 }
 
+.dash {
+  padding-left: 0;
+}
+
 #login{
   margin-top:30px;
 }
 
 /* Footer */
 #footer{
+  bottom: 0;
+  clear: both;
   background:#333333;
   color:#ffffff;
   text-align:center;
-  padding:30px;
+  padding:15px;
+  width: 100%;
   margin-top:30px;
 }
 

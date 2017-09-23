@@ -15,37 +15,52 @@ body{
   height: 33px;
 }
 
+
+
+.logo {
+  margin-left: 15px !important;
+}
+
+.logo a{
+  margin-top: 7px;
+  font-weight: bold;
+  font-size: 24px !important;
+
+}
+
 .navbar-default {
   background-color: #3736FF;
-  border-color: #2928ba;
+  border-color: #2828bf;
 }
+
 .navbar-default .navbar-brand {
   color: #ecf0f1;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #272728;
+  color: #8ec6ec;
 }
 .navbar-default .navbar-text {
   color: #ecf0f1;
 }
 .navbar-default .navbar-nav > li > a {
   color: #ecf0f1;
+  font-family: Verdana;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #272728;
+  color: #8ec6ec;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #272728;
+  color: #8ec6ec;
   background-color: #fff;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  color: #272728;
+  color: #8ec6ec;
   background-color: #3736FF;
 }
 .navbar-default .navbar-toggle {
@@ -67,6 +82,11 @@ body{
 }
 .navbar-default .navbar-link:hover {
   color: #272728;
+}
+
+a.list-group-item:focus, a.list-group-item:focus, button.list-group-item:focus, button.list-group-item:focus {
+    color: #fff;
+    background-color: #3736FF;
 }
 
 /* Custom */
@@ -117,6 +137,7 @@ body{
 
 /* Footer */
 #footer{
+  position: fixed;
   bottom: 0;
   clear: both;
   background:#333333;
@@ -150,9 +171,3 @@ body{
   min-height: auto;
   min-width: auto;
 }
-
-.alert{
-  margin-bottom: 5px !important; 
-}
-
-
