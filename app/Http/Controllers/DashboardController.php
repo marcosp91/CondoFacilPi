@@ -6,6 +6,7 @@ use App\Models\Painel\Condominio;
 use App\Models\Painel\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Painel\CondominioFormRequest;
 use function redirect;
 use function validator;
 use function view;
@@ -25,19 +26,19 @@ class DashboardController extends Controller
         return view('dashboard.condominio');
     }
     
-    public function cadastrarCondominio(Request $request) {
+    public function cadastrarCondominio(CondominioFormRequest $request) {
         $dadosForm = $request->all();
-        
-        
         $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
- 
+        
+        /**Utilizando novo metodo da classe CondominioFormRequest para validação
+         
         $validacao = validator($dadosForm, $this->condominio->regras);
         if ($validacao->fails()){
             return redirect()->route('condominio.cadastro')
                 ->withErrors($validacao)
                 ->withInput();
         }
-        
+        **/
         $insert = $this->condominio->create($dadosForm);
         
         $usuario = $this->usuario->find($_SESSION['usuario']->id);

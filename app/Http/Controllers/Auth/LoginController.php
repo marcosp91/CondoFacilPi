@@ -37,11 +37,13 @@ class LoginController extends Controller
      * @return void
      */
     
-    public function login(){
+    public function login()
+    {
         return view('auth.login');
     }
     
-    public function autentica(Request $request){
+    public function autentica(Request $request)
+    {
         $dadosLogin = $request->all();
         $email = $dadosLogin['email'];
         $senha = $dadosLogin['senha'];
@@ -53,7 +55,8 @@ class LoginController extends Controller
                      ->get()
                      ->first();
         
-        if ($usuario){
+        if ($usuario)
+        {
             session_start();    
             $_SESSION['usuario'] = $usuario;
         }
@@ -69,7 +72,8 @@ class LoginController extends Controller
              
     }
     
-    public function autenticado(){
-        return view('dashboard.perfil');
+    public function autenticado()
+    {
+        return view('perfil.editar');
     }
 }

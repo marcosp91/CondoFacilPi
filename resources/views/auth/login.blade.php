@@ -18,7 +18,7 @@
 			</div>
 			<form id="login-form" class="form-horizontal" action="{{route('login.autentica')}}" method="POST">
 			{{ csrf_field() }}	
-                            <!-- Login input-->
+                <!-- Login input-->
 				<div class="input-group input-sm">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 					<input id="user" name="email" type="text" placeholder="Digite seu email" class="form-control" >
