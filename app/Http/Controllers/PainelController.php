@@ -7,24 +7,26 @@ use App\Http\Requests;
 
 class PainelController extends Controller
 {   
-    public function __construct(){
+    public function __construct()
+    {
         
         $this->middleware('auth');
         
     }
     
-    public function index(){
+    public function index()
+    {
         return view('home');
     }
     
-    public function cadastrar(){
-      
+    public function cadastrar()
+    {
         return view('auth.register');
     }
     
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $dadosForm = $request->all();
-        
         $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
         
         $validacao = validator($dadosForm, $this->usuario->regras);

@@ -24,11 +24,12 @@ Route::group(['prefix' => 'painel'], function(){
 });
 
 Route::group(['prefix' => 'dashboard'], function(){
-    //Route::get('/', 'DashboardController@index')->name('DashboardController.index');
+    
 
     Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');
     Route::post('/perfil', 'UsuarioController@update')->name('perfil.atualizar');
     
+    Route::get('/index', 'DashboardController@index')->name('DashboardController.index');
     Route::get('/condominio', 'DashboardController@condominio')->name('condominio.index');
     Route::post('/condominio', 'DashboardController@cadastrarCondominio')->name('condominio.cadastro');
             

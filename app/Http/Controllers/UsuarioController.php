@@ -6,6 +6,7 @@ use App\Models\Painel\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Painel\UsuarioFormRequest;
 use function dd;
 use function redirect;
 use function validator;
@@ -15,13 +16,13 @@ class UsuarioController extends Controller
 {
     private $usuario;
     
-    public function __construct(Usuario $usuario) {
+    public function __construct(Usuario $usuario)
+    {
         $this->usuario = $usuario;
     }
 
     public function index()
     {
-        
         $usuarios = $this->usuario->all();
         dd($usuarios);
         return view('Painel.index', compact('usuarios'));
@@ -45,12 +46,18 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        
         $dadosForm = $request->all();
-        
         $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
         
-        $validacao = validator($dadosForm, $this->usuario->regras);
+        
+        $menssagemErros = [
+            'nome.required' => 'O campo nome é de preenchimento obrigatório!',
+            'email.required' => 'O campo email é de preenchimento obrigatório!',
+            'senha.required' => 'O campo senha é de preenchimento obrigatório!',
+            'senha-confirm.required' => 'Por favor, confirme sua senha!',
+        ];
+        
+        $validacao = validator($dadosForm, $this->usuario->regras, $menssagemErros);
         if ($validacao->fails()){
             return redirect()->route('painel.cadastrar')
                 ->withErrors($validacao)
@@ -100,19 +107,13 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request)
+    public function update(UsuarioFormRequest $request)
     {
         $dadosForm = $request->all();
         
-        $validacao = validator($dadosForm, $this->usuario->regrasEdit);
-        if ($validacao->fails()){
-            return redirect()->route('perfil.editar')
-                ->withErrors($validacao)
-                ->withInput();
-        }
-        
+        /**Utilizando novo metodo da classe UsuarioFormRequest para validação**/
+
         $usuario = $this->usuario->find($dadosForm['id']);
-        
         $usuario->nome = $dadosForm['nome'];
         $usuario->cpf = $dadosForm['cpf'];
         $usuario->email = $dadosForm['email'];
