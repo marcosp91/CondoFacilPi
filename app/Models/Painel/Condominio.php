@@ -10,7 +10,6 @@ class Condominio extends Model
     //protected $guarded = ['id', 'created_at', 'update_at'];
     
     public $regras = [
-        
         'nome'  => 'required|min:3|max:100',
         'cnpj' => 'required|cnpj',
         'telefone' => 'required',

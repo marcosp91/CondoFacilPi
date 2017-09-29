@@ -22,22 +22,6 @@ class Usuario extends Model
         'senha-confirm' => 'required|same:senha',
     ];
     
-    /**Novo Método na classe UsuarioFormRequest**\
-    /*public $regrasEdit = [
-        
-        'nome'  => 'required|min:3|max:100',
-        'email' => 'required|email',
-        'cpf' => 'required|cpf',
-        'num_residencia' => 'required',
-        'bloco' => 'required',
-        'endereco' => 'required',
-        'cidade' => 'required',
-        'cep' => 'required',
-        'estado' => 'required',
-        'telefone' => 'required',
-        'complemento' => 'required',
-    ];*/
-    
     function getId() {
         return $this->id;
     }

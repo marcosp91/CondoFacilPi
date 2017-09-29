@@ -73,7 +73,6 @@ class UsuarioController extends Controller
         else
             return redirect()->route('painel.cadastrar');
         
-        
         //return redirect()->route('/dashboard')->with('message', 'Usuário criado com sucesso!');
         
     }

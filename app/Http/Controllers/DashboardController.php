@@ -23,22 +23,18 @@ class DashboardController extends Controller
     }
     
     public function condominio() {
-        return view('dashboard.condominio');
+        return view('dashboard.cadastro.condominio');
     }
+    
+    public function condomino() {
+        return view('dashboard.cadastro.condomino');
+    }
+ 
     
     public function cadastrarCondominio(CondominioFormRequest $request) {
         $dadosForm = $request->all();
         $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
-        
-        /**Utilizando novo metodo da classe CondominioFormRequest para validação
-         
-        $validacao = validator($dadosForm, $this->condominio->regras);
-        if ($validacao->fails()){
-            return redirect()->route('condominio.cadastro')
-                ->withErrors($validacao)
-                ->withInput();
-        }
-        **/
+    
         $insert = $this->condominio->create($dadosForm);
         
         $usuario = $this->usuario->find($_SESSION['usuario']->id);
