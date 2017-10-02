@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Painel\Usuario;
+use App\Models\Painel\Sindico;
+use App\Models\Painel\Condomino;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -47,33 +49,44 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $dadosForm = $request->all();
-        $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
         
-        
-        $menssagemErros = [
-            'nome.required' => 'O campo nome é de preenchimento obrigatório!',
-            'email.required' => 'O campo email é de preenchimento obrigatório!',
-            'senha.required' => 'O campo senha é de preenchimento obrigatório!',
-            'senha-confirm.required' => 'Por favor, confirme sua senha!',
-        ];
-        
-        $validacao = validator($dadosForm, $this->usuario->regras, $menssagemErros);
-        if ($validacao->fails()){
-            return redirect()->route('painel.cadastrar')
-                ->withErrors($validacao)
-                ->withInput();
+        if($dadosForm['classe'] === 'Sindico'){
+            $usuario = new Sindico;
+            
+            $validacao = validator($dadosForm, $usuario->regras, $usuario->menssagemErros);
+            if ($validacao->fails()){
+                return redirect()->route('painel.cadastrar')
+                    ->withErrors($validacao)
+                    ->withInput();
+            }
+        }elseif($dadosForm['classe'] === 'Condomino'){
+            $usuario = new Condomino;
+            
+            $validacao = validator($dadosForm, $usuario->regras, $usuario->menssagemErros);
+            if ($validacao->fails()){
+                return redirect()->route('condomino.index')
+                    ->withErrors($validacao)
+                    ->withInput();
+            }
         }
         
-        //$dadosForm['senha'] = Hash::make('password');
+
+        $novoUsuario = $usuario->cadastrar($dadosForm);
         
-        $insert = $this->usuario->create($dadosForm);
         
-        if($insert)
-            return redirect()->route('login.index');
-        else
-            return redirect()->route('painel.cadastrar');
         
-        //return redirect()->route('/dashboard')->with('message', 'Usuário criado com sucesso!');
+        $insert = $this->usuario->create($novoUsuario);
+        
+        if($dadosForm['classe'] === 'Sindico'){
+            if($insert)
+                return redirect()->route('login.index');
+            else
+                return redirect()->route('painel.cadastrar');
+        }else {
+            if ($insert) {
+                return redirect()->route('condomino.cadastro');
+            }
+        }
         
     }
 

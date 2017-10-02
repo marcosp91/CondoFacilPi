@@ -242,6 +242,7 @@
                                     <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Cadastrar</button>
                                 </div>
                                 <input type="hidden" name="id" value="{{$_SESSION['usuario']->id}}">
+                                <input type="hidden" name="classe" value="Condomino">
                             </form>
                         </div><!-- Painel Body -->
                     </div><!-- Painel Default -->

@@ -21,36 +21,39 @@ a {
 }
 
 h2 {
-	color: #334045;
+    color: #334045;
 }
 
 p {
-	font-size: 14px;
-	font-weight: 600;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .container{
-	max-height: auto;
-	max-width: 350px;
-	border-radius: 10px;
-	background-color:#fff;
-	margin-top: 15px;
+    max-height: auto;
+    max-width: 350px;
+    border-radius: 15px;
+    background-color:#fff;
+    margin-top: 15px;
 }
 
 .painel-portal{
-	text-align:center;
+    text-align:center;
     color: #fff;
     background-color: #007bff;
     border-color: #ddd;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-bottom: 15px;
 }
 
 .btn-acess{
-	color: white;
-	font-size: 14px;
-	font-weight: 700;
-	background-color: #2FBC2D;
-	border-style: none;
-	/*margin: 0 0 15px 127px;*/
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #2FBC2D;
+    border-style: none;
+    /*margin: 0 0 15px 127px;*/
 }
 
 .input-group  .btn-acess:hover{
@@ -60,4 +63,8 @@ p {
 
 .input-group-addon{
 	background-color: #007bff;
+}
+
+.form-group{
+    margin-bottom: 0 !important;
 }

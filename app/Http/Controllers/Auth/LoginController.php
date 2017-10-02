@@ -45,6 +45,7 @@ class LoginController extends Controller
     public function autentica(Request $request)
     {
         $dadosLogin = $request->all();
+
         $email = $dadosLogin['email'];
         $senha = $dadosLogin['senha'];
             
@@ -61,7 +62,7 @@ class LoginController extends Controller
             $_SESSION['usuario'] = $usuario;
         }
         
-        if(isset($_SESSION))
+        if(isset($_SESSION['usuario']))
         {
             return redirect()->route('perfil.editar');
         }
