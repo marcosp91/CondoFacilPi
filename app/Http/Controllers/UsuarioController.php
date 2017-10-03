@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Painel\Usuario;
+use App\Models\Painel\Sindico;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Painel\UsuarioFormRequest;
 use function dd;
 use function redirect;
-use function validator;
 use function view;
 
 class UsuarioController extends Controller
@@ -24,7 +25,6 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = $this->usuario->all();
-        dd($usuarios);
         return view('Painel.index', compact('usuarios'));
     }
 
@@ -47,34 +47,18 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $dadosForm = $request->all();
-        $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
+        $usuario = new Sindico;
         
-        
-        $menssagemErros = [
-            'nome.required' => 'O campo nome é de preenchimento obrigatório!',
-            'email.required' => 'O campo email é de preenchimento obrigatório!',
-            'senha.required' => 'O campo senha é de preenchimento obrigatório!',
-            'senha-confirm.required' => 'Por favor, confirme sua senha!',
-        ];
-        
-        $validacao = validator($dadosForm, $this->usuario->regras, $menssagemErros);
-        if ($validacao->fails()){
-            return redirect()->route('painel.cadastrar')
-                ->withErrors($validacao)
-                ->withInput();
+        dd($dadosForm);
+        if($usuario instanceof Usuario){
+            echo 'oi';
+            die;
+            $usuario->cadastrar();
         }
         
-        //$dadosForm['senha'] = Hash::make('password');
+        $insert = $this->usuario->create($usuario);
         
-        $insert = $this->usuario->create($dadosForm);
-        
-        if($insert)
-            return redirect()->route('login.index');
-        else
-            return redirect()->route('painel.cadastrar');
-        
-        //return redirect()->route('/dashboard')->with('message', 'Usuário criado com sucesso!');
-        
+        return($insert);
     }
 
     /**

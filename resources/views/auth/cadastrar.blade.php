@@ -71,6 +71,8 @@
 				<div class="row text-center">
 					<label><a id="alerta" href="{{ route('login.index') }}">Login</a></label>
 		 		</div>
+                                
+                                <input type="hidden" name="classe" value="Sindico()">
 			</form>
 		</div>
 	</body>
