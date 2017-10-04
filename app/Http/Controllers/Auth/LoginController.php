@@ -67,7 +67,7 @@ class LoginController extends Controller
             return redirect()->route('perfil.editar');
         }
         else{
-            return redirect()->route('login.index');
+            return redirect()->route('login.index')->with('mensagemERRO', 'Email ou Senha Incorreta');
         }
             
              
