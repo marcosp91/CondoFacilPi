@@ -22,6 +22,11 @@ class DashboardController extends Controller
         $this->usuario = $usuario;
     }
     
+    public function home()
+    {
+        return view('dashboard.home');
+    }
+    
     public function condominio() {
         return view('dashboard.cadastro.condominio');
     }

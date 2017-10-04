@@ -79,7 +79,7 @@ class UsuarioController extends Controller
         
         if($dadosForm['classe'] === 'Sindico'){
             if($insert)
-                return redirect()->route('login.index');
+                return redirect()->route('login.index')->with('mensagem', 'Cadastro realizado com sucesso!');
             else
                 return redirect()->route('painel.cadastrar');
         }else {
@@ -122,8 +122,6 @@ class UsuarioController extends Controller
     public function update(UsuarioFormRequest $request)
     {
         $dadosForm = $request->all();
-        
-        /**Utilizando novo metodo da classe UsuarioFormRequest para validação**/
 
         $usuario = $this->usuario->find($dadosForm['id']);
         $usuario->nome = $dadosForm['nome'];
@@ -150,7 +148,7 @@ class UsuarioController extends Controller
                 session_start();    
                 $_SESSION['usuario'] = $usuario;
             }
-            return redirect()->route('perfil.editar');
+            return Redirect()->route('dashboard.home')->with('mensagem', 'Perfil atualizado com sucesso!');
         }else{
             return redirect()->route('perfil.editar');
         }

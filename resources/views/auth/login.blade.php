@@ -16,6 +16,11 @@
 					<h2>Portal do Condomínio</h2><p>Bem Vindo! Preencha os campos do formulário para acesso ao Portal</p>
 				</div>
 			</div>
+                        @if(session('mensagem'))
+                            <div class="alert alert-success text-center">
+                                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                            </div>
+                        @endif
 			<form id="login-form" class="form-horizontal" action="{{route('login.autentica')}}" method="POST">
 			{{ csrf_field() }}	
                                 <!-- Login input-->

@@ -6,9 +6,14 @@
             <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/cadastro/condomino.blade.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/DashboardController.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Usuario.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Sindico.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/UsuarioController.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/auth/cadastrar.blade.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Condomino.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Requests/Painel/UsuarioFormRequest.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Condominio.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/auth/cadastrar.bladeOLD.php</file>
         </group>
     </open-files>
 </project-private>
