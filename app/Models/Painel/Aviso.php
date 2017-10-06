@@ -14,7 +14,7 @@ class Aviso extends Publicacao
         $dadosForm['id_condominio'] = $_SESSION['usuario']->condominio_id;
         
         
-        return $dadosForm;
+         return $dadosForm;
         
     }
 

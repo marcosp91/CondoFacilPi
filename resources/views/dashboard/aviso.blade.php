@@ -14,6 +14,17 @@
     @endsection
 
     @section('content')
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+            @foreach ($avisos as $aviso)
+                <tr>
+                    <td>{{ $aviso->id }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
         <div class="col-md-9"><!-- Coluna Painel Form -->
             <!-- Editar Perfil -->
             <div class="panel panel-default">

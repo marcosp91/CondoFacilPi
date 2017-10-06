@@ -33,7 +33,7 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('cadastro/condomino', 'DashboardController@condomino')->name('condomino.index');
     Route::post('cadastro/condomino', 'DashboardController@cadastrarCondomino')->name('condomino.cadastro');
     
-    Route::get('/avisos', 'DashboardController@avisos')->name('avisos.index');
+    Route::get('/avisos', 'AvisoController@index')->name('avisos.index');
     Route::post('/avisos', 'DashboardController@cadastrarPublicacao')->name('avisos.cadastro');
             
     Route::get('/logout', 'DashboardController@logout')->name('dashboard.logout');
