@@ -11,8 +11,12 @@
         <!-- Bootstrap core CSS -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
+        <link href="/css/formstyle.css" rel="stylesheet">
         <script src="/js/jquery-3.2.1.min.js"></script>
         <script src="/js/jquery.maskedinput.js" type="text/javascript"></script>
+        <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+        <!-- <script src="/js/ckeditor/ckeditor.js"></script> -->
+
         <script>
             jQuery(function ($) {
                 $("#telUsuario").mask("(99) 99999-9999");
@@ -57,18 +61,18 @@
             </div>
             <div class="dash col-md-3">
                 <div class="list-group">
-                    <a href="index.html" class="list-group-item active main-color-bg">
+                    <a href="#" class="list-group-item active main-color-bg">
                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Dashboard
                     </a>
-                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Avisos <span class="badge">0</span></a>
+                    <a href="{{route('avisos.index')}}" class="list-group-item"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Avisos <span class="badge">0</span></a>
                     <a href="{{route('condomino.index')}}" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Condôminos <span class="badge">0</span></a>
                     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Áreas Comuns <span class="badge">0</span></a>
                     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Contate o Síndico <span class="badge">0</span></a>
                 </div>
             </div>
-            
+
             @yield('content')
-            
+
         </div><!-- Container-Fluid -->
     </section>
 
@@ -77,5 +81,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script>
+        CKEDITOR.replace( 'mensagem' );
+    </script>
     </body>
 </html>
