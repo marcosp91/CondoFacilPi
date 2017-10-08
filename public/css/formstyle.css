@@ -1,5 +1,4 @@
 *{
-	
 	margin:0;
 	padding:0;
 }
@@ -17,7 +16,7 @@ a {
 	  transition: all 0.2s;
  }
   a:focus, a:hover {
-    color: #0080FF; 
+    color: #0080FF;
 }
 
 h2 {
@@ -27,6 +26,10 @@ h2 {
 p {
     font-size: 14px;
     font-weight: 600;
+}
+
+.panel-titulo{
+
 }
 
 .container{
@@ -45,15 +48,19 @@ p {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     margin-bottom: 15px;
+		padding: 5px;
 }
 
 .btn-acess{
-    color: white;
     font-size: 14px;
     font-weight: 700;
-    background-color: #2FBC2D;
     border-style: none;
-    /*margin: 0 0 15px 127px;*/
+		margin-top: 10px;
+}
+
+.btn-acess:hover{
+	color: #ffffff;
+	box-shadow: 1px 2px 5px #000000;
 }
 
 .input-group  .btn-acess:hover{
@@ -63,8 +70,4 @@ p {
 
 .input-group-addon{
 	background-color: #007bff;
-}
-
-.form-group{
-    margin-bottom: 0 !important;
 }

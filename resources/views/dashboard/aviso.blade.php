@@ -39,6 +39,7 @@
                         </div>
                       </div>
                     </div>
+                                  <input type="hidden" name="classe" value="Aviso()">
                   </form>
                 </div><!-- Painel Body -->
             </div><!-- Painel Default -->
