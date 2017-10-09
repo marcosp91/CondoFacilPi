@@ -36,6 +36,7 @@ class Condomino extends Model
     
     public function cadastrar($dadosForm) {
         $dadosForm['privilegio'] = 0;
+        $dadosForm['condominio_id'] = $_SESSION['usuario']->condominio_id;
           
         return $dadosForm;
     }

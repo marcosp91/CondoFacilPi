@@ -14,6 +14,7 @@ use function redirect;
 use function validator;
 use function view;
 
+session_start();
 class UsuarioController extends Controller
 {
     private $usuario;
@@ -23,11 +24,11 @@ class UsuarioController extends Controller
         $this->usuario = $usuario;
     }
 
-    public function index()
+    public function index(Usuario $usuario)
     {
-        $usuarios = $this->usuario->all();
-        dd($usuarios);
-        return view('Painel.index', compact('usuarios'));
+        $usuarios = $usuario->all()->where('condominio_id', '=', $_SESSION['usuario']->condominio_id);
+        
+        return view('dashboard.cadastro.condomino', compact('usuarios'));
     }
 
     /**

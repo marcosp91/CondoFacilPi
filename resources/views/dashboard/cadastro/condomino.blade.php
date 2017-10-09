@@ -208,12 +208,14 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td>Maria Alice</td>
-                              <td>alice@gmail.com</td>
-                              <td>000.000.000-01</td>
-                              <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#">Deletar</a></td>
-                          </tr>
+                        @foreach ($usuarios as $usuario)
+                            <tr>
+                                    <td>{{ $usuario->nome }}</td>
+                                    <td>{{ $usuario->email }}</td>
+                                    <td>{{ $usuario->cpf }}</td>
+                                    <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#">Deletar</a></</td>
+                            </tr>
+                        @endforeach
                       </tbody>
                   </table>
               </div><!-- Painel Body Lista -->
