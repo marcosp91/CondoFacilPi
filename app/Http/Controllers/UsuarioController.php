@@ -80,12 +80,12 @@ class UsuarioController extends Controller
         
         if($dadosForm['classe'] === 'Sindico'){
             if($insert)
-                return redirect()->route('login.index')->with('mensagemSUCESSO', 'Cadastro realizado com sucesso!');
+                return redirect()->route('login.index')->with('mensagemSUCESSO', 'Cadastro Realizado com Sucesso!');
             else
                 return redirect()->route('painel.cadastrar');
         }else {
             if ($insert) {
-                return redirect()->route('condomino.cadastro');
+                return redirect()->route('condomino.cadastro')->with('mensagemSUCESSO', 'Cadastro Realizado com Sucesso!');
             }
         }
         

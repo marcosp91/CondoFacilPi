@@ -6,8 +6,12 @@
                 <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
+        @if(session('mensagemSUCESSO'))
+            <div class="alert alert-success text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
     @endsection
-
     @section('content')
     <div class="col-md-1"></div>
           <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->

@@ -233,6 +233,8 @@ return [
         
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
+		
+		'Keygen' 	=> Keygen\Keygen::class,
 
     ],
 

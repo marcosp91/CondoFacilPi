@@ -3,6 +3,7 @@
 namespace App\Models\Painel;
 
 use Illuminate\Database\Eloquent\Model;
+use Keygen;
 
 class Condomino extends Model
 {
@@ -37,7 +38,10 @@ class Condomino extends Model
     public function cadastrar($dadosForm) {
         $dadosForm['privilegio'] = 0;
         $dadosForm['condominio_id'] = $_SESSION['usuario']->condominio_id;
-          
+        $dadosForm['senha'] = Keygen::numeric(8)->generate();
+        
+        //dd($dadosForm);
+        
         return $dadosForm;
     }
 }

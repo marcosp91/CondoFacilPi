@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b2b1b8c54e26e1eefadf2a75beeddd2",
+    "content-hash": "989e0c038813e2b3d72899720ab99dc2",
     "packages": [
         {
             "name": "appzcoder/crud-generator",
@@ -245,6 +245,50 @@
             ],
             "description": "Biblioteca para validação de CPF, CNPJ e CNH",
             "time": "2017-06-02T01:41:01+00:00"
+        },
+        {
+            "name": "gladcodes/keygen",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gladchinda/keygen-php.git",
+                "reference": "f0f29b4df0e3f9f2f0e31d7b0ac97c8f806a8c83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gladchinda/keygen-php/zipball/f0f29b4df0e3f9f2f0e31d7b0ac97c8f806a8c83",
+                "reference": "f0f29b4df0e3f9f2f0e31d7b0ac97c8f806a8c83",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Keygen\\": "src/Keygen"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Glad Chinda",
+                    "email": "gladxeqs@gmail.com"
+                }
+            ],
+            "description": "A fluent PHP random key generator.",
+            "keywords": [
+                "generator",
+                "key",
+                "key generator",
+                "keygen",
+                "php",
+                "random"
+            ],
+            "time": "2017-02-24T07:19:08+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

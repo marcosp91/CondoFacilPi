@@ -7,6 +7,11 @@
                 <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
+        @if(session('mensagemSUCESSO'))
+            <div class="alert alert-success text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
     @endsection
 
     @section('content')
@@ -43,7 +48,7 @@
                       <div class="row">
                           <div class="col-xs-6 col-md-6{{ $errors->has('cpf') ? ' has-error' : '' }}">
                               <label for="cpfUsuario" class="control-label">CPF:</label>
-                              <input type="text" id="cpfUsuario" name="cpf" class="form-control" placeholder="CPF" value="{{$_SESSION['usuario']->cpf}}">
+                              <input type="text" id="cpfUsuario" name="cpf" class="form-control" placeholder="CPF" value="">
                               @if ($errors->has('cpf'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('cpf') }}</strong>
@@ -52,7 +57,7 @@
                           </div>
                           <div class="col-xs-6 col-md-6{{ $errors->has('telefone') ? ' has-error' : '' }}">
                               <label for="tel" class="control-label">Telefone:</label>
-                              <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" value="{{$_SESSION['usuario']->telefone}}">
+                              <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" value="">
                               @if ($errors->has('telefone'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('telefone') }}</strong>
@@ -87,7 +92,7 @@
                           </div>
                           <div class="col-xs-6 col-md-5{{ $errors->has('endereco') ? ' has-error' : '' }}">
                               <label for="endUsuario" class="control-label">Endereço:</label>
-                              <input type="text" id="endUsuario" name="endereco" class="form-control" placeholder="Endereço" value="{{$_SESSION['usuario']->endereco}}"/>
+                              <input type="text" id="endUsuario" name="endereco" class="form-control" placeholder="Endereço" value=""/>
                               @if ($errors->has('endereco'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('endereco') }}</strong>
@@ -96,7 +101,7 @@
                           </div>
                            <div class="col-xs-6 col-md-2{{ $errors->has('bloco') ? ' has-error' : '' }}">
                               <label for="blocoUsuario" class="control-label">Bloco:</label>
-                              <input type="text" id="blocoUsuario" name="bloco" class="form-control" placeholder="Bloco" value="{{$_SESSION['usuario']->bloco}}"/>
+                              <input type="text" id="blocoUsuario" name="bloco" class="form-control" placeholder="Bloco" value=""/>
                               @if ($errors->has('bloco'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('bloco') }}</strong>
@@ -105,7 +110,7 @@
                           </div>
                           <div class="col-xs-6 col-md-2{{ $errors->has('num_residencia') ? ' has-error' : '' }}">
                               <label for="numUsuario" class="control-label">Num:</label>
-                              <input type="text" id="numUsuario" name="num_residencia" class="form-control" placeholder="Numero" value="{{$_SESSION['usuario']->num_residencia}}">
+                              <input type="text" id="numUsuario" name="num_residencia" class="form-control" placeholder="Numero" value="">
                               @if ($errors->has('num_residencia'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('num_residencia') }}</strong>
@@ -114,7 +119,7 @@
                           </div>
                           <div class="col-xs-6 col-md-4{{ $errors->has('cidade') ? ' has-error' : '' }}">
                               <label for="cidadeUsuario" class="control-label">Cidade:</label>
-                              <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" value="{{$_SESSION['usuario']->cidade}}">
+                              <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" value="">
                               @if ($errors->has('cidade'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('cidade') }}</strong>
@@ -161,7 +166,7 @@
                           </div>
                           <div class="col-xs-6 col-md-4{{ $errors->has('cep') ? ' has-error' : '' }}">
                               <label for="cep" class="control-label">CEP:</label>
-                              <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" value="{{$_SESSION['usuario']->cep}}">
+                              <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" value="">
                               @if ($errors->has('cep'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('cep') }}</strong>
