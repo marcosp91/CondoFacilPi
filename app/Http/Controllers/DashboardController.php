@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Painel\Condominio;
 use App\Models\Painel\Usuario;
+use App\Models\Painel\Aviso;
+use App\Models\Painel\Sindico;
+use App\Models\Painel\Publicacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Painel\CondominioFormRequest;
@@ -16,10 +19,17 @@ class DashboardController extends Controller
 {
     private $condominio;
     private $usuario;
-    
-    public function __construct(Condominio $condominio, Usuario $usuario) {
+    private $publicacao;
+
+    public function __construct(Publicacao $publicacao, Condominio $condominio, Usuario $usuario) {
         $this->condominio = $condominio;
         $this->usuario = $usuario;
+        $this->publicacao = $publicacao;
+    }
+    
+    public function home()
+    {
+        return view('dashboard.home');
     }
     
     public function condominio() {
@@ -49,11 +59,36 @@ class DashboardController extends Controller
         $update = $usuario->save();
         
         if($insert)
-            return redirect()->route('condominio.cadastro');
+            return redirect()->route('condominio.cadastro')->with('mensagemSUCESSO', 'Aviso Publicado com Sucesso!');
         else
-            return redirect()->route('condominio.cadastro');
+            return redirect()->route('condominio.cadastro')->with('mensagemERRO', 'Algo deu Errado na Publicação do Aviso!');
     }
     
+    public function avisos() {
+        return view('dashboard.aviso');
+    }
+    
+    public function cadastrarPublicacao(Request $request){
+        $dadosForm = $request->all();
+       
+        $classe = $dadosForm['classe'];
+        
+        
+        $publicacao = new $classe;
+
+        $novaPublicacao = $publicacao->publicaMensagem($dadosForm);
+        
+        
+        $insert = $publicacao->create($novaPublicacao);
+        
+        if($insert){
+            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Aviso publicado com sucesso!');
+        }else{
+            return redirect()->route('avisos.index')->with('mensagemERRO', 'Algo deu errado na publicação do aviso!');
+        }
+    }
+    
+
     public function logout(){
       
         session_destroy();

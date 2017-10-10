@@ -45,6 +45,7 @@ class LoginController extends Controller
     public function autentica(Request $request)
     {
         $dadosLogin = $request->all();
+
         $email = $dadosLogin['email'];
         $senha = $dadosLogin['senha'];
             
@@ -61,12 +62,12 @@ class LoginController extends Controller
             $_SESSION['usuario'] = $usuario;
         }
         
-        if(isset($_SESSION))
+        if(isset($_SESSION['usuario']))
         {
-            return redirect()->route('perfil.editar');
+            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Logado com Sucesso!');
         }
         else{
-            return redirect()->route('login.index');
+            return redirect()->route('login.index')->with('mensagemERRO', 'Email ou Senha Incorreta');
         }
             
              

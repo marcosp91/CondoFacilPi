@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Painel\Usuario;
 use App\Models\Painel\Sindico;
+use App\Models\Painel\Condomino;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Painel\UsuarioFormRequest;
 use function dd;
 use function redirect;
+use function validator;
 use function view;
 
+session_start();
 class UsuarioController extends Controller
 {
     private $usuario;
@@ -22,10 +24,11 @@ class UsuarioController extends Controller
         $this->usuario = $usuario;
     }
 
-    public function index()
+    public function index(Usuario $usuario)
     {
-        $usuarios = $this->usuario->all();
-        return view('Painel.index', compact('usuarios'));
+        $usuarios = $usuario->all()->where('condominio_id', '=', $_SESSION['usuario']->condominio_id);
+        
+        return view('dashboard.cadastro.condomino', compact('usuarios'));
     }
 
     /**
@@ -47,18 +50,45 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $dadosForm = $request->all();
-        $usuario = new Sindico;
         
-        dd($dadosForm);
-        if($usuario instanceof Usuario){
-            echo 'oi';
-            die;
-            $usuario->cadastrar();
+        if($dadosForm['classe'] === 'Sindico'){
+            $usuario = new Sindico;
+            
+            $validacao = validator($dadosForm, $usuario->regras, $usuario->menssagemErros);
+            if ($validacao->fails()){
+                return redirect()->route('painel.cadastrar')
+                    ->withErrors($validacao)
+                    ->withInput();
+            }
+        }elseif($dadosForm['classe'] === 'Condomino'){
+            $usuario = new Condomino;
+            
+            $validacao = validator($dadosForm, $usuario->regras, $usuario->menssagemErros);
+            if ($validacao->fails()){
+                return redirect()->route('condomino.index')
+                    ->withErrors($validacao)
+                    ->withInput();
+            }
         }
         
-        $insert = $this->usuario->create($usuario);
+
+        $novoUsuario = $usuario->cadastrar($dadosForm);
         
-        return($insert);
+        
+        
+        $insert = $this->usuario->create($novoUsuario);
+        
+        if($dadosForm['classe'] === 'Sindico'){
+            if($insert)
+                return redirect()->route('login.index')->with('mensagemSUCESSO', 'Cadastro Realizado com Sucesso!');
+            else
+                return redirect()->route('painel.cadastrar');
+        }else {
+            if ($insert) {
+                return redirect()->route('condomino.cadastro')->with('mensagemSUCESSO', 'Cadastro Realizado com Sucesso!');
+            }
+        }
+        
     }
 
     /**
@@ -93,8 +123,6 @@ class UsuarioController extends Controller
     public function update(UsuarioFormRequest $request)
     {
         $dadosForm = $request->all();
-        
-        /**Utilizando novo metodo da classe UsuarioFormRequest para validação**/
 
         $usuario = $this->usuario->find($dadosForm['id']);
         $usuario->nome = $dadosForm['nome'];
@@ -121,7 +149,7 @@ class UsuarioController extends Controller
                 session_start();    
                 $_SESSION['usuario'] = $usuario;
             }
-            return redirect()->route('perfil.editar');
+            return Redirect()->route('dashboard.home')->with('mensagem', 'Perfil atualizado com sucesso!');
         }else{
             return redirect()->route('perfil.editar');
         }

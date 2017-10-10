@@ -57,14 +57,14 @@
       </div>
     </header>
     <!--  Chamada de Propaganda -->
-    <section class="bg-primary">
+    <section class="bg-primary" id="about">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading text-white">Tudo que você precisa em um único sistema!</h2>
             <hr class="light">
             <p class="text-faded">Utilizando Condo Fácil você tem em mãos o poder de gerenciar todas as depêndecias do seu condomínio, controle total sobre condôminos, cadastro e reservas de áreas comuns, contato direto ao síndico facilitando a comunicação entre os moradores.</p>
-            <a class="btn btn-default btn-xl" href="{{route('login.index')}}">COMEÇAR AGORA!</a>
+            <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">COMEÇAR AGORA!</a>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
           </div>
         </div>
       </div>
-      <div class="container" id="about">
+      <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
@@ -215,7 +215,7 @@
     <!--  Chamada Sindíco -->
     <div class="call-to-action bg-dark">
       <div class="container text-center">
-        <a class="btn btn-default btn-xl sr-button" href="{{route('login.index')}}">Comece a utilizar agora mesmo!</a>
+        <a class="btn btn-default btn-xl sr-button" href="#">Comece a utilizar agora mesmo!</a>
       </div>
     </div>
     <!--  Chamada Rodapé -->
