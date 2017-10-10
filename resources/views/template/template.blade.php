@@ -8,10 +8,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Dashboard</title>
-        <!-- Bootstrap core CSS -->
+        
+        <!-- Bootstrap & CSS Bibliotecas -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
         <link href="/css/formstyle.css" rel="stylesheet">
+        <link href="/css/font-awesome/css/font-awesome.css" rel="stylesheet">
+        
+        <!-- JQuery Bibliotecas -->
         <script src="/js/jquery-3.2.1.min.js"></script>
         <script src="/js/jquery.maskedinput.js" type="text/javascript"></script>
         <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
@@ -62,12 +66,12 @@
             <div class="dash col-md-3">
                 <div class="list-group">
                     <a href="#" class="list-group-item active main-color-bg">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Dashboard
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; Dashboard
                     </a>
-                    <a href="{{route('avisos.index')}}" class="list-group-item"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Avisos <span class="badge">0</span></a>
-                    <a href="{{route('condomino.index')}}" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Condôminos <span class="badge">0</span></a>
-                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Áreas Comuns <span class="badge">0</span></a>
-                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Contate o Síndico <span class="badge">0</span></a>
+                    <a href="{{route('avisos.index')}}" class="list-group-item"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp; Avisos <span class="badge">0</span></a>
+                    <a href="{{route('condomino.index')}}" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns <span class="badge">0</span></a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
                 </div>
             </div>
 
@@ -76,9 +80,7 @@
         </div><!-- Container-Fluid -->
     </section>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script>

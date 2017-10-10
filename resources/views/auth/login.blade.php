@@ -49,8 +49,8 @@
 				</div>
 	
 				<!-- Button -->
-				<div class="input-group input-sm center-block">
-			    	<button type="submit" name="enviar" class="btn btn-acess center-block">Entrar</button>
+				<div class="form-group text-center">
+			    	<button type="submit" name="enviar" class="btn-acess btn btn-success">Entrar</button>
 				</div>
 			
 				<!-- Criar Conta -->

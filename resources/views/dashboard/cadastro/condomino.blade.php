@@ -218,7 +218,7 @@
                                     <td>{{ $usuario->nome }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>{{ $usuario->cpf }}</td>
-                                    <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#">Deletar</a></</td>
+                                    <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
                             </tr>
                         @endforeach
                       </tbody>

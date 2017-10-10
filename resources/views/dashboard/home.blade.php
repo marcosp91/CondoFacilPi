@@ -9,11 +9,11 @@
     @endsection
 
     @section('content')
-        <div class="col-md-9"><!-- Coluna Painel Form -->
+        <div class="col-md-8"><!-- Coluna Painel Form -->
             <!-- Editar Perfil -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
-                    <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Perfil</h3>
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Home</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">

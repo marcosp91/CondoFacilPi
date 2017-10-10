@@ -11,7 +11,7 @@
 
     @section('content')
         <div class="col-md-1"></div>
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-md-8">
             <!-- Editar Perfil -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
@@ -163,7 +163,7 @@
                         </div> <!-- Row Cidade -->
                         <div class="form-group">
                             <div class="row text-center">
-                                <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Salvar</button>
+                                <button type="submit" class="btn-acess btn btn-success">Salvar</button>
                             </div>
                         </div>
                     </form>
