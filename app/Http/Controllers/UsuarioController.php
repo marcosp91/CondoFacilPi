@@ -145,8 +145,7 @@ class UsuarioController extends Controller
                      ->get()
                      ->first();
         
-            if ($usuario){
-                session_start();    
+            if ($usuario){   
                 $_SESSION['usuario'] = $usuario;
             }
             return Redirect()->route('dashboard.home')->with('mensagem', 'Perfil atualizado com sucesso!');
