@@ -26,7 +26,7 @@
                     <div class="row">
                       <div class="col-xs-12 col-md-12">
                         <label for="tituloAviso">Título do Aviso</label>
-                        <input id="tituloAviso" type="text" class="form-control" placeholder="Título do Aviso">
+                        <input id="tituloAviso" type="text" name="descricao" class="form-control" placeholder="Título do Aviso">
                       </div>
                     </div>
                     <div class="row">
@@ -43,7 +43,7 @@
                         </div>
                       </div>
                     </div>
-                                  <input type="hidden" name="classe" value="Aviso()">
+                                  <input type="hidden" name="classe" value="App\Models\Painel\Aviso">
                   </form>
                 </div><!-- Painel Body -->
             </div><!-- Painel Default -->

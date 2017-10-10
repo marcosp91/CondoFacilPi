@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Painel\CondominioFormRequest;
 use App\Models\Painel\Condominio;
+use App\Models\Painel\Publicacao;
 use App\Models\Painel\Usuario;
 use App\Models\Painel\Aviso;
-use App\Models\Painel\Sindico;
-use App\Models\Painel\Publicacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\Painel\CondominioFormRequest;
 use function redirect;
-use function validator;
 use function view;
 
 session_start();
