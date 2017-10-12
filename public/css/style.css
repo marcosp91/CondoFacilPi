@@ -196,3 +196,9 @@ a.list-group-item:focus, a.list-group-item:focus, button.list-group-item:focus, 
 #msgAvisos{
   margin-top: 10px;
 }
+
+
+#areaDescricao{
+    box-sizing: border-box;
+    resize: none;
+}

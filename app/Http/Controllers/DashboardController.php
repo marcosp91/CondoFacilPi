@@ -37,6 +37,10 @@ class DashboardController extends Controller
     public function condomino() {
         return view('dashboard.cadastro.condomino');
     }
+
+    public function areaComum() {
+        return view('dashboard.cadastro.areaComum');
+    }
  
     
     public function cadastrarCondominio(CondominioFormRequest $request) {

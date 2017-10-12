@@ -9,7 +9,8 @@
     @endsection
 
     @section('content')
-        <div class="col-md-8"><!-- Coluna Painel Form -->
+    <div class="col-md-1"></div>
+    <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
             <!-- Editar Perfil -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">

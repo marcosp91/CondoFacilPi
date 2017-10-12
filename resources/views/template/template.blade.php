@@ -18,8 +18,7 @@
         <!-- JQuery Bibliotecas -->
         <script src="/js/jquery-3.2.1.min.js"></script>
         <script src="/js/jquery.maskedinput.js" type="text/javascript"></script>
-        <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
-        <!-- <script src="/js/ckeditor/ckeditor.js"></script> -->
+        <script src="/js/ckeditor/ckeditor.js"></script>
 
         <script>
             jQuery(function ($) {
@@ -70,7 +69,7 @@
                     </a>
                     <a href="{{route('avisos.index')}}" class="list-group-item"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp; Avisos <span class="badge">0</span></a>
                     <a href="{{route('condomino.index')}}" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
-                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns <span class="badge">0</span></a>
+                    <a href="{{route('areaComun.cadastro')}}" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns <span class="badge">0</span></a>
                     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
                 </div>
             </div>
