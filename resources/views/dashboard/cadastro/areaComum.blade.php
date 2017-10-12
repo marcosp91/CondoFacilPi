@@ -2,9 +2,9 @@
 <?php if (!isset($_SESSION)) {session_start();}?>
 
     @section('painelMensagens')
-        @if(session('mensagem'))
+        @if(session('mensagemERRO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSUCESSO'))
@@ -23,7 +23,7 @@
                   <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastrar Área Comum</h3>
               </div>
               <div class="panel-body">
-                  <form class="form-horizontal" method="POST" action="{{route('painel.store')}}">
+                  <form class="form-horizontal" method="POST" action="{{route('areaComum.cadastro')}}">
                       {{ csrf_field() }}
                       <div class="row">
                           <div class="col-xs-12 col-md-12{{ $errors->has('nome') ? ' has-error' : '' }}">
@@ -37,13 +37,13 @@
                           </div>
                       </div>
                       <div class="row">
-                          <div class="col-xs-12 col-md-12{{ $errors->has('bloco') ? ' has-error' : '' }}">
+                          <div class="col-xs-12 col-md-12{{ $errors->has('descricao') ? ' has-error' : '' }}">
                               <label for="areaDescricao" class="control-label">Descrição</label>
                               <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10">
                               </textarea>
-                              @if ($errors->has('bloco'))
+                              @if ($errors->has('descricao'))
                               <span class="help-block">
-                                  <strong>{{ $errors->first('bloco') }}</strong>
+                                  <strong>{{ $errors->first('descricao') }}</strong>
                               </span>
                               @endif
                           </div>
@@ -81,14 +81,17 @@
                           <tr>
                             <th>Nome</th>
                             <th>Descrição</th>
+                            <th>Ação</th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                            <td>Area Externa</td>
-                            <td>Nova área de lazer</td>
-                            <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
-                          </tr>
+                            @foreach ($areas as $area)
+                                    <tr>
+                                            <td>{{ $area->nome }}</td>
+                                            <td>{{ $area->descricao }}</td>
+                                            <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
+                                    </tr>
+                            @endforeach
                       </tbody>
                   </table>
               </div><!-- Painel Body Lista -->

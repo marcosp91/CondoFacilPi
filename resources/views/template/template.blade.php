@@ -69,7 +69,7 @@
                     </a>
                     <a href="{{route('avisos.index')}}" class="list-group-item"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp; Avisos <span class="badge">0</span></a>
                     <a href="{{route('condomino.index')}}" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
-                    <a href="{{route('areaComun.cadastro')}}" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns <span class="badge">0</span></a>
+                    <a href="{{route('areaComum.cadastro')}}" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns <span class="badge">0</span></a>
                     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
                 </div>
             </div>
