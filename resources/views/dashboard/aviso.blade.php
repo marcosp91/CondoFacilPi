@@ -21,7 +21,7 @@
                     <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastrar Avisos</h3>
                 </div>
                 <div class="panel-body">
-                  <form class="form-horizontal" method="POST" action="#" >
+                  <form class="form-horizontal" method="POST" action="{{route('avisos.cadastro')}}" >
 				  {{ csrf_field() }}
                     <div class="row">
                       <div class="col-xs-12 col-md-12">
