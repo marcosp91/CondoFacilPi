@@ -45,9 +45,9 @@
                     <li><a class="navbar-brand" href="{{route('dashboard.home')}}">Condo Fácil </a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" style="width: 270px;">
+                    <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span> {{$_SESSION['usuario']->nome}}<b class="caret"></b></a>
-                        <ul class="dropdown-menu" style="width: 270px;">
+                        <ul class="dropdown-menu">
                             <li><a href="{{route('condominio.index')}}">Cadastrar Condomínio</a></li>
                             <li><a href="{{route('perfil.editar')}}">Editar</a></li>
                             <li class="divider"></li>

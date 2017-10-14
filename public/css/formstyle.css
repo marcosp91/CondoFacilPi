@@ -35,17 +35,17 @@ p {
 
 #wrapper {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   text-align: center;
 }
 
 #login-form{
     overflow: hidden;
     max-height: auto;
-    max-width: 350px;
+    max-width: 400px;
     border-radius: 15px;
     background-color:#fff;
-    
+
 }
 
 .painel-portal{
