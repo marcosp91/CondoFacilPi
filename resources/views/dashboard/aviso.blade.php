@@ -6,11 +6,6 @@
                 <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
-        @if(session('mensagemSUCESSO'))
-            <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
-            </div>
-        @endif
     @endsection
     @section('content')
     <div class="col-md-1"></div>
@@ -77,7 +72,7 @@
 								<tr>
 									<td>{{ $aviso->descricao }}</td>
 									<td>{{ $aviso->created_at }}</td>
-									<td>{{ $aviso->id_usuario }}</td>
+									<td>{{ $aviso->nome }}</td>
 									 <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
 								</tr>
 							@endforeach

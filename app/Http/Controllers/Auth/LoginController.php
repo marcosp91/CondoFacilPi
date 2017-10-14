@@ -64,7 +64,7 @@ class LoginController extends Controller
         
         if(isset($_SESSION['usuario']))
         {
-            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Logado com Sucesso!');
+            return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Logado com Sucesso!');
         }
         else{
             return redirect()->route('login.index')->with('mensagemERRO', 'Email ou Senha Incorreta');
