@@ -2,9 +2,9 @@
 <?php if (!isset($_SESSION)) {session_start();}?>
 
     @section('painelMensagens')
-        @if(session('mensagemERRO'))
+        @if(session('mensagem'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSUCESSO'))
@@ -12,6 +12,10 @@
                 <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
+    @endsection
+
+    @section('breadcrumb')
+      {{  Breadcrumbs::render('cadastro/areaComum') }}
     @endsection
 
     @section('content')
@@ -23,12 +27,12 @@
                   <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastrar Área Comum</h3>
               </div>
               <div class="panel-body">
-                  <form class="form-horizontal" method="POST" action="{{route('areaComum.cadastro')}}">
+                  <form class="form-horizontal" method="POST" action="{{route('painel.store')}}">
                       {{ csrf_field() }}
                       <div class="row">
                           <div class="col-xs-12 col-md-12{{ $errors->has('nome') ? ' has-error' : '' }}">
                               <label for="nomeAreaComum" class="control-label">Nome</label>
-                              <input type="text" id="nomeAreaComum" name="nome" class="form-control">
+                              <input type="text" id="nomeAreaComum" name="nome" class="form-control" value="{{ old('nome') }}">
                               @if ($errors->has('nome'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('nome') }}</strong>
@@ -37,13 +41,13 @@
                           </div>
                       </div>
                       <div class="row">
-                          <div class="col-xs-12 col-md-12{{ $errors->has('descricao') ? ' has-error' : '' }}">
+                          <div class="col-xs-12 col-md-12{{ $errors->has('bloco') ? ' has-error' : '' }}">
                               <label for="areaDescricao" class="control-label">Descrição</label>
-                              <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10">
+                              <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10" value="{{ old('descricao') }}">
                               </textarea>
-                              @if ($errors->has('descricao'))
+                              @if ($errors->has('bloco'))
                               <span class="help-block">
-                                  <strong>{{ $errors->first('descricao') }}</strong>
+                                  <strong>{{ $errors->first('bloco') }}</strong>
                               </span>
                               @endif
                           </div>
@@ -81,17 +85,14 @@
                           <tr>
                             <th>Nome</th>
                             <th>Descrição</th>
-                            <th>Ação</th>
                           </tr>
                       </thead>
                       <tbody>
-                            @foreach ($areas as $area)
-                                    <tr>
-                                            <td>{{ $area->nome }}</td>
-                                            <td>{{ $area->descricao }}</td>
-                                            <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
-                                    </tr>
-                            @endforeach
+                          <tr>
+                            <td>Area Externa</td>
+                            <td>Nova área de lazer</td>
+                            <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
+                          </tr>
                       </tbody>
                   </table>
               </div><!-- Painel Body Lista -->

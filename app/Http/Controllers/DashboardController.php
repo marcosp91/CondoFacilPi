@@ -30,15 +30,18 @@ class DashboardController extends Controller
         return view('dashboard.home');
     }
     
-    public function condominio() {
+    public function condominio() 
+    {
         return view('dashboard.cadastro.condominio');
     }
     
-    public function condomino() {
+    public function condomino() 
+    {
         return view('dashboard.cadastro.condomino');
     }
 
-    public function areaComum() {
+    public function areaComum() 
+    {
         return view('dashboard.cadastro.areaComum');
     }
  

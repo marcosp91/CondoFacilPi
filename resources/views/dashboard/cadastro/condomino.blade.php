@@ -14,6 +14,10 @@
         @endif
     @endsection
 
+    @section('breadcrumb')
+      {{  Breadcrumbs::render('cadastro/condomino') }}
+    @endsection
+
     @section('content')
       <div class="col-md-1"></div>
       <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
@@ -28,7 +32,7 @@
                       <div class="row">
                           <div class="col-xs-6 col-md-6{{ $errors->has('nome') ? ' has-error' : '' }}">
                               <label for="nomeUsuario" class="control-label">Nome Completo:</label>
-                              <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome Completo" value="">
+                              <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome Completo" value="{{ old('nome') }}">
                               @if ($errors->has('nome'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('nome') }}</strong>
@@ -37,7 +41,7 @@
                           </div>
                           <div class="col-xs-6 col-md-6{{ $errors->has('email') ? ' has-error' : '' }}">
                               <label for="emailUsuario" class="control-label">Email:</label>
-                              <input type="text" id="emailUsuario" name="email" class="form-control" placeholder="Email" value="">
+                              <input type="text" id="emailUsuario" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
                               @if ($errors->has('email'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('email') }}</strong>
@@ -48,7 +52,7 @@
                       <div class="row">
                           <div class="col-xs-6 col-md-6{{ $errors->has('cpf') ? ' has-error' : '' }}">
                               <label for="cpfUsuario" class="control-label">CPF:</label>
-                              <input type="text" id="cpfUsuario" name="cpf" class="form-control" placeholder="CPF" value="">
+                              <input type="text" id="cpfUsuario" name="cpf" class="form-control" placeholder="CPF" value="{{ old('cpf') }}">
                               @if ($errors->has('cpf'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('cpf') }}</strong>
@@ -57,7 +61,7 @@
                           </div>
                           <div class="col-xs-6 col-md-6{{ $errors->has('telefone') ? ' has-error' : '' }}">
                               <label for="tel" class="control-label">Telefone:</label>
-                              <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" value="">
+                              <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" value="{{ old('telefone') }}">
                               @if ($errors->has('telefone'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('telefone') }}</strong>
@@ -92,7 +96,7 @@
                           </div>
                           <div class="col-xs-6 col-md-5{{ $errors->has('endereco') ? ' has-error' : '' }}">
                               <label for="endUsuario" class="control-label">Endereço:</label>
-                              <input type="text" id="endUsuario" name="endereco" class="form-control" placeholder="Endereço" value=""/>
+                              <input type="text" id="endUsuario" name="endereco" class="form-control" placeholder="Endereço" value="{{ old('endereco') }}"/>
                               @if ($errors->has('endereco'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('endereco') }}</strong>
@@ -101,7 +105,7 @@
                           </div>
                            <div class="col-xs-6 col-md-2{{ $errors->has('bloco') ? ' has-error' : '' }}">
                               <label for="blocoUsuario" class="control-label">Bloco:</label>
-                              <input type="text" id="blocoUsuario" name="bloco" class="form-control" placeholder="Bloco" value=""/>
+                              <input type="text" id="blocoUsuario" name="bloco" class="form-control" placeholder="Bloco" value="{{ old('bloco') }}"/>
                               @if ($errors->has('bloco'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('bloco') }}</strong>
@@ -110,7 +114,7 @@
                           </div>
                           <div class="col-xs-6 col-md-2{{ $errors->has('num_residencia') ? ' has-error' : '' }}">
                               <label for="numUsuario" class="control-label">Num:</label>
-                              <input type="text" id="numUsuario" name="num_residencia" class="form-control" placeholder="Numero" value="">
+                              <input type="text" id="numUsuario" name="num_residencia" class="form-control" placeholder="Numero" value="{{ old('num_residencia') }}">
                               @if ($errors->has('num_residencia'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('num_residencia') }}</strong>
@@ -119,7 +123,7 @@
                           </div>
                           <div class="col-xs-6 col-md-4{{ $errors->has('cidade') ? ' has-error' : '' }}">
                               <label for="cidadeUsuario" class="control-label">Cidade:</label>
-                              <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" value="">
+                              <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" value="{{ old('cidade') }}">
                               @if ($errors->has('cidade'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('cidade') }}</strong>
@@ -166,7 +170,7 @@
                           </div>
                           <div class="col-xs-6 col-md-4{{ $errors->has('cep') ? ' has-error' : '' }}">
                               <label for="cep" class="control-label">CEP:</label>
-                              <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" value="">
+                              <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" value="{{ old('cep') }}">
                               @if ($errors->has('cep'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('cep') }}</strong>

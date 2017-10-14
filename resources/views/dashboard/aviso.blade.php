@@ -6,7 +6,17 @@
                 <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
+        @if(session('mensagemSUCESSO'))
+            <div class="alert alert-success text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
     @endsection
+
+    @section('breadcrumb')
+      {{  Breadcrumbs::render('/avisos') }}
+    @endsection
+
     @section('content')
     <div class="col-md-1"></div>
           <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
@@ -21,13 +31,13 @@
                     <div class="row">
                       <div class="col-xs-12 col-md-12">
                         <label for="tituloAviso">Título do Aviso</label>
-                        <input id="tituloAviso" type="text" name="descricao" class="form-control" placeholder="Título do Aviso">
+                        <input id="tituloAviso" type="text" name="descricao" class="form-control" placeholder="Título do Aviso" value="{{ old('descricao') }}">
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-xs-12 col-md-12">
-                        <label id="msgAviso" for="mensagem">Descrição do Aviso</label>
-                          <textarea name="mensagem"></textarea>
+                        <label id="msgAvisos" for="mensagem">Descrição do Aviso</label>
+                          <textarea name="mensagem" value="{{ old('mensagem') }}"></textarea>
                       </div>
                     </div>
                     <div class="row">

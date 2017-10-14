@@ -9,25 +9,26 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="row painel-portal">
-				<!-- Form Name -->
-				<div class="panel-titulo">
-					<h2>Portal do Condomínio</h2><p>Bem Vindo! Preencha os campos do formulário para cadastrar-se.</p>
+			<div class="row">
+				<div class="painel-portal">
+					<div class="painel-titulo">
+						<h2>Portal do Condomínio</h2><p>Bem Vindo! Preencha os campos do formulário para acesso ao Portal</p>
+					</div>
 				</div>
 			</div>
-			<form id="login-form" class="form-horizontal col-md-12"  action="{{ route('painel.store') }}" method="POST">
+			<form id="login-form" class="form-horizontal col-md-12" action="{{ route('painel.store') }}" method="POST">
                             {{ csrf_field() }}
 				<!-- Nome input -->
 				<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <div>
-                                        <label for="nome" class="control-label">Nome Completo</label>
-                                        <input id="inputUser" name="nome" class="form-control " value="{{old('nome')}}" placeholder="Digite seu Nome" type="text">
-                                    </div>
-                                    @if ($errors->has('nome'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('nome') }}</strong>
-                                        </span>
-                                    @endif
+                    <div>
+                        <label for="nome" class="control-label">Nome Completo</label>
+                        <input id="inputUser" name="nome" class="form-control " value="{{old('nome')}}" placeholder="Digite seu Nome" type="text">
+                    </div>
+                    @if ($errors->has('nome'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('nome') }}</strong>
+                        </span>
+                    @endif
 				</div>
 				<!-- Email input -->	  
 				<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

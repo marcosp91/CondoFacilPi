@@ -12,6 +12,7 @@
         <!-- Bootstrap & CSS Bibliotecas -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
+        <link href="/css/formstyle.css" rel="stylesheet">
         <link href="/css/font-awesome/css/font-awesome.css" rel="stylesheet">
         
         <!-- JQuery Bibliotecas -->
@@ -39,15 +40,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" href="#">Condo Fácil</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a class="navbar-brand" href="{{route('dashboard.home')}}">Condo Fácil </a></li>
-                </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" style="width: 270px;">
+                    <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span> {{$_SESSION['usuario']->nome}}<b class="caret"></b></a>
-                        <ul class="dropdown-menu" style="width: 270px;">
+                        <ul class="dropdown-menu">
                             <li><a href="{{route('condominio.index')}}">Cadastrar Condomínio</a></li>
                             <li><a href="{{route('perfil.editar')}}">Editar</a></li>
                             <li class="divider"></li>
@@ -59,38 +58,26 @@
         </div>
     </nav>
 
-    <section class="msg-sys">
-        <div class="container">
-            @yield('painelMensagens')
-        </div>
-    </section>
-
-    <section id="breadcrumb">
-        <div class="container">
-            <div class="col-xs-12 col-md-12">
-                @yield('breadcrumb')
-            </div>
-        </div>
-    </section>
-
     <section id="main">
-        <div class="container">
-           
+        <div class="container-fluid">
+            <div class="msg-sys">
+                @yield('painelMensagens')
+            </div>
             <div class="dash col-md-3">
                 <div class="list-group">
                     <a href="#" class="list-group-item active main-color-bg">
                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; Dashboard
                     </a>
                     <a href="{{route('avisos.index')}}" class="list-group-item"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp; Avisos <span class="badge">0</span></a>
-                    <a href="{{route('areaComun.cadastro')}}" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns <span class="badge">0</span></a>
                     <a href="{{route('condomino.index')}}" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
+                    <a href="{{route('areaComun.cadastro')}}" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns <span class="badge">0</span></a>
                     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
                 </div>
             </div>
 
             @yield('content')
 
-        </div><!-- Container -->
+        </div><!-- Container-Fluid -->
     </section>
 
     <!-- Bootstrap core JavaScript -->

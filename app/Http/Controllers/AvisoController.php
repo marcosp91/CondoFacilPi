@@ -6,7 +6,6 @@ use App\Models\Painel\Aviso;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use function dd;
 use function view;
 
 class AvisoController extends Controller
@@ -18,13 +17,10 @@ class AvisoController extends Controller
      */
     public function index(Aviso $aviso)
     {
-        $avisos = DB::table('avisos')
+            $avisos = DB::table('avisos')
             ->join('usuarios', 'avisos.id_usuario', '=', 'usuarios.id')
             ->select('avisos.*', 'usuarios.nome')
             ->get();
-    //dd($avisos);
-    
-        //$avisos = $aviso->all();
             
             return view('dashboard.aviso', compact('avisos'));
     }
