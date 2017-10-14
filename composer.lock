@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e974a3fda58934e1ffeae8fa35a6150",
+    "content-hash": "2432baadfeb8b8b33628c3602570515a",
     "packages": [
         {
             "name": "appzcoder/crud-generator",
@@ -3976,7 +3976,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1.9"
+        "php": ">=7.1.7"
     },
     "platform-dev": []
 }

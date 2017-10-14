@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.1.9",
+        "php": ">=7.1.7",
         "appzcoder/crud-generator": "^2.0",
         "davejamesmiller/laravel-breadcrumbs": "^4.2",
         "geekcom/validator-docs": "^1.1",

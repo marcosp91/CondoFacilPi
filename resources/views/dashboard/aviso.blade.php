@@ -82,7 +82,7 @@
 								<tr>
 									<td>{{ $aviso->descricao }}</td>
 									<td>{{ $aviso->created_at }}</td>
-									<td>{{ $aviso->id_usuario }}</td>
+									<td>{{ $aviso->nome }}</td>
 									 <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
 								</tr>
 							@endforeach
