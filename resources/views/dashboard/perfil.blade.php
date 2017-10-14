@@ -9,6 +9,10 @@
         @endif
     @endsection
 
+    @section('breadcrumb')
+      {{  Breadcrumbs::render('/perfil') }}
+    @endsection
+
     @section('content')
     <div class="col-md-1"></div>
     <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->

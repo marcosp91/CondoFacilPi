@@ -4,13 +4,8 @@
 }
 
 html, body {
-	background-color: #E6E6E6;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color: #888;
-    line-height: 30px;
-    text-align: center;
+	width: 100%;
+	background-color: #E0F2F7;
 }
 
 a {
@@ -33,19 +28,16 @@ p {
     font-weight: 600;
 }
 
-#wrapper {
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
+.panel-titulo{
+
 }
 
-#login-form{
-    overflow: hidden;
+.container{
     max-height: auto;
     max-width: 350px;
     border-radius: 15px;
     background-color:#fff;
-    
+    margin-top: 15px;
 }
 
 .painel-portal{
@@ -55,11 +47,8 @@ p {
     border-color: #ddd;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    padding: 5px;
-}
-
-.painel-titulo{
-    padding: 5px;
+    margin-bottom: 15px;
+		padding: 5px;
 }
 
 .btn-acess{

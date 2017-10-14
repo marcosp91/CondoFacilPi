@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+       
 
         /*
          * Application Service Providers...
@@ -176,6 +177,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+        DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider::class,
         
         geekcom\ValidatorDocs\ValidatorProvider::class,
         
@@ -235,6 +238,8 @@ return [
         'HTML'      => Collective\Html\HtmlFacade::class,
 		
 		'Keygen' 	=> Keygen\Keygen::class,
+
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
     ],
 

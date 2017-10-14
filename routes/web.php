@@ -22,10 +22,13 @@ Route::group(['prefix' => 'painel'], function(){
 });
 
 Route::group(['prefix' => 'dashboard'], function(){
+
     Route::get('/home', 'DashboardController@home')->name('dashboard.home');
-    
-    Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');
-    Route::post('/perfil', 'UsuarioController@update')->name('perfil.atualizar');
+    Route::post('/home', 'DashboardController@home')->name('dashboard.home');
+
+    Route::get('/avisos', 'AvisoController@index')->name('avisos.index');
+    Route::post('/avisos', 'DashboardController@cadastrarPublicacao')->name('avisos.cadastro');
+   
     
     Route::get('cadastro/condominio', 'DashboardController@condominio')->name('condominio.index');
     Route::post('cadastro/condominio', 'DashboardController@cadastrarCondominio')->name('condominio.cadastro');
@@ -33,11 +36,13 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('cadastro/condomino', 'UsuarioController@index')->name('condomino.index');
     Route::post('cadastro/condomino', 'DashboardController@cadastrarCondomino')->name('condomino.cadastro');
 
-     Route::get('cadastro/areaComum', 'DashboardController@areaComum')->name('areaComun.cadastro');
+    Route::get('cadastro/areaComum', 'DashboardController@areaComum')->name('areaComun.cadastro');
     Route::post('cadastro/areaComum', 'DashboardController@areaComum')->name('areaComun.cadastro');
+
+
+    Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');
+    Route::post('/perfil', 'UsuarioController@update')->name('perfil.atualizar');
     
-    Route::get('/avisos', 'AvisoController@index')->name('avisos.index');
-    Route::post('/avisos', 'DashboardController@cadastrarPublicacao')->name('avisos.cadastro');
             
     Route::get('/logout', 'DashboardController@logout')->name('dashboard.logout');
 });

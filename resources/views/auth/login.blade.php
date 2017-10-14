@@ -5,47 +5,52 @@
 	 	 <meta charset="utf-8">
 	  	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	  	<link rel="stylesheet" href="/css/formstyle.css">
-	  	
-	    
+
+	  	<script src="/js/jquery-3.2.1.min.js"></script>
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    	<script src="/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<div class="container">
-			<div class="row painel-portal">
-				<!-- Header Formulario -->
-				<div class="panel-titulo">
-					<h2>Portal do Condomínio</h2><p>Bem Vindo! Preencha os campos do formulário para acesso ao Portal</p>
+		<div id="wrapper" class="container">
+			<div class="row">
+				<div class="col-md-12 painel-portal">
+					<div class="painel-titulo">
+						<h2>Portal do Condomínio</h2><p>Bem Vindo! Preencha os campos do formulário para acesso ao Portal</p>
+					</div>
 				</div>
 			</div>
-                        @if(session('mensagemERRO'))
-                            <div class="alert alert-danger text-center">
-                                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
-                            </div>
-                        @endif
+            @if(session('mensagemERRO'))
+            <div class="row">
+	            <div class="alert alert-danger text-center">
+	                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
+	            </div>
+	        </div>
+            @endif
 			<form id="login-form" class="form-horizontal" action="{{route('login.autentica')}}" method="POST">
-			{{ csrf_field() }}	
-                                <!-- Login input-->
-                                <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <div class=" input-group input-sm">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="user" name="email" type="text" value="{{old('email')}}"  placeholder="Digite seu email" class="form-control"/>
-                                    </div>
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+			{{ csrf_field() }}
+	            <!-- Login input-->
+	            <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+	                <div class="input-group">
+	                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	                    <input id="user" name="email" type="text" value="{{old('email')}}"  placeholder="Digite seu email" class="form-control"/>
+	                </div>
+	                @if ($errors->has('email'))
+	                    <span class="help-block">
+	                        <strong>{{ $errors->first('email') }}</strong>
+	                    </span>
+	                @endif
+	            </div>
 				<!-- Senha input-->
 				<div class="form-group {{ $errors->has('senha') ? ' has-error' : '' }}">
-                                    <div class="input-group input-sm">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="passwd" name="senha" type="password" placeholder="Digite sua senha" class="form-control"/>
-                                    </div>
-                                    @if ($errors->has('senha'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('senha') }}</strong>
-                                        </span>
-                                    @endif
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="passwd" name="senha" type="password" placeholder="Digite sua senha" class="form-control"/>
+                    </div>
+                    @if ($errors->has('senha'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('senha') }}</strong>
+                        </span>
+                    @endif
 				</div>
 	
 				<!-- Button -->

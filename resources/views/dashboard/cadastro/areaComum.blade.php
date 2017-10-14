@@ -14,6 +14,10 @@
         @endif
     @endsection
 
+    @section('breadcrumb')
+      {{  Breadcrumbs::render('cadastro/areaComum') }}
+    @endsection
+
     @section('content')
       <div class="col-md-1"></div>
       <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
@@ -28,7 +32,7 @@
                       <div class="row">
                           <div class="col-xs-12 col-md-12{{ $errors->has('nome') ? ' has-error' : '' }}">
                               <label for="nomeAreaComum" class="control-label">Nome</label>
-                              <input type="text" id="nomeAreaComum" name="nome" class="form-control">
+                              <input type="text" id="nomeAreaComum" name="nome" class="form-control" value="{{ old('nome') }}">
                               @if ($errors->has('nome'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('nome') }}</strong>
@@ -39,7 +43,7 @@
                       <div class="row">
                           <div class="col-xs-12 col-md-12{{ $errors->has('bloco') ? ' has-error' : '' }}">
                               <label for="areaDescricao" class="control-label">Descrição</label>
-                              <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10">
+                              <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10" value="{{ old('descricao') }}">
                               </textarea>
                               @if ($errors->has('bloco'))
                               <span class="help-block">
