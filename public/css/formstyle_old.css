@@ -4,8 +4,8 @@
 }
 
 html, body {
-	width: 100%;
-	background-color: #E0F2F7;
+	background-color: #E6E6E6;
+    font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -28,16 +28,19 @@ p {
     font-weight: 600;
 }
 
-.panel-titulo{
-
+#wrapper {
+  width: 500px;
 }
 
-.container{
-    max-height: auto;
-    max-width: 350px;
-    border-radius: 15px;
+#login-form{
+    overflow: hidden;
     background-color:#fff;
-    margin-top: 15px;
+    width: auto;
+    height: auto;
+}
+
+.group-control{
+    width: 80%;
 }
 
 .painel-portal{
@@ -45,17 +48,28 @@ p {
     color: #fff;
     background-color: #007bff;
     border-color: #ddd;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    margin-bottom: 15px;
-		padding: 5px;
 }
+
+.painel-titulo{
+    padding: 5px;
+}
+
+.input-control .input-group{
+    margin-left: 40px;
+    margin-top: 10px;
+    width: 350px;
+}
+
+.label-control{
+    font-size: 14px;
+}
+
 
 .btn-acess{
     font-size: 14px;
     font-weight: 700;
     border-style: none;
-		margin-top: 10px;
+	margin-top: 10px;
 }
 
 .btn-acess:hover{
@@ -70,4 +84,8 @@ p {
 
 .input-group-addon{
 	background-color: #007bff;
+}
+
+.help-block {
+    color: #f7a1a0 !important;
 }

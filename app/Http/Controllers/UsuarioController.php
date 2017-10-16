@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Painel\UsuarioFormRequest;
+use App\Http\Requests\Painel\LoginFormRequest;
 use function dd;
 use function redirect;
 use function validator;
@@ -47,14 +48,14 @@ class UsuarioController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(LoginFormRequest $request)
     {
         $dadosForm = $request->all();
         
         if($dadosForm['classe'] === 'Sindico'){
             $usuario = new Sindico;
             
-            $validacao = validator($dadosForm, $usuario->regras, $usuario->menssagemErros);
+            $validacao = validator($dadosForm, $usuario->regras);
             if ($validacao->fails()){
                 return redirect()->route('painel.cadastrar')
                     ->withErrors($validacao)
@@ -63,7 +64,7 @@ class UsuarioController extends Controller
         }elseif($dadosForm['classe'] === 'Condomino'){
             $usuario = new Condomino;
             
-            $validacao = validator($dadosForm, $usuario->regras, $usuario->menssagemErros);
+            $validacao = validator($dadosForm, $usuario->regras);
             if ($validacao->fails()){
                 return redirect()->route('condomino.index')
                     ->withErrors($validacao)

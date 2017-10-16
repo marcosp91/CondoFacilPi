@@ -1,84 +1,61 @@
-*{
-	margin:0;
-	padding:0;
-}
-
-html, body {
-	background-color: #E6E6E6;
-    font-family: 'Roboto', sans-serif;
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("/img/condoBlueLogin.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: sans-serif;
+    color: #D8D8D8;
     font-size: 16px;
-    font-weight: 300;
-    color: #888;
-    line-height: 30px;
+}
+
+.container{
+    margin-top: 100px;
+}
+
+.panel{
+    border: 0px;
+    background:  rgba(0,0,0,0.5);
+    padding-top: 50px;
+}
+
+h4{
+    margin: 0;
+    padding: 0;
+    color: #FE9A2E;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+a{
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
     text-align: center;
-}
-
-a {
-	  color: #0A2229;
-	  font-size: 14px;
-	  -webkit-transition: all 0.2s;
-	  -moz-transition: all 0.2s;
-	  transition: all 0.2s;
- }
-  a:focus, a:hover {
-    color: #0080FF;
-}
-
-h2 {
-    color: #334045;
-}
-
-p {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-#wrapper {
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-#login-form{
-    overflow: hidden;
-    max-height: auto;
-    max-width: 400px;
-    border-radius: 15px;
-    background-color:#fff;
-
-}
-
-.painel-portal{
-    text-align:center;
-    color: #fff;
-    background-color: #007bff;
-    border-color: #ddd;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    padding: 5px;
-}
-
-.painel-titulo{
-    padding: 5px;
 }
 
 .btn-acess{
     font-size: 14px;
     font-weight: 700;
     border-style: none;
-		margin-top: 10px;
+    margin-top: 10px;
 }
 
 .btn-acess:hover{
-	color: #ffffff;
-	box-shadow: 1px 2px 5px #000000;
+    color: #ffffff;
+    box-shadow: 1px 2px 5px #000000;
 }
 
 .input-group  .btn-acess:hover{
-	background-color: #08D604;
-	box-shadow: 1px 2px 5px #000000;
+    background-color: #08D604;
+    box-shadow: 1px 2px 5px #000000;
 }
 
 .input-group-addon{
-	background-color: #007bff;
+    background-color: #007bff;
+}
+
+.help-block {
+    color: #e45552 !important;
 }

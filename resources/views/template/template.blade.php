@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Dashboard</title>
+        <title>Condo Fácil - Portal</title>
         
         <!-- Bootstrap & CSS Bibliotecas -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -75,16 +75,25 @@
 
     <section id="main">
         <div class="container">
-           
             <div class="dash col-md-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item active main-color-bg">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; Dashboard
-                    </a>
-                    <a href="{{route('avisos.index')}}" class="list-group-item"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp; Avisos <span class="badge">0</span></a>
-                    <a href="{{route('areaComun.cadastro')}}" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns <span class="badge">0</span></a>
-                    <a href="{{route('condomino.index')}}" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
-                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
+                <!-- menu -->
+                <div id="dashMenu">
+                    <div class="list-group panel">
+                        <a href="#" class="list-group-item active main-color-bg" data-parent="#dashMenu">
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Dashboard
+                        </a>
+                        <a href="{{route('avisos.index')}}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp; Avisos <span class="badge">0</span></a>
+                        <a href="#sub-dash" class="list-group-item" data-toggle="collapse" data-parent="#dashMenu"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns  
+                            <span class="badge">0</span>
+                        </a>
+                          <div class="collapse" id="sub-dash">
+                            <a href="{{ route('areaComun.cadastro') }}" class="list-group-item">Cadastrar Área Comum</a>
+                            <a href="{{ route('reservaArea.cadastro') }}" class="list-group-item">Reservar Área Comum</a>
+                          </div>
+                        <a href="{{route('condomino.index')}}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
+                        <a href="#" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
+
+                    </div>
                 </div>
             </div>
 

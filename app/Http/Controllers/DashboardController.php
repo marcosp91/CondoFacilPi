@@ -40,12 +40,7 @@ class DashboardController extends Controller
         return view('dashboard.cadastro.condomino');
     }
 
-    public function areaComum() 
-    {
-        return view('dashboard.cadastro.areaComum');
-    }
- 
-    
+
     public function cadastrarCondominio(CondominioFormRequest $request) {
         $dadosForm = $request->all();
         $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;

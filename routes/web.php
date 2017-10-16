@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 
 Route::group(['prefix' => 'painel'], function(){
     Route::get('/cadastrar', 'UsuarioController@create')->name('painel.cadastrar');
@@ -36,8 +25,11 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('cadastro/condomino', 'UsuarioController@index')->name('condomino.index');
     Route::post('cadastro/condomino', 'DashboardController@cadastrarCondomino')->name('condomino.cadastro');
 
-    Route::get('cadastro/areaComum', 'DashboardController@areaComum')->name('areaComun.cadastro');
-    Route::post('cadastro/areaComum', 'DashboardController@areaComum')->name('areaComun.cadastro');
+    Route::get('cadastro/areaComum', 'AreaController@areaComum')->name('areaComun.cadastro');
+    Route::post('cadastro/areaComum', 'AreaController@areaComum')->name('areaComun.cadastro');
+
+    Route::get('cadastro/reservaArea', 'AreaController@reservarAreaComum')->name('reservaArea.cadastro');
+    Route::post('cadastro/reservaArea', 'AreaController@reservarAreaComum')->name('reservaArea.cadastro');
 
 
     Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');

@@ -11,17 +11,6 @@ use function view;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     /**
@@ -67,7 +56,7 @@ class LoginController extends Controller
             return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Logado com Sucesso!');
         }
         else{
-            return redirect()->route('login.index')->with('mensagemERRO', 'Email ou Senha Incorreta');
+            return redirect()->route('login.index')->with('mensagemERRO', 'Email ou Senha incorretos.');
         }
             
              
