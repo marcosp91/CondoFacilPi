@@ -48,8 +48,10 @@
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span> {{$_SESSION['usuario']->nome}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{route('condominio.index')}}">Cadastrar Condomínio</a></li>
-                            <li><a href="{{route('perfil.editar')}}">Editar</a></li>
+                            @if($_SESSION['usuario']->privilegio == 1)
+                                <li><a href="{{route('condominio.index')}}">Cadastrar Condomínio</a></li>
+                            @endif
+                            <li><a href="{{route('perfil.editar')}}">Editar Perfil</a></li>
                             <li class="divider"></li>
                             <li><a href="{{route('dashboard.logout')}}">Sair <span class="glyphicon glyphicon-log-in"></span></a>
                         </ul>
@@ -87,11 +89,15 @@
                             <span class="badge">0</span>
                         </a>
                           <div class="collapse" id="sub-dash">
-                            <a href="{{ route('areaComun.cadastro') }}" class="list-group-item">Cadastrar Área Comum</a>
-                            <a href="{{ route('reservaArea.cadastro') }}" class="list-group-item">Reservar Área Comum</a>
+                            @if($_SESSION['usuario']->privilegio == 1)
+                                <a href="{{ route('areaComun.cadastro') }}" class="list-group-item">Cadastrar Área Comum</a>
+                            @endif
+                                <a href="{{ route('reservaArea.cadastro') }}" class="list-group-item">Reservar Área Comum</a>
                           </div>
-                        <a href="{{route('condomino.index')}}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
-                        <a href="#" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
+                        @if($_SESSION['usuario']->privilegio == 1)
+                            <a href="{{route('condomino.index')}}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
+                        @endif
+                            <a href="#" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
 
                     </div>
                 </div>

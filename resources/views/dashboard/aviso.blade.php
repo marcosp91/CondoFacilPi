@@ -1,3 +1,6 @@
+<?php if (!isset($_SESSION)) {
+    session_start();
+} ?>
 @extends ('template.template')
 
     @section('painelMensagens')
@@ -19,6 +22,7 @@
 
     @section('content')
     <div class="col-md-1"></div>
+    @if($_SESSION['usuario']->privilegio == 1)  
           <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
             <!-- Editar Perfil -->
             <div class="panel panel-default">
@@ -53,9 +57,10 @@
                 </div><!-- Painel Body -->
             </div><!-- Painel Default -->
         </div><!-- Coluna Painel Form -->
+        @endif
         <div class="dash col-md-4">
         </div>
-        <div id="lista" class="col-xs-12 col-md-8 collapse">
+        <div id="lista" class="col-xs-12 col-md-8 @if($_SESSION['usuario']->privilegio == 1) ? collapse :  @endif">
             <!-- Lista Condôminos -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
