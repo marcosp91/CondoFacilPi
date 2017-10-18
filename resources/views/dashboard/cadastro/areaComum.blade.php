@@ -24,7 +24,9 @@
         @endif
     @endsection
 
-    
+    @section('breadcrumb')
+      {{  Breadcrumbs::render('cadastro/areaComum') }}
+    @endsection
 
     @section('content')
       <div class="col-md-1"></div>

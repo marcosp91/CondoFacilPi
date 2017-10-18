@@ -21,7 +21,7 @@
 	// Dashoard > [Áreas Comuns] > Cadastrar Área Comun
 	Breadcrumbs::register('cadastro/areaComum', function ($breadcrumbs) {
 	    $breadcrumbs->parent('cadastro/novaArea');
-	    $breadcrumbs->push('Cadastrar Área Comum', route('areaComun.cadastro'));
+	    $breadcrumbs->push('Cadastrar Área Comum', route('area.index'));
 	});
 
 	// Dashoard > [Áreas Comuns] > Reservar Área Comun
