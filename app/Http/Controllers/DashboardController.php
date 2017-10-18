@@ -78,13 +78,13 @@ class DashboardController extends Controller
 
         $novaPublicacao = $publicacao->publicaMensagem($dadosForm);
         
-        
+        dd($novaPublicacao);
         $insert = $publicacao->create($novaPublicacao);
         
         if($insert){
-            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Aviso publicado com sucesso!');
+            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Publicado com sucesso!');
         }else{
-            return redirect()->route('avisos.index')->with('mensagemERRO', 'Algo deu errado na publicação do aviso!');
+            return redirect()->route('avisos.index')->with('mensagemERRO', 'Algo deu errado na publicação!');
         }
     }
     

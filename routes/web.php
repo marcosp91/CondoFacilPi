@@ -16,6 +16,7 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::post('/home', 'DashboardController@home')->name('dashboard.home');
 
     Route::get('/avisos', 'AvisoController@index')->name('avisos.index');
+    Route::get('/avisos/{id}', 'AvisoController@destroy')->name('avisos.destroy');
     Route::post('/avisos', 'DashboardController@cadastrarPublicacao')->name('avisos.cadastro');
    
     
@@ -25,8 +26,9 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('cadastro/condomino', 'UsuarioController@index')->name('condomino.index');
     Route::post('cadastro/condomino', 'DashboardController@cadastrarCondomino')->name('condomino.cadastro');
 
-    Route::get('cadastro/areaComum', 'AreaController@areaComum')->name('areaComun.cadastro');
-    Route::post('cadastro/areaComum', 'AreaController@areaComum')->name('areaComun.cadastro');
+    Route::get('cadastro/areaComum', 'AreaController@index')->name('area.index');
+    Route::get('/cadastro/areaComum/{id}', 'AreaController@destroy')->name('areas.destroy');
+    Route::post('cadastro/areaComum', 'AreaController@store')->name('area.cadastro');
 
     Route::get('cadastro/reservaArea', 'AreaController@reservarAreaComum')->name('reservaArea.cadastro');
     Route::post('cadastro/reservaArea', 'AreaController@reservarAreaComum')->name('reservaArea.cadastro');

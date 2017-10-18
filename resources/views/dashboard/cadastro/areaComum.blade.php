@@ -12,22 +12,29 @@
                 <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
+        @if(session('mensagemSucessoDELETE'))
+            <div class="alert alert-success text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
+        @if(session('mensagemErroDELETE'))
+            <div class="alert alert-danger text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
     @endsection
 
-    @section('breadcrumb')
-      {{  Breadcrumbs::render('cadastro/areaComum') }}
-    @endsection
+    
 
     @section('content')
       <div class="col-md-1"></div>
       <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
-          <!-- Editar Perfil -->
           <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
                   <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastrar Área Comum</h3>
               </div>
               <div class="panel-body">
-                  <form class="form-horizontal" method="POST" action="{{route('painel.store')}}">
+                  <form class="form-horizontal" method="POST" action="{{route('area.cadastro')}}">
                       {{ csrf_field() }}
                       <div class="row">
                           <div class="col-xs-12 col-md-12{{ $errors->has('nome') ? ' has-error' : '' }}">
@@ -64,7 +71,6 @@
                   </form>
               </div><!-- Painel Body -->
           </div><!-- Painel Default -->
-      </div><!-- Coluna Painel Form -->
       <div class="dash col-md-4">
       </div>
       <div id="lista" class="col-xs-12 col-md-8 collapse">
@@ -85,14 +91,17 @@
                           <tr>
                             <th>Nome</th>
                             <th>Descrição</th>
+                            <th>Ação</th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                            <td>Area Externa</td>
-                            <td>Nova área de lazer</td>
-                            <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
-                          </tr>
+                            @foreach ($areas as $area)
+                                    <tr>
+                                            <td>{{ $area->nome }}</td>
+                                            <td>{{ $area->descricao }}</td>
+                                            <td><a class="btn btn-danger" href="{{route('areas.destroy', $area->id)}}"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
+                                    </tr>
+                            @endforeach
                       </tbody>
                   </table>
               </div><!-- Painel Body Lista -->

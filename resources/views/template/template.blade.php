@@ -90,7 +90,7 @@
                         </a>
                           <div class="collapse" id="sub-dash">
                             @if($_SESSION['usuario']->privilegio == 1)
-                                <a href="{{ route('areaComun.cadastro') }}" class="list-group-item">Cadastrar Área Comum</a>
+                                <a href="{{ route('area.index') }}" class="list-group-item">Cadastrar Área Comum</a>
                             @endif
                                 <a href="{{ route('reservaArea.cadastro') }}" class="list-group-item">Reservar Área Comum</a>
                           </div>

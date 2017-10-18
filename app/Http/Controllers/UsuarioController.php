@@ -156,7 +156,7 @@ class UsuarioController extends Controller
             if ($usuario){   
                 $_SESSION['usuario'] = $usuario;
             }
-            return Redirect()->route('dashboard.home')->with('mensagem', 'Perfil atualizado com sucesso!');
+            return Redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Perfil atualizado com sucesso!');
         }else{
             return redirect()->route('perfil.editar');
         }

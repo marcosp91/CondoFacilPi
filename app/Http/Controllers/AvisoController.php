@@ -6,10 +6,17 @@ use App\Models\Painel\Aviso;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use function redirect;
 use function view;
 
 class AvisoController extends Controller
 {
+    private $aviso;
+    
+    public function __construct(Aviso $aviso)
+    {
+        $this->aviso = $aviso;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -87,7 +94,14 @@ class AvisoController extends Controller
      * @return Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $aviso = $this->aviso->find($id);
+        
+        $delete = $aviso->delete();
+        
+        if($delete)
+            return redirect()->route('avisos.index')->with('mensagemSucessoDELETE', 'Aviso Deletado com Sucesso!');
+        else
+            return redirect()->route('avisos.index')->with('mensagemErroDELETE', 'Algo deu Errado na Exclusão do Aviso!');
     }
 }

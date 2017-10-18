@@ -4,14 +4,24 @@
 @extends ('template.template')
 
     @section('painelMensagens')
-        @if(session('mensagem'))
-            <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+        @if(session('mensagemERRO'))
+            <div class="alert alert-danger text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSUCESSO'))
             <div class="alert alert-success text-center">
                 <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
+        @if(session('mensagemSucessoDELETE'))
+            <div class="alert alert-success text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
+        @if(session('mensagemErroDELETE'))
+            <div class="alert alert-danger text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection
@@ -79,7 +89,9 @@
                                 <th>Título</th>
                                 <th>Data</th>
                                 <th>Criado Por</th>
-                                <th>Ação</th>
+                                @if($_SESSION['usuario']->privilegio == 1)
+                                    <th>Ação</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -88,8 +100,10 @@
 									<td>{{ $aviso->descricao }}</td>
 									<td>{{ $aviso->created_at }}</td>
 									<td>{{ $aviso->nome }}</td>
-									 <td><a class="btn btn-default" href="#">Editar</a> <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
-								</tr>
+									@if($_SESSION['usuario']->privilegio == 1)
+                                                                            <td><a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i>&nbsp; Deletar</a></</td>
+                                                                        @endif
+                                                                </tr>
 							@endforeach
                         </tbody>
                     </table>
