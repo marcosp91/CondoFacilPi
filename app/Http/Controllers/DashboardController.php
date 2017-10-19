@@ -78,7 +78,6 @@ class DashboardController extends Controller
 
         $novaPublicacao = $publicacao->publicaMensagem($dadosForm);
         
-        dd($novaPublicacao);
         $insert = $publicacao->create($novaPublicacao);
         
         if($insert){

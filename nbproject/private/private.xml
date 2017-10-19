@@ -2,26 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/cadastro/condomino.blade.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/DashboardController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/AreaController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/aviso.blade.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Usuario.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/template/template.blade.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Requests/Painel/LoginFormRequest.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/UsuarioController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/cadastro/areaComum.blade.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Aviso.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/index.blade.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/composer.json</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Area.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Sindico.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/routes/web.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/AvisoController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/home.blade.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Requests/Painel/UsuarioFormRequest.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
