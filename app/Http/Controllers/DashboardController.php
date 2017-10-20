@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Painel\AvisosFormRequest;
 use App\Http\Requests\Painel\CondominioFormRequest;
 use App\Models\Painel\Condominio;
 use App\Models\Painel\Publicacao;
 use App\Models\Painel\Usuario;
-use App\Models\Painel\Aviso;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function redirect;
 use function view;
@@ -68,7 +67,7 @@ class DashboardController extends Controller
         return view('dashboard.aviso');
     }
     
-    public function cadastrarPublicacao(Request $request){
+    public function cadastrarPublicacao(AvisosFormRequest $request){
         $dadosForm = $request->all();
        
         $classe = $dadosForm['classe'];

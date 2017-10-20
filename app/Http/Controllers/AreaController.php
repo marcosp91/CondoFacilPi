@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Painel\Area;
+use App\Http\Requests\Painel\AreaFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function dd;
@@ -35,7 +36,7 @@ class AreaController extends Controller
         return view('dashboard.cadastro.reservaArea');
     }
     
-    public function store(Request $request) {
+    public function store(AreaFormRequest $request) {
         
         $dadosForm = $request->all();
         $area = $dadosForm;

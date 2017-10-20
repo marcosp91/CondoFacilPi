@@ -24,7 +24,7 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::post('cadastro/condominio', 'DashboardController@cadastrarCondominio')->name('condominio.cadastro');
     
     Route::get('cadastro/condomino', 'UsuarioController@index')->name('condomino.index');
-    Route::post('cadastro/condomino', 'DashboardController@cadastrarCondomino')->name('condomino.cadastro');
+    Route::post('cadastro/condomino', 'UsuarioController@store')->name('condomino.cadastro');
 
     Route::get('cadastro/areaComum', 'AreaController@index')->name('area.index');
     Route::get('cadastro/areaComum/{id}', 'AreaController@destroy')->name('areas.destroy');

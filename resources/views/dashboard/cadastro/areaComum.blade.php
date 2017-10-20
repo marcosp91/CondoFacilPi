@@ -50,13 +50,13 @@
                           </div>
                       </div>
                       <div class="row">
-                          <div class="col-xs-12 col-md-12{{ $errors->has('bloco') ? ' has-error' : '' }}">
+                          <div class="col-xs-12 col-md-12{{ $errors->has('descricao') ? ' has-error' : '' }}">
                               <label for="areaDescricao" class="control-label">Descrição</label>
                               <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10" value="{{ old('descricao') }}">
                               </textarea>
-                              @if ($errors->has('bloco'))
+                              @if ($errors->has('descricao'))
                               <span class="help-block">
-                                  <strong>{{ $errors->first('bloco') }}</strong>
+                                  <strong>{{ $errors->first('descricao') }}</strong>
                               </span>
                               @endif
                           </div>

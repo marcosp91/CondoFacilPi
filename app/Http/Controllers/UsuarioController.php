@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Painel\LoginFormRequest;
 use App\Http\Requests\Painel\UsuarioFormRequest;
 use App\Models\Painel\Condomino;
 use App\Models\Painel\Sindico;
@@ -51,10 +50,10 @@ class UsuarioController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(LoginFormRequest $request)
+    public function store(UsuarioFormRequest $request)
     {
         $dadosForm = $request->all();
-        
+
         if($dadosForm['classe'] === 'Sindico'){
             $usuario = new Sindico;
             
@@ -75,7 +74,7 @@ class UsuarioController extends Controller
             }
         }
         
-
+        
         $novoUsuario = $usuario->cadastrar($dadosForm);
         
         

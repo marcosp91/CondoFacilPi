@@ -32,6 +32,8 @@ class UsuarioFormRequest extends FormRequest
     {
         return [
             'nome.required' => 'Preenchimento obrigatório!',
+            'nome.min' => 'Nome deve conter mais que 03 (três) caracteres!',
+            'nome.max' => 'Nome não deve conter mais que 100 caracteres!',
             'email.required' => 'Preenchimento obrigatório!',
             'telefone.required' => 'Preenchimento obrigatório!',
             'cpf.required' => 'Preenchimento obrigatório!',

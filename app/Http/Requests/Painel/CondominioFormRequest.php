@@ -36,11 +36,15 @@ class CondominioFormRequest extends FormRequest
     {
         return [
             'nome.required' => 'Preenchimento obrigatório!',
+            'nome.min' => 'Nome deve conter mais que 03 (três) caracteres!',
+            'nome.max' => 'Nome não deve conter mais que 100 caracteres!',
             'email.required' => 'Preenchimento obrigatório!',
             'telefone.required' => 'Preenchimento obrigatório!',
             'cnpj.required' => 'Preenchimento obrigatório!',
             'complemento.required' => 'Preenchimento obrigatório!',
             'endereco.required' => 'Preenchimento obrigatório!',
+            'endereco.min' => 'Endereço deve conter mais que 03 (três) caracteres!',
+            'endereco.max' => 'Endereço não deve conter mais que 100 caracteres!',
             'tipo.required' => 'Preenchimento obrigatório!',
             'numero.required' => 'Preenchimento obrigatório!',
             'cidade.required' => 'Preenchimento obrigatório!',            
