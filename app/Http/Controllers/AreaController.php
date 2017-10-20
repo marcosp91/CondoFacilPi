@@ -42,6 +42,11 @@ class AreaController extends Controller
         $area['id_condominio'] = $_SESSION['usuario']->condominio_id;
 
         $insert = $this->area->create($area);
+        
+        if($insert)
+            return redirect()->route('area.index')->with('mensagemSucessoDELETE', 'Área cadastrada com sucesso!');
+        else
+            return redirect()->route('area.index')->with('mensagemErroDELETE', 'Algo deu errado no cadastro da área!');
     }
     
     public function destroy($id)

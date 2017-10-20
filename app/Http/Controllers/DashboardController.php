@@ -58,7 +58,7 @@ class DashboardController extends Controller
         $usuario->condominio_id = $condominio->id;
         $update = $usuario->save();
         
-        if($insert)
+        if($insert == true && $update = true)
             return redirect()->route('condominio.cadastro')->with('mensagemSUCESSO', 'Aviso Publicado com Sucesso!');
         else
             return redirect()->route('condominio.cadastro')->with('mensagemERRO', 'Algo deu Errado na Publicação do Aviso!');

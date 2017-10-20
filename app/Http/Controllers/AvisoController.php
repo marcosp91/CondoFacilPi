@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use function redirect;
 use function view;
 
+session_start();
 class AvisoController extends Controller
 {
     private $aviso;
@@ -27,6 +28,7 @@ class AvisoController extends Controller
             $avisos = DB::table('avisos')
             ->join('usuarios', 'avisos.id_usuario', '=', 'usuarios.id')
             ->select('avisos.*', 'usuarios.nome')
+            ->where('id_condominio', '=', $_SESSION['usuario']->condominio_id)
             ->get();
             
             return view('dashboard.aviso', compact('avisos'));

@@ -40,7 +40,7 @@ class Condomino extends Model
         $dadosForm['condominio_id'] = $_SESSION['usuario']->condominio_id;
         $dadosForm['senha'] = Keygen::numeric(8)->generate();
         
-        //dd($dadosForm);
+        dd($dadosForm);
         
         return $dadosForm;
     }
