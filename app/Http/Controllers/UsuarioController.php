@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Painel\UsuarioFormRequest;
+//use App\Http\Requests\Painel\UsuarioFormRequest;
 use App\Models\Painel\Condomino;
 use App\Models\Painel\Sindico;
 use App\Models\Painel\Usuario;
@@ -50,14 +50,14 @@ class UsuarioController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(UsuarioFormRequest $request)
+    public function store(Request $request)
     {
         $dadosForm = $request->all();
 
         if($dadosForm['classe'] === 'Sindico'){
             $usuario = new Sindico;
             
-            $validacao = validator($dadosForm, $usuario->regras);
+            $validacao = validator($dadosForm, $usuario->regras, $usuario->menssagemErros);
             if ($validacao->fails()){
                 return redirect()->route('painel.cadastrar')
                     ->withErrors($validacao)
@@ -66,7 +66,7 @@ class UsuarioController extends Controller
         }elseif($dadosForm['classe'] === 'Condomino'){
             $usuario = new Condomino;
             
-            $validacao = validator($dadosForm, $usuario->regras);
+            $validacao = validator($dadosForm, $usuario->regras, $usuario->menssagemErros);
             if ($validacao->fails()){
                 return redirect()->route('condomino.index')
                     ->withErrors($validacao)
