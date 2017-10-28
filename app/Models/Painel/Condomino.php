@@ -8,32 +8,22 @@ use Keygen;
 class Condomino extends Model
 {
     public $regras = [
-    'nome'  => 'required|min:3|max:100',
-    'email' => 'required|email',
-    'cpf' => 'required|cpf',
-    'num_residencia' => 'required',
-    'bloco' => 'required',
-    'endereco' => 'required',
-    'cidade' => 'required',
-    'cep' => 'required',
-    'estado' => 'required',
-    'telefone' => 'required',
-    'complemento' => 'required',
-    ];
+            'nome'  => 'required|min:3|max:100',
+            'cpf' => 'cpf',
+            'telefone' => 'required|unique:usuarios,telefone',
+            'email' => 'required|email|unique:usuarios,email',
+        ];
+    
     
     public $menssagemErros = [
-    'nome.required' => 'Preenchimento obrigatório!',
-    'email.required' => 'Preenchimento obrigatório!',
-    'telefone.required' => 'Preenchimento obrigatório!',
-    'cpf.required' => 'Preenchimento obrigatório!',
-    'complemento.required' => 'Preenchimento obrigatório!',
-    'bloco.required' => 'Preenchimento obrigatório!',
-    'endereco.required' => 'Preenchimento obrigatório!',
-    'cidade.required' => 'Preenchimento obrigatório!',
-    'num_residencia.required' => 'Preenchimento obrigatório!',
-    'estado.required' => 'Preenchimento obrigatório!',
-    'cep.required' => 'Preenchimento obrigatório!',
-    ];
+            'nome.required' => 'Preenchimento obrigatório!',
+            'nome.min' => 'Nome deve conter mais que 03 (três) caracteres!',
+            'nome.max' => 'Nome não deve conter mais que 100 caracteres!',
+            'email.required' => 'Preenchimento obrigatório!',
+            'email.unique' => 'Já existe um usuário com este email!',
+            'telefone.unique' => 'Já existe um usuário com este telefone!',
+            'telefone.required' => 'Preenchimento obrigatório!',
+        ];
     
     public function cadastrar($dadosForm) {
         $dadosForm['privilegio'] = 0;

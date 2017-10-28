@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-//use App\Http\Requests\Painel\UsuarioFormRequest;
+use App\Http\Requests\Painel\UsuarioFormRequest;
 use App\Models\Painel\Condomino;
 use App\Models\Painel\Sindico;
 use App\Models\Painel\Usuario;
