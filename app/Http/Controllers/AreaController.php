@@ -22,10 +22,15 @@ class AreaController extends Controller
 
 	 public function index(Area $area) 
     {
-        $areas = DB::table('areas')
+        if ($_SESSION['usuario']->condominio_id != null) {
+            $areas = DB::table('areas')
             ->select('areas.*')
             ->where('id_condominio', '=', $_SESSION['usuario']->condominio_id)
             ->get();
+        }
+        else{
+            $areas = array();
+        }
     
             return view('dashboard.cadastro.areaComum', compact('areas'));
              

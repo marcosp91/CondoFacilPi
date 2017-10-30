@@ -25,11 +25,16 @@ class AvisoController extends Controller
      */
     public function index(Aviso $aviso)
     {
+        if ($_SESSION['usuario']->condominio_id != null) {
             $avisos = DB::table('avisos')
             ->join('usuarios', 'avisos.id_usuario', '=', 'usuarios.id')
             ->select('avisos.*', 'usuarios.nome')
             ->where('id_condominio', '=', $_SESSION['usuario']->condominio_id)
             ->get();
+        }
+        else{
+            $avisos = array();
+        }
             
             return view('dashboard.aviso', compact('avisos'));
     }

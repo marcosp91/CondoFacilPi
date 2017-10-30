@@ -58,9 +58,9 @@ class DashboardController extends Controller
         $update = $usuario->save();
         
         if($insert == true && $update = true)
-            return redirect()->route('condominio.cadastro')->with('mensagemSUCESSO', 'Aviso Publicado com Sucesso!');
+            return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Condomínio cadastrado com sucesso!');
         else
-            return redirect()->route('condominio.cadastro')->with('mensagemERRO', 'Algo deu Errado na Publicação do Aviso!');
+            return redirect()->route('condominio.cadastro')->with('mensagemERRO', 'Algo deu errado no cadastro do seu condomínio!');
     }
     
     public function avisos() {

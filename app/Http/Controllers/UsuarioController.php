@@ -29,7 +29,12 @@ class UsuarioController extends Controller
 
     public function index(Usuario $usuario)
     {
-        $usuarios = $usuario->all()->where('condominio_id', '=', $_SESSION['usuario']->condominio_id);
+        if ($_SESSION['usuario']->condominio_id != null) {
+            $usuarios = $usuario->all()->where('condominio_id', '=', $_SESSION['usuario']->condominio_id);
+        }
+        else{
+            $usuarios = array();
+        }
         
         return view('dashboard.cadastro.condomino', compact('usuarios'));
     }

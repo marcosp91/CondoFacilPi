@@ -2,14 +2,19 @@
 <?php if (!isset($_SESSION)) {session_start();}?>
 
     @section('painelMensagens')
-        @if(session('mensagem'))
+        @if(session('mensagemSUCESSO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemCONDOMINIO'))
             <div class="alert alert-success text-center">
                 <strong> <a href="" class="alert-link">{{session('mensagemCONDOMINIO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
+        @if(session('mensagemERRO'))
+            <div class="alert alert-success text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection
