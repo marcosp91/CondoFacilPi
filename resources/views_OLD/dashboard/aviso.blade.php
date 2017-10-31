@@ -88,7 +88,7 @@
                             <div class="row">
                               <div class="col-xs-12 col-md-12 {{ $errors->has('descricao') ? ' has-error' : '' }}">
                                 <label for="tituloAviso">Título do Aviso</label>
-                                <input id="tituloAviso" type="text" name="descricao" class="form-control" placeholder="Título do Aviso" value="{{ old('descricao') }}">
+                                <input id="tituloAviso" type="text" name="descricao" class="form-control" placeholder="Título do Aviso" value="{{ old('descricao') }}" required>
                                 @if ($errors->has('descricao'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('descricao') }}</strong>
@@ -99,7 +99,7 @@
                             <div class="row">
                                 <div class="col-xs-12 col-md-12{{ $errors->has('mensagem') ? ' has-error' : '' }}">
                                     <label id="msgAvisos" for="mensagem">Descrição do Aviso</label>
-                                    <textarea name="mensagem" value="{{ old('mensagem') }}"></textarea>
+                                    <textarea name="mensagem" value="{{ old('mensagem') }}" required></textarea>
                                     @if ($errors->has('mensagem'))
                                       <span class="help-block">
                                           <strong>{{ $errors->first('mensagem') }}</strong>

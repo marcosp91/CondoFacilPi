@@ -13,29 +13,24 @@
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
         <link href="/css/font-awesome/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" href="/js/jquery-ui-1.11.4/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
         
         <!-- JQuery Bibliotecas -->
         <script src="/js/jquery-3.2.1.min.js"></script>
         <script src="/js/jquery.maskedinput.js" type="text/javascript"></script>
         <script src="/js/ckeditor/ckeditor.js"></script>
-   
 
         <script>
-
             jQuery(function ($) {
                 $("#telUsuario").mask("(99) 99999-9999");
                 $("#cepUsuario").mask("99999-999");
                 $("#cpfUsuario").mask("999.999.999-99");
                 $("#cnpjUsuario").mask("99.999.999/9999-99");
             });
-
         </script>
     </head>
     <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -113,41 +108,11 @@
         </div><!-- Container -->
     </section>
 
-    <!-- Bootstrap Core & JavaScript & JQUery -->
+    <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <!-- Validação de Erros para o Modal( Avisos, Condôminos, Condomínios, Áreas Comuns)-->
-    @if(Session::has('errors'))
-        <script>
-            $(document).ready(function(){
-                $('#modal-mensagem').modal({show: true});
-            });
-        </script>
-    @endif
-
-    <script>
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                dateFormat: 'dd-mm-yy',
-                showOtherMonths: true,
-                selectOtherMonths: true,
-                dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-                dateFormat: 'dd/mm/yy',
-                nextText: 'Próximo',
-                prevText: 'Anterior'
-            });
-        } );
-    </script>
-    
     <script>
         CKEDITOR.replace( 'mensagem' );
     </script>
-   
     </body>
 </html>

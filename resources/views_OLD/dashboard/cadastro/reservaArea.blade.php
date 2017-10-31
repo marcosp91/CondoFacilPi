@@ -15,7 +15,7 @@
     @endsection
 
     @section('breadcrumb')
-      {{  Breadcrumbs::render('cadastro/reservaArea') }}
+      {{  Breadcrumbs::render('cadastro/areaComum') }}
     @endsection
 
     @section('content')

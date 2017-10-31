@@ -27,7 +27,16 @@
     @section('breadcrumb')
       {{  Breadcrumbs::render('cadastro/areaComum') }}
     @endsection
-
+    
+    @if(Session::has('errors'))
+        <script>
+            $(document).read(funciona(){
+                alert('Ops!! Teve erros no seu formulário. Vamos abrir novamente para que você possa corrigir. ;) ');
+                $('#product_view').modal('show');
+            });
+            </script>
+        @endif
+    
     @section('content')
       <div class="col-md-1"></div>
       <div class="col-xs-12 col-md-8">
@@ -66,13 +75,6 @@
                 </div><!-- Painel Body Lista -->
             </div><!-- Painel Default Lista -->
         </div><!-- Coluna Lista -->
-        @if(Session::has('errors'))
-            <script>
-                $(document).ready(function(){
-                    $('#modal-mensagem').modal({show: true});
-                });
-            </script>
-        @endif
         <div class="modal fade" id="modal-mensagem">
              <div class="modal-dialog">
                 <div class="modal-content">
@@ -86,7 +88,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-12{{ $errors->has('nome') ? ' has-error' : '' }}">
                                 <label for="nomeAreaComum" class="control-label">Nome</label>
-                                <input type="text" id="nomeAreaComum" name="nome" class="form-control" value="{{ old('nome') }}" >
+                                <input type="text" id="nomeAreaComum" name="nome" class="form-control" value="{{ old('nome') }}">
                                 @if ($errors->has('nome'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('nome') }}</strong>
