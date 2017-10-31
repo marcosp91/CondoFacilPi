@@ -52,7 +52,7 @@
           <!---
           <hr>
           <p>Condo Fácil possui as melhores ferramentas para auxiliar na gestão de condôminos, reserva de áreas comuns, serviços terceirizados e muito mais! Não perca mais tempo utilizando planilhas, cadastre-se agora e comece já a utilizar o Condo Fácil!</p>-->
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Saiba Mais</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{asset('storage/ebook.pdf')}}" target="_blank">Saiba Mais</a>
         </div>
       </div>
     </header>

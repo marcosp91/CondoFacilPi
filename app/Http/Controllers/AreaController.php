@@ -38,7 +38,17 @@ class AreaController extends Controller
 
    	public function reservarAreaComum() 
     {
-        return view('dashboard.cadastro.reservaArea');
+        if ($_SESSION['usuario']->condominio_id != null) {
+            $areas = DB::table('areas')
+            ->select('areas.*')
+            ->where('id_condominio', '=', $_SESSION['usuario']->condominio_id)
+            ->get();
+        }
+        else{
+            $areas = array();
+        }
+        
+        return view('dashboard.cadastro.reservaArea', compact('areas'));
     }
     
     public function store(AreaFormRequest $request) {
