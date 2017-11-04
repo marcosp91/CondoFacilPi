@@ -2,9 +2,7 @@
 
 namespace App\Models\Painel;
 
-use function dd;
-use function redirect;
-use function validator;
+
 
 class Sindico extends Usuario
 {
@@ -14,17 +12,22 @@ class Sindico extends Usuario
     
     
     public $regras = [
-        'nome'  => 'required|min:3|max:100',
-        'email' => 'required|email',
-        'senha' => 'required|min:6',
-        'senha-confirm' => 'required|same:senha',
+            'nome'  => 'required|min:3|max:100',
+            'email' => 'required|email',
+            'senha' => 'required|min:6',
+            'senha-confirm' => 'required|same:senha',
     ];
     
     public $menssagemErros = [
-            'nome.required' => 'O campo nome é de preenchimento obrigatório!',
-            'email.required' => 'O campo email é de preenchimento obrigatório!',
-            'senha.required' => 'O campo senha é de preenchimento obrigatório!',
-            'senha-confirm.required' => 'Por favor, confirme sua senha!',
+            'nome.required' => 'Preenchimento obrigatório!',
+            'nome.min' => 'Nome deve conter mais que 03 (três) caracteres!',
+            'nome.max' => 'Nome não deve conter mais que 100 caracteres!',
+            'email.required' => 'Preenchimento obrigatório!',
+            //'email.unique' => 'Já existe um usuário com este email!',
+            'senha.required' => 'Preenchimento obrigatório!',
+            'senha-confirm.required' => 'Preenchimento obrigatório',
+            'senha.min' => 'Mínimo 6 caracteres!',
+            'senha-confirm.same' => 'A confirmação de senha não confere!',
         ];
     
     public function cadastrar($dadosForm) {

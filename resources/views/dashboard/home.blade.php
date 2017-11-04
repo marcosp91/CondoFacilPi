@@ -1,19 +1,24 @@
 @extends ('template.template')
 
     @section('painelMensagens')
-        @if(session('mensagem'))
+        @if(session('mensagemSUCESSO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection
 
+    @section('breadcrumb')
+      {{  Breadcrumbs::render('/home') }}
+    @endsection
+
     @section('content')
-        <div class="col-md-9"><!-- Coluna Painel Form -->
+    <div class="col-md-1"></div>
+    <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
             <!-- Editar Perfil -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
-                    <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Perfil</h3>
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Home</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">

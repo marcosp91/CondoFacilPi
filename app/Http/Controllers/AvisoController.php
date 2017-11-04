@@ -2,19 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Painel\Aviso;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+use function redirect;
+use function view;
 
+session_start();
 class AvisoController extends Controller
 {
+    private $aviso;
+    
+    public function __construct(Aviso $aviso)
+    {
+        $this->aviso = $aviso;
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Aviso $aviso)
     {
-            $avisos = $aviso->all();
+        if ($_SESSION['usuario']->condominio_id != null) {
+            $avisos = DB::table('avisos')
+            ->join('usuarios', 'avisos.id_usuario', '=', 'usuarios.id')
+            ->select('avisos.*', 'usuarios.nome')
+            ->where('id_condominio', '=', $_SESSION['usuario']->condominio_id)
+            ->get();
+        }
+        else{
+            $avisos = array();
+        }
             
             return view('dashboard.aviso', compact('avisos'));
     }
@@ -22,7 +42,7 @@ class AvisoController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,8 +52,8 @@ class AvisoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -44,7 +64,7 @@ class AvisoController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -55,7 +75,7 @@ class AvisoController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -65,9 +85,9 @@ class AvisoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -78,10 +98,17 @@ class AvisoController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $aviso = $this->aviso->find($id);
+        
+        $delete = $aviso->delete();
+        
+        if($delete)
+            return redirect()->route('avisos.index')->with('mensagemSucessoDELETE', 'Aviso Deletado com Sucesso!');
+        else
+            return redirect()->route('avisos.index')->with('mensagemErroDELETE', 'Algo deu Errado na Exclusão do Aviso!');
     }
 }

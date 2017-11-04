@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Painel\Usuario;
-use App\Models\Painel\Sindico;
+use App\Http\Requests\Painel\UsuarioFormRequest;
 use App\Models\Painel\Condomino;
+use App\Models\Painel\Sindico;
+use App\Models\Painel\Usuario;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\Painel\UsuarioFormRequest;
+use Illuminate\Support\Facades\Redirect;
 use function dd;
 use function redirect;
 use function validator;
@@ -26,7 +29,12 @@ class UsuarioController extends Controller
 
     public function index(Usuario $usuario)
     {
-        $usuarios = $usuario->all()->where('condominio_id', '=', $_SESSION['usuario']->condominio_id);
+        if ($_SESSION['usuario']->condominio_id != null) {
+            $usuarios = $usuario->all()->where('condominio_id', '=', $_SESSION['usuario']->condominio_id);
+        }
+        else{
+            $usuarios = array();
+        }
         
         return view('dashboard.cadastro.condomino', compact('usuarios'));
     }
@@ -50,7 +58,7 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $dadosForm = $request->all();
-        
+
         if($dadosForm['classe'] === 'Sindico'){
             $usuario = new Sindico;
             
@@ -71,7 +79,7 @@ class UsuarioController extends Controller
             }
         }
         
-
+        
         $novoUsuario = $usuario->cadastrar($dadosForm);
         
         
@@ -123,7 +131,7 @@ class UsuarioController extends Controller
     public function update(UsuarioFormRequest $request)
     {
         $dadosForm = $request->all();
-
+        
         $usuario = $this->usuario->find($dadosForm['id']);
         $usuario->nome = $dadosForm['nome'];
         $usuario->cpf = $dadosForm['cpf'];
@@ -136,20 +144,23 @@ class UsuarioController extends Controller
         $usuario->estado = $dadosForm['estado'];
         $usuario->cep = $dadosForm['cep'];
         
+        //$usuario->updated_at = Carbon::createFromFormat('Y-m-d H', Carbon::now(), 'America/Sao_Paulo');
+        $usuario->updated_at = Carbon::now(new DateTimeZone('America/Sao_Paulo'));
+        
+                
         $update = $usuario->save();
-     
+
         if ($update){
             $usuario = DB::table('usuarios')
                      ->select('*')
                      ->where('email', '=', $dadosForm['email'])
                      ->get()
                      ->first();
-        
-            if ($usuario){
-                session_start();    
+            
+            if ($usuario){   
                 $_SESSION['usuario'] = $usuario;
             }
-            return Redirect()->route('dashboard.home')->with('mensagem', 'Perfil atualizado com sucesso!');
+            return Redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Perfil atualizado com sucesso!');
         }else{
             return redirect()->route('perfil.editar');
         }
@@ -164,7 +175,18 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = $this->usuario->find($id);
+        
+        if($usuario->id === $_SESSION['usuario']->id) {
+            return redirect()->route('condomino.index')->with('mensagemErroDELETE', 'Você não pode excluir a si próprio!');
+        }
+
+        $delete = $usuario->delete();
+        
+        if($delete)
+            return redirect()->route('condomino.index')->with('mensagemSucessoDELETE', 'Usuário deletado com sucesso!');
+        else
+            return redirect()->route('condomino.index')->with('mensagemErroDELETE', 'Algo deu errado na exclusão do usuário!');
     }
 
 }

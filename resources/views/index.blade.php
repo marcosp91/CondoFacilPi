@@ -52,7 +52,7 @@
           <!---
           <hr>
           <p>Condo Fácil possui as melhores ferramentas para auxiliar na gestão de condôminos, reserva de áreas comuns, serviços terceirizados e muito mais! Não perca mais tempo utilizando planilhas, cadastre-se agora e comece já a utilizar o Condo Fácil!</p>-->
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Saiba Mais</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{asset('storage/ebook.pdf')}}" target="_blank">Saiba Mais</a>
         </div>
       </div>
     </header>
@@ -215,7 +215,9 @@
     <!--  Chamada Sindíco -->
     <div class="call-to-action bg-dark">
       <div class="container text-center">
-        <a class="btn btn-default btn-xl sr-button" href="{{route('login.index')}}">Comece a utilizar agora mesmo!</a>
+        <p>É rápido e fácil...</p>
+        <a class="btn btn-default btn-xl sr-button" href="{{route('login.index')}}">Você pode testar gratuitamente, cadastre-se para acessar nosso sistema!</a>
+
       </div>
     </div>
     <!--  Chamada Rodapé -->
@@ -231,20 +233,20 @@
         <div class="row">
           <div class="col-lg-4 ml-auto text-center">
             <i class="fa fa-map-marker fa-3x sr-contact"></i>
-			<p>Rua Univali, nº1120</p>
-			<p>Itajaí, Santa Catarina</p>
+      			<p>Rua Univali, nº 1120</p>
+      			<p>Itajaí, Santa Catarina</p>
             <p>88300-000</p>
           </div>
           <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-paper-plane fa-3x sr-contact"></i>
-            <p>
-              <a href="mailto:your-email@your-domain.com">equipe@condofacil.com.br</a>
-			  <p>47-3344-0000</p>
-            </p>
+              <p><a href="#">condofacilpi@gmail.com</a></p>
+              <p><i class="fa fa-instagram" aria-hidden="true"></i><a href="#"> @condofacilpi</a></p>
+              <p>(47) 3344-0000</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

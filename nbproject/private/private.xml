@@ -3,17 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Aviso.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/cadastro/condomino.blade.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/AreaController.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/DashboardController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/aviso.blade.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Usuario.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Area.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/template/template.blade.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/UsuarioController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Publicacao.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/cadastro/reservaArea.blade.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Reserva.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/AvisoController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Condomino.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Requests/Painel/AreaFormRequest.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Requests/ReservaFormRequest.php</file>
         </group>
     </open-files>
 </project-private>

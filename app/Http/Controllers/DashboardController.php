@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Painel\Condominio;
-use App\Models\Painel\Usuario;
-use App\Models\Painel\Aviso;
-use App\Models\Painel\Sindico;
-use App\Models\Painel\Publicacao;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Painel\AvisosFormRequest;
 use App\Http\Requests\Painel\CondominioFormRequest;
+use App\Models\Painel\Condominio;
+use App\Models\Painel\Publicacao;
+use App\Models\Painel\Usuario;
+use Illuminate\Support\Facades\DB;
 use function redirect;
-use function validator;
 use function view;
 
 session_start();
@@ -32,15 +29,20 @@ class DashboardController extends Controller
         return view('dashboard.home');
     }
     
-    public function condominio() {
+    public function condominio() 
+    {
         return view('dashboard.cadastro.condominio');
     }
     
-    public function condomino() {
+    public function condomino() 
+    {
         return view('dashboard.cadastro.condomino');
     }
- 
-    
+
+    public function avisos() {
+        return view('dashboard.aviso');
+    }
+
     public function cadastrarCondominio(CondominioFormRequest $request) {
         $dadosForm = $request->all();
         $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
@@ -58,36 +60,40 @@ class DashboardController extends Controller
         $usuario->condominio_id = $condominio->id;
         $update = $usuario->save();
         
-        if($insert)
-            return redirect()->route('condominio.cadastro')->with('mensagemSUCESSO', 'Aviso Publicado com Sucesso!');
+        if ($update){
+            $usuario = DB::table('usuarios')
+                     ->select('*')
+                     ->where('email', '=', $dadosForm['email'])
+                     ->get()
+                     ->first();
+            
+            if ($usuario){   
+                $_SESSION['usuario'] = $usuario;
+            }
+        }
+        
+        if($insert == true && $update = true)
+            return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Condomínio cadastrado com sucesso!');
         else
-            return redirect()->route('condominio.cadastro')->with('mensagemERRO', 'Algo deu Errado na Publicação do Aviso!');
+            return redirect()->route('condominio.cadastro')->with('mensagemERRO', 'Algo deu errado no cadastro do seu condomínio!');
     }
     
-    public function avisos() {
-        return view('dashboard.aviso');
-    }
     
-    public function cadastrarPublicacao(Request $request){
+    public function cadastrarPublicacao(AvisosFormRequest $request){
         $dadosForm = $request->all();
        
-        $classe = $dadosForm['classe'];
-        
-        
         $publicacao = new $classe;
 
         $novaPublicacao = $publicacao->publicaMensagem($dadosForm);
         
-        
         $insert = $publicacao->create($novaPublicacao);
         
         if($insert){
-            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Aviso publicado com sucesso!');
+            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Publicado com sucesso!');
         }else{
-            return redirect()->route('avisos.index')->with('mensagemERRO', 'Algo deu errado na publicação do aviso!');
+            return redirect()->route('avisos.index')->with('mensagemERRO', 'Algo deu errado na publicação!');
         }
     }
-    
 
     public function logout(){
       

@@ -9,9 +9,13 @@
         @endif
     @endsection
 
+    @section('breadcrumb')
+      {{  Breadcrumbs::render('/perfil') }}
+    @endsection
+
     @section('content')
     <div class="col-md-1"></div>
-    <div class="col-xs-12 col-md-6"><!-- Coluna Painel Form -->
+    <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
         <!-- Editar Perfil -->
         <div class="panel panel-default">
             <div class="panel-heading main-color-bg">
@@ -104,8 +108,8 @@
                             </span>
                             @endif
                         </div>
-                        <!--div>
-                      <div class="row">-->
+                    </div>
+                    <div class="row">
                         <div class="col-xs-6 col-md-4{{ $errors->has('cidade') ? ' has-error' : '' }}">
                             <label for="cidadeUsuario" class="control-label">Cidade:</label>
                             <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" value="{{$_SESSION['usuario']->cidade}}">
@@ -163,8 +167,8 @@
                             @endif
                         </div>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Atualizar Cadastro</button>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn-acess btn btn-success">Salvar</button>
                     </div>
                     <input type="hidden" name="id" value="{{$_SESSION['usuario']->id}}">
                 </form>

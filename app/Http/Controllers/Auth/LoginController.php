@@ -11,17 +11,6 @@ use function view;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     /**
@@ -64,10 +53,17 @@ class LoginController extends Controller
         
         if(isset($_SESSION['usuario']))
         {
-            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Logado com Sucesso!');
+            
+            if($_SESSION['usuario']->condominio_id == null){
+                return redirect()->route('condominio.index')->with('mensagemCONDOMINIO', 'Bem vindo, comece cadastrando seu condominio.');
+            }
+            else{
+                return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Bem Vindo!');
+            }
+            
         }
         else{
-            return redirect()->route('login.index')->with('mensagemERRO', 'Email ou Senha Incorreta');
+            return redirect()->route('login.index')->with('mensagemERRO', 'Email ou Senha incorretos.');
         }
             
              

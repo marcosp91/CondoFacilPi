@@ -1,17 +1,7 @@
 body{
-    background:#f4f4f4;
+    background-color: #E6E6E6;
     overflow: scroll;
-}
-
-/* Navbar */
-.navbar{
-    min-height: 33px !important;
-    margin-bottom:0;
-    border-radius:0;
-}
-
-.navbar-nav > li > a, .navbar-brand{
-    height: 33px;
+    padding-top: 80px;
 }
 
 .logo {
@@ -24,9 +14,10 @@ body{
     font-size: 24px !important;
 }
 
+/* Painel Nav-bar Topo */
 .navbar-default {
-    background-color: #337ab7;
-    border-color: #2f3b65;
+    background-color: #424242;
+    border-color: #6E6E6E;
 }
 
 .navbar-default .navbar-brand {
@@ -41,7 +32,6 @@ body{
 }
 .navbar-default .navbar-nav > li > a {
     color: #ecf0f1;
-    font-family: Verdana;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -64,14 +54,14 @@ body{
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #fff;
+    background-color: #77afde;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #ecf0f1;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-    border-color: #ecf0f1;
+    border-color: #77afde;
 }
 .navbar-default .navbar-link {
     color: #ecf0f1;
@@ -91,25 +81,12 @@ a.list-group-item:focus, a.list-group-item:focus, button.list-group-item:focus, 
     color:#ffffff !important;
 }
 
-/* Header */
-#header{
-    background:#333333;
-    color:#ffffff;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-
-#header .create{
-    padding-top: 20px;
-}
-
-/* Breadcrumb */
 .breadcrumb{
-    background:#3736FF ;
+    background:#424242 ;
     color:#333333;
     margin-top: 15px;
-    margin-bottom: 10px;
-    width:50%;
+    margin-bottom: 20px;
+    width:100%;
 }
 
 .breadcrumb a{
@@ -118,18 +95,12 @@ a.list-group-item:focus, a.list-group-item:focus, button.list-group-item:focus, 
 
 }
 
-/* Progress Bars */
-.progress-bar{
-    background:#333333;
-    color:#ffffff;
+.breadcrumb .active {
+    color: #77afde;
 }
 
 .dash-box{
     text-align:center;
-}
-
-.dash {
-    padding-left: 0;
 }
 
 #login{
@@ -167,16 +138,11 @@ a.list-group-item:focus, a.list-group-item:focus, button.list-group-item:focus, 
     }
 }
 
-#navbar{
-  margin: 0;
-}
-
 .img-profile
 {
     border: 1px solid white;
     background-color: #FAFAFA;
     margin: 2px 5px;
-
 }
 
 /*Foto Editar Perfil*/
@@ -188,11 +154,74 @@ a.list-group-item:focus, a.list-group-item:focus, button.list-group-item:focus, 
 
 .msg-sys{
     padding: 15px 0 0 0;
-    margin-bottom: 10px;
     min-height: auto;
     min-width: auto;
 }
 
-#msgAvisos{
-  margin-top: 10px;
+
+#areaDescricao{
+    box-sizing: border-box;
+    resize: none;
 }
+
+.visitaMenu label{
+    color: #FAAC58;
+    padding: 10px;
+    margin-top: 5px;
+    background-color:;
+    font-weight: 500;
+}
+
+
+
+/** Estilos Botões **/
+.btn-acess{
+    font-size: 14px;
+    font-weight: 700;
+    border-style: none;
+        margin-top: 10px;
+}
+
+.btn-acess:hover{
+    color: #ffffff;
+    box-shadow: 1px 2px 5px #000000;
+}
+
+.input-group  .btn-acess:hover{
+    background-color: #08D604;
+    box-shadow: 1px 2px 5px #000000;
+}
+
+.table{
+    table-layout:fixed; 
+    width: 100%;
+}
+
+.table td{
+    word-break: break-all;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.table td:hover{
+    overflow: visible; 
+    white-space: normal;
+    height:auto;  /* just added this line */
+}
+
+.add {
+    float:right;
+}
+
+.colImage{
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.colImage:hover{
+    background-color: #F7F7F7 !important;
+}
+
+
