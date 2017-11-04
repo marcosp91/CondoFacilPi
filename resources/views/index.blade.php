@@ -215,7 +215,9 @@
     <!--  Chamada Sindíco -->
     <div class="call-to-action bg-dark">
       <div class="container text-center">
-        <a class="btn btn-default btn-xl sr-button" href="{{route('login.index')}}">Utilize nossas ferramentas para gestão de seu condomínio!</a>
+        <p>É rápido e fácil...</p>
+        <a class="btn btn-default btn-xl sr-button" href="{{route('login.index')}}">Você pode testar gratuitamente, cadastre-se para acessar nosso sistema!</a>
+
       </div>
     </div>
     <!--  Chamada Rodapé -->

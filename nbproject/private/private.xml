@@ -5,12 +5,15 @@
         <group>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/AreaController.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/DashboardController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/cadastro/condominio.blade.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Area.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/template/template.blade.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/UsuarioController.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/cadastro/reservaArea.blade.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Models/Painel/Reserva.php</file>
             <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Controllers/AvisoController.php</file>
-            <file>file:/C:/xampp/htdocs/CondoFacil/resources/views/dashboard/home.blade.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Requests/Painel/AreaFormRequest.php</file>
+            <file>file:/C:/xampp/htdocs/CondoFacil/app/Http/Requests/ReservaFormRequest.php</file>
         </group>
     </open-files>
 </project-private>

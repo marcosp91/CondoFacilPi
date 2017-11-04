@@ -192,3 +192,36 @@ a.list-group-item:focus, a.list-group-item:focus, button.list-group-item:focus, 
     box-shadow: 1px 2px 5px #000000;
 }
 
+.table{
+    table-layout:fixed; 
+    width: 100%;
+}
+
+.table td{
+    word-break: break-all;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.table td:hover{
+    overflow: visible; 
+    white-space: normal;
+    height:auto;  /* just added this line */
+}
+
+.add {
+    float:right;
+}
+
+.colImage{
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.colImage:hover{
+    background-color: #F7F7F7 !important;
+}
+
+

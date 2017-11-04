@@ -59,3 +59,11 @@ a{
 .help-block {
     color: #e45552 !important;
 }
+
+.displayAreas {
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+}
+
+

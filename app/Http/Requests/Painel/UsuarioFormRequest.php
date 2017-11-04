@@ -16,8 +16,9 @@ class UsuarioFormRequest extends FormRequest
         return [
             'nome'  => 'required|min:3|max:100',
             'cpf' => 'cpf',
-            'telefone' => 'required|unique:usuarios,telefone',
-            'email' => 'required|email|unique:usuarios,email',
+            //'telefone' => 'required|unique:usuarios,telefone',
+            'email' => 'required|email',
+            'estado' => 'required'
         ];
     }
     
@@ -28,9 +29,10 @@ class UsuarioFormRequest extends FormRequest
             'nome.min' => 'Nome deve conter mais que 03 (três) caracteres!',
             'nome.max' => 'Nome não deve conter mais que 100 caracteres!',
             'email.required' => 'Preenchimento obrigatório!',
-            'email.unique' => 'Já existe um usuário com este email!',
-            'telefone.unique' => 'Já existe um usuário com este telefone!',
-            'telefone.required' => 'Preenchimento obrigatório!',
+            //'email.unique' => 'Já existe um usuário com este email!',
+            //'telefone.unique' => 'Já existe um usuário com este telefone!',
+            //'telefone.required' => 'Preenchimento obrigatório!',
+            'estado.required' => 'Preenchimento obrigatório!',
         ];
         
     }

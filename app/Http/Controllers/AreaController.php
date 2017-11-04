@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Painel\Area;
 use App\Http\Requests\Painel\AreaFormRequest;
+use App\Http\Requests\Painel\ReservaFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function dd;
@@ -35,21 +36,6 @@ class AreaController extends Controller
             return view('dashboard.cadastro.areaComum', compact('areas'));
              
     }
-
-   	public function reservarAreaComum() 
-    {
-        if ($_SESSION['usuario']->condominio_id != null) {
-            $areas = DB::table('areas')
-            ->select('areas.*')
-            ->where('id_condominio', '=', $_SESSION['usuario']->condominio_id)
-            ->get();
-        }
-        else{
-            $areas = array();
-        }
-        
-        return view('dashboard.cadastro.reservaArea', compact('areas'));
-    }
     
     public function store(AreaFormRequest $request) {
         
@@ -60,9 +46,9 @@ class AreaController extends Controller
         $insert = $this->area->create($area);
         
         if($insert)
-            return redirect()->route('area.index')->with('mensagemSucessoDELETE', 'Área cadastrada com sucesso!');
+            return redirect()->route('area.index')->with('mensagemSUCESSO', 'Área cadastrada com sucesso!');
         else
-            return redirect()->route('area.index')->with('mensagemErroDELETE', 'Algo deu errado no cadastro da área!');
+            return redirect()->route('area.index')->with('mensagemERRO', 'Algo deu errado no cadastro da área!');
     }
     
     public function destroy($id)
@@ -72,9 +58,9 @@ class AreaController extends Controller
         $delete = $area->delete();
         
         if($delete)
-            return redirect()->route('area.index')->with('mensagemSucessoDELETE', 'Área deletada com sucesso!');
+            return redirect()->route('area.index')->with('mensagemSUCESSO', 'Área deletada com sucesso!');
         else
-            return redirect()->route('area.index')->with('mensagemErroDELETE', 'Algo deu errado na exclusão da área!');
+            return redirect()->route('area.index')->with('mensagemERRO', 'Algo deu errado na exclusão da área!');
     }
     
 }

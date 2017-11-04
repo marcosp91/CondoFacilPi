@@ -12,6 +12,11 @@
                 <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
+        @if(session('mensagemERRO'))
+            <div class="alert alert-danger text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            </div>
+        @endif
     @endsection
 
     @section('breadcrumb')
@@ -19,6 +24,12 @@
     @endsection
 
     @section('content')
+    <script>
+        $(document).on("click", ".id-area", function () {
+            var myAreaId = $(this).data('id');
+            $(".modal-body #id_area").val( myAreaId );
+        });
+    </script>
     <div class="col-md-1"></div>
     <div class="col-xs-12 col-md-8"><!-- Coluna Painel Form -->
         <!-- Editar Perfil -->
@@ -29,20 +40,18 @@
                 <div class="panel-body">
                     <div class="container-fluid">
                         @foreach($areas->chunk(3) as $area)
-                            <div class="row">
                                @foreach($area as $add)
-                               <div class="col-xs-1 col-md-4">
-                                    <div class="thumbnail">
+                               <div class="col-md-4">
+                                    <div class="colImage thumbnail">
                                         <h3>{{ $add->nome }}</h3>
-                                        <img src="/img/testeLogo.png" alt="Area Comum" class="img-responsive" width="150" height="120">
+                                        <img src="/img/testeLogo.png" class="img-reponsive">
                                         <div class="caption">
-                                            <p>{{ $add->descricao }}</p>
-                                            <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-mensagem" role="button">Reservar</a> <a href="#" class="btn btn-default" role="button">Editar</a></p>
+                                            <p class="text-muted">{{ $add->descricao }}</p>
+                                            <a data-id="{{ $add->id }}"  class="btn-acess btn btn-info id-area" data-toggle="modal" data-target="#modal-mensagem" role="button">Reservar</a>
                                         </div>
                                     </div>
                                </div>
                                @endforeach
-                            </div>
                         @endforeach
                     </div>
                 </div><!-- Painel Body -->
@@ -52,31 +61,37 @@
              <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header main-color-bg">
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                        <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
                         <h4 class="modal-title ">Nova Reserva</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" method="POST" action="#">
                         {{ csrf_field() }}
-                        <div class="row">
-                            <div class="col-xs-12 col-md-4">
-                                <p>Descrição:</p>
-                                <a href="#" class="thumbnail">
-                                    <img src="/img/testeLogo.png" alt="Area Comum" width="120" height="160">
-                                </a>
-                                <label>Data de Reserva</label>
-                                <input type="text" id="datepicker" name="dataReserva" class="form-control" >
-                                 <label>Observação</label>
-                                <input type="text" name="observação" class="form-control" >
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12">
+                                    <label>Motivo da Reserva:</label>
+                                    <input type="text" name="motivo" placeholder="Informe o motivo da reserva" maxlength="50" class="form-control">
+                                </div> 
+                                <div class="col-xs-12 col-md-4">  
+                                    <label>Data de Reserva:</label>
+                                    <input type="text" id="datepicker" name="data" class="form-control" >
+                                </div>
+                                <div class="col-xs-12 col-md-8">
+                                    <label>Observação:</label>
+                                    <input type="text" name="observacao" placeholder="Se desejar, informe observações da reserva" maxlength="50" class="form-control">
+                                </div>
                             </div>
-                        </div>
-                        <button type="submit" class="btn-acess btn btn-success">Salvar</button>
+                            <br>
+                            <input type="hidden" name="id_area" id="id_area" value="">
+                            <div class="row">
+                              <div class="modal-footer">
+                                <button type="submit" class="btn-acess btn btn-success">Salvar</button>
+                                <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Cancelar</button>
+                              </div>
+                            </div>
                     </form>
                   </div>
-                  <div class="modal-footer">
-                        <button type="button" class="btn-acess btn btn-warning" data-dismiss="modal">Fechar</button>
-                   </div>
                </div>
             </div>
-        </div>ta
+        </div>
       @endsection

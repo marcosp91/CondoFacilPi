@@ -20,7 +20,7 @@ class CondominioFormRequest extends FormRequest
     {
         return [
             'nome'  => 'required|min:3|max:100',
-            'cnpj' => 'required|cnpj',
+            'cnpj' => 'required|cnpj|unique:condominios,cnpj',
             'telefone' => 'required',
             'tipo' => 'required',
             'endereco' => 'required|min:3',
@@ -41,6 +41,7 @@ class CondominioFormRequest extends FormRequest
             'email.required' => 'Preenchimento obrigatório!',
             'telefone.required' => 'Preenchimento obrigatório!',
             'cnpj.required' => 'Preenchimento obrigatório!',
+            'cnpj.unique' => 'Já existe um condomínio com este CNPJ!',
             'complemento.required' => 'Preenchimento obrigatório!',
             'endereco.required' => 'Preenchimento obrigatório!',
             'endereco.min' => 'Endereço deve conter mais que 03 (três) caracteres!',

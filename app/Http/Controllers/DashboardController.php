@@ -57,6 +57,18 @@ class DashboardController extends Controller
         $usuario->condominio_id = $condominio->id;
         $update = $usuario->save();
         
+        if ($update){
+            $usuario = DB::table('usuarios')
+                     ->select('*')
+                     ->where('email', '=', $dadosForm['email'])
+                     ->get()
+                     ->first();
+            
+            if ($usuario){   
+                $_SESSION['usuario'] = $usuario;
+            }
+        }
+        
         if($insert == true && $update = true)
             return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Condomínio cadastrado com sucesso!');
         else

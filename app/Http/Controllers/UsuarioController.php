@@ -156,7 +156,7 @@ class UsuarioController extends Controller
                      ->where('email', '=', $dadosForm['email'])
                      ->get()
                      ->first();
-        echo 'oi';
+            
             if ($usuario){   
                 $_SESSION['usuario'] = $usuario;
             }
@@ -175,7 +175,18 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = $this->usuario->find($id);
+        
+        if($usuario->id === $_SESSION['usuario']->id) {
+            return redirect()->route('condomino.index')->with('mensagemErroDELETE', 'Você não pode excluir a si próprio!');
+        }
+
+        $delete = $usuario->delete();
+        
+        if($delete)
+            return redirect()->route('condomino.index')->with('mensagemSucessoDELETE', 'Usuário deletado com sucesso!');
+        else
+            return redirect()->route('condomino.index')->with('mensagemErroDELETE', 'Algo deu errado na exclusão do usuário!');
     }
 
 }

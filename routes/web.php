@@ -24,14 +24,15 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::post('cadastro/condominio', 'DashboardController@cadastrarCondominio')->name('condominio.cadastro');
     
     Route::get('cadastro/condomino', 'UsuarioController@index')->name('condomino.index');
+    Route::get('cadastro/condomino/{id}', 'UsuarioController@destroy')->name('condomino.destroy');
     Route::post('cadastro/condomino', 'UsuarioController@store')->name('condomino.cadastro');
 
     Route::get('cadastro/areaComum', 'AreaController@index')->name('area.index');
     Route::get('cadastro/areaComum/{id}', 'AreaController@destroy')->name('areas.destroy');
     Route::post('cadastro/areaComum', 'AreaController@store')->name('area.cadastro');
 
-    Route::get('cadastro/reservaArea', 'AreaController@reservarAreaComum')->name('reservaArea.cadastro');
-    Route::post('cadastro/reservaArea', 'AreaController@reservarAreaComum')->name('reservaArea.cadastro');
+    Route::get('cadastro/reservaArea', 'ReservaController@index')->name('reservaArea.index');
+    Route::post('cadastro/reservaArea', 'ReservaController@store')->name('reservaArea.cadastro');
 
 
     Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');
