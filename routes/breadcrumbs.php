@@ -48,6 +48,13 @@
 	    $breadcrumbs->push('Editar Perfil', route('perfil.editar'));
 	});
 
+	// Dashboard > Chamados
+	Breadcrumbs::register('/chamados', function ($breadcrumbs) {
+	    $breadcrumbs->parent('/home');
+	    $breadcrumbs->push('Chamados', route('chamados.index'));
+	});
+
+
 
 
 

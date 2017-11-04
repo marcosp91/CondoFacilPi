@@ -34,6 +34,8 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('cadastro/reservaArea', 'ReservaController@index')->name('reservaArea.index');
     Route::post('cadastro/reservaArea', 'ReservaController@store')->name('reservaArea.cadastro');
 
+     Route::get('cadastro/chamados', 'ChamadosController@index')->name('chamados.index');
+    Route::post('cadastro/chamados', 'ChamadosController@cadastrarChamado')->name('chamados.cadastro');
 
     Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');
     Route::post('/perfil', 'UsuarioController@update')->name('perfil.atualizar');

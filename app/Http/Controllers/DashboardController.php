@@ -39,6 +39,9 @@ class DashboardController extends Controller
         return view('dashboard.cadastro.condomino');
     }
 
+    public function avisos() {
+        return view('dashboard.aviso');
+    }
 
     public function cadastrarCondominio(CondominioFormRequest $request) {
         $dadosForm = $request->all();
@@ -75,16 +78,10 @@ class DashboardController extends Controller
             return redirect()->route('condominio.cadastro')->with('mensagemERRO', 'Algo deu errado no cadastro do seu condomínio!');
     }
     
-    public function avisos() {
-        return view('dashboard.aviso');
-    }
     
     public function cadastrarPublicacao(AvisosFormRequest $request){
         $dadosForm = $request->all();
        
-        $classe = $dadosForm['classe'];
-        
-        
         $publicacao = new $classe;
 
         $novaPublicacao = $publicacao->publicaMensagem($dadosForm);
@@ -97,7 +94,6 @@ class DashboardController extends Controller
             return redirect()->route('avisos.index')->with('mensagemERRO', 'Algo deu errado na publicação!');
         }
     }
-    
 
     public function logout(){
       

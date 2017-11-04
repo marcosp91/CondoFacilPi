@@ -14,7 +14,7 @@ class AvisosFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'descricao'  => 'required|min:3|max:200',
+            //'descricao'  => 'required|min:3|max:200',
             //'mensagem' => 'required',
            
         ];

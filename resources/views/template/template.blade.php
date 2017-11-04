@@ -102,7 +102,7 @@
                         @if($_SESSION['usuario']->privilegio == 1)
                             <a href="{{route('condomino.index')}}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos <span class="badge">0</span></a>
                         @endif
-                            <a href="#" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
+                            <a href="{{ route('chamados.index') }}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico <span class="badge">0</span></a>
 
                     </div>
                 </div>
