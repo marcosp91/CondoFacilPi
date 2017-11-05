@@ -70,6 +70,7 @@
                             <div class="row">
                                 <div class="col-xs-12 col-md-12">
                                     <label>Motivo da Reserva:</label>
+<<<<<<< HEAD
                                     <input type="text" name="motivo" placeholder="Informe o motivo da reserva" maxlength="50" class="form-control" value="{{ old('motivo') }}">
                                 </div> 
                                 <div class="col-xs-12 col-md-4">  
@@ -79,6 +80,17 @@
                                 <div class="col-xs-12 col-md-8">
                                     <label>Observação:</label>
                                     <input type="text" name="observacao" value="{{ old('observacao') }}" placeholder="Se desejar, informe observações da reserva" maxlength="50" class="form-control">
+=======
+                                    <input type="text" name="motivo" placeholder="Informe o motivo da reserva" maxlength="50" class="form-control">
+                                </div> 
+                                <div class="col-xs-12 col-md-4">  
+                                    <label>Data de Reserva:</label>
+                                    <input type="text" id="datepicker" name="data" class="form-control" >
+                                </div>
+                                <div class="col-xs-12 col-md-8">
+                                    <label>Observação:</label>
+                                    <input type="text" name="observacao" placeholder="Se desejar, informe observações da reserva" maxlength="50" class="form-control">
+>>>>>>> 09f8175213537112096c2b6e6a12472ca58e71cc
                                 </div>
                             </div>
                             <br>
