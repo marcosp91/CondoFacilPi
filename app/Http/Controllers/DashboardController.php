@@ -59,11 +59,11 @@ class DashboardController extends Controller
         
         $usuario->condominio_id = $condominio->id;
         $update = $usuario->save();
-        
+
         if ($update){
             $usuario = DB::table('usuarios')
                      ->select('*')
-                     ->where('email', '=', $dadosForm['email'])
+                     ->where('email', '=', $_SESSION['usuario']->email)
                      ->get()
                      ->first();
             
@@ -81,8 +81,8 @@ class DashboardController extends Controller
     
     public function cadastrarPublicacao(AvisosFormRequest $request){
         $dadosForm = $request->all();
-       
-        $publicacao = new $classe;
+
+        $publicacao = new $dadosForm['classe'];
 
         $novaPublicacao = $publicacao->publicaMensagem($dadosForm);
         
