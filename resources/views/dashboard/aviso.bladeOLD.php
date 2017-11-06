@@ -13,7 +13,7 @@
             </div>
         @endif
         @if(session('mensagemSucessoDELETE'))
-            <div class="alert alert-success text-center">
+            <div class="alert alert-danger text-center">
                 <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
@@ -32,14 +32,6 @@
     <div class="col-md-1"></div>
     @if($_SESSION['usuario']->privilegio == 1)
     @endif
-     <script>
-        $(document).on("click", ".visu_aviso", function () {
-            var myAvisoTitulo = $(this).data('titulo');
-            var myAvisoMensagem = $(this).data('mensagem');
-            $(".modal-body #titulo_aviso").html( myAvisoTitulo );
-            $(".modal-body #mensagem_aviso").html( myAvisoMensagem );
-        });
-    </script>
         <div id="lista" class="col-xs-12 col-md-8">
             <!-- Lista Condôminos -->
             <div class="panel panel-default">
@@ -48,11 +40,11 @@
                 </div>
                 <div class="panel-body">
                     @if($_SESSION['usuario']->privilegio == 1)
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" class="add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Aviso</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" class="add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Aviso</button>
+                            </div>
                         </div>
-                    </div>
                     @endif
                     <br>
                     <table class="table table-hover table-responsive">
@@ -61,8 +53,9 @@
                                 <th>Título</th>
                                 <th>Data</th>
                                 <th>Criado Por</th>
-                                <th>Ação</th>
-                                
+                                @if($_SESSION['usuario']->privilegio == 1)
+                                    <th>Ação</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -71,12 +64,12 @@
                                     <td class="name">{{ $aviso->descricao }}</td>
                                     <td class="name">{{ $aviso->created_at }}</td>
                                     <td>{{ $aviso->nome }}</td>
+                                    @if($_SESSION['usuario']->privilegio == 1)
                                         <td>
-                                            @if($_SESSION['usuario']->privilegio == 1)
                                             <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                            @endif
-                                            <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        </td>                                   
+                                            <a class="btn btn-default" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
@@ -141,11 +134,11 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-12">
                                 <label>Título:</label>
-                                <p name="titulo_aviso" id="titulo_aviso"></p>
+                                <p></p>
                             </div> 
                             <div class="col-xs-12 col-md-12">  
                                 <label>Mensagem:</label>
-                                <p name="mensagem_aviso" id="mensagem_aviso"></p>
+                                <textarea class="noResize form-control" rows="5" disabled></textarea>
                             </div>
                         </div>
                         <br>

@@ -27,8 +27,9 @@ class ChamadosController extends Controller
     }
 
 
-	public function cadastrarChamado(AvisosFormRequest $request){
+    public function cadastrarChamado(AvisosFormRequest $request){
         $dadosForm = $request->all();
+        
         $novoChamado = $this->chamado->publicaChamado($dadosForm);
         
         $insert = $this->chamado->create($novoChamado);

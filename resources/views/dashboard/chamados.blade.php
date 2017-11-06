@@ -67,9 +67,8 @@
                                 <th>Detalhes</th>
                                 <th>Aberto Por</th>
                                 <!-- <th>Status</th> -->
-                                @if($_SESSION['usuario']->privilegio == 1)
-                                    <th>Ação</th>
-                                @endif
+                                <th>Ação</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -79,17 +78,20 @@
                                 <td class="name">{{ $chamado->id }}</td>
                                 <td class="name">{{ $chamado->descricao }}</td>
                                 <td class="name">{{ $chamado->nome }}</td>
-                                @if($_SESSION['usuario']->privilegio == 1)
+                                
                                     <td class="name">
+                                        @if($_SESSION['usuario']->privilegio == 1)
                                         <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                        @endif
                                         <a data-protocolo="{{ $chamado->id }}"
                                            data-assunto="{{ $chamado->assunto }}"
                                            data-tipo="{{ $chamado->tipo }}"
                                            data-data="{{ $chamado->created_at }}"
                                            data-mensagem="{{ $chamado->descricao }}"
                                            class="btn btn-default visu_chamado" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    
                                     </td>
-                                @endif   
+                                   
                             </tr>
                             @endforeach
                         </tbody>
@@ -120,8 +122,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-3 col-md-4{{ $errors->has('mensagem') ? ' has-error' : '' }}">
-                                    <label for="tipoAviso" class="control-label">Tipo:</label>
-                                    <select name="tipoAviso" class="form-control">
+                                    <label for="tipo" class="control-label">Tipo:</label>
+                                    <select name="tipo" class="form-control">
                                         <option value="manutencao">Manutenção</option>
                                         <option value="reclamacao">Reclamação</option>
                                         <option value="duvida">Dúvida</option>
@@ -137,8 +139,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-md-12{{ $errors->has('mensagem') ? ' has-error' : '' }}">
-                                    <label id="msgAvisos" for="mensagem">Descrição:</label>
-                                    <textarea name="mensagem" class="noResize form-control" value="{{ old('mensagem') }}"></textarea>
+                                    <label id="msgAvisos" for="descricao">Descrição:</label>
+                                    <textarea name="descricao" class="noResize form-control" value="{{ old('mensagem') }}"></textarea>
                                     @if ($errors->has('mensagem'))
                                       <span class="help-block">
                                           <strong>{{ $errors->first('mensagem') }}</strong>

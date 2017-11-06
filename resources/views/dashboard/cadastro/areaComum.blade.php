@@ -55,7 +55,7 @@
                                 <td>True/False</td>
                                 <td>
                                   <a class="btn btn-danger" href="{{route('areas.destroy', $area->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                  <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                <!--  <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a> -->
                                 </td>
                             </tr>
                         @endforeach
