@@ -58,7 +58,7 @@ class LoginController extends Controller
                 return redirect()->route('condominio.index')->with('mensagemCONDOMINIO', 'Bem vindo, comece cadastrando seu condominio.');
             }
             else{
-                return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Bem Vindo!');
+                return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Seja Bem Vindo!');
             }
             
         }

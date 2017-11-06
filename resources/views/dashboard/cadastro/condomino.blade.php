@@ -4,27 +4,27 @@
     @section('painelMensagens')
         @if(session('mensagem'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSUCESSO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemERRO'))
             <div class="alert alert-danger text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSucessoDELETE'))
-            <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+            <div class="alert alert-danger text-center">
+                <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemErroDELETE'))
             <div class="alert alert-danger text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection

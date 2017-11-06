@@ -39,22 +39,13 @@ class UsuarioController extends Controller
         return view('dashboard.cadastro.condomino', compact('usuarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
+   
     public function create()
     {
         return view('auth.cadastrar');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
+   
     public function store(Request $request)
     {
         $dadosForm = $request->all();
@@ -99,35 +90,19 @@ class UsuarioController extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+  
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+    
     public function edit()
     {
         return view('dashboard.perfil');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
+ 
     public function update(UsuarioFormRequest $request)
     {
         $dadosForm = $request->all();
@@ -160,19 +135,14 @@ class UsuarioController extends Controller
             if ($usuario){   
                 $_SESSION['usuario'] = $usuario;
             }
-            return Redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Perfil atualizado com sucesso!');
+            return Redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Seu perfil foi atualizado com sucesso!');
         }else{
             return redirect()->route('perfil.editar');
         }
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+ 
     public function destroy($id)
     {
         $usuario = $this->usuario->find($id);
@@ -186,7 +156,7 @@ class UsuarioController extends Controller
         if($delete)
             return redirect()->route('condomino.index')->with('mensagemSucessoDELETE', 'Usuário deletado com sucesso!');
         else
-            return redirect()->route('condomino.index')->with('mensagemErroDELETE', 'Algo deu errado na exclusão do usuário!');
+            return redirect()->route('condomino.index')->with('mensagemErroDELETE', 'Ops! Algo aconteceu de errado na exclusão do usuário!');
     }
 
 }

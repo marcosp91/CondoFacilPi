@@ -18,11 +18,7 @@ class AvisoController extends Controller
     {
         $this->aviso = $aviso;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
+ 
     public function index(Aviso $aviso)
     {
         if ($_SESSION['usuario']->condominio_id != null) {
@@ -39,67 +35,35 @@ class AvisoController extends Controller
             return view('dashboard.aviso', compact('avisos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+ 
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
+ 
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function destroy($id)
     {   
         $aviso = $this->aviso->find($id);
@@ -107,8 +71,8 @@ class AvisoController extends Controller
         $delete = $aviso->delete();
         
         if($delete)
-            return redirect()->route('avisos.index')->with('mensagemSucessoDELETE', 'Aviso Deletado com Sucesso!');
+            return redirect()->route('avisos.index')->with('mensagemSucessoDELETE', 'Aviso deletado com sucesso!');
         else
-            return redirect()->route('avisos.index')->with('mensagemErroDELETE', 'Algo deu Errado na Exclusão do Aviso!');
+            return redirect()->route('avisos.index')->with('mensagemErroDELETE', 'Ops! Algo aconteceu de  errado na exclusão do Aviso!');
     }
 }

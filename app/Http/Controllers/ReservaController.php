@@ -44,7 +44,7 @@ class ReservaController extends Controller
             ->get();
     
         if(isset($reserva[0])){
-            return redirect()->route('reservaArea.index')->with('mensagemERRO', 'A data solicitada já está reservada!');
+            return redirect()->route('reservaArea.index')->with('mensagemERRO', 'Já existe reserva para esse período!');
         }
         else{
             $insert = $this->reserva->create($dadosForm);
@@ -53,8 +53,8 @@ class ReservaController extends Controller
         
         
         if($insert)
-            return redirect()->route('reservaArea.index')->with('mensagemSUCESSO', 'Reserva cadastrada com sucesso!');
+            return redirect()->route('reservaArea.index')->with('mensagemSUCESSO', 'Nova Reserva cadastrada com sucesso!');
         else
-            return redirect()->route('reservaArea.index')->with('mensagemERRO', 'Algo deu errado na sua reserva!');
+            return redirect()->route('reservaArea.index')->with('mensagemERRO', 'Ops! Algo aconteceu de errado na sua reserva!');
     }
 }

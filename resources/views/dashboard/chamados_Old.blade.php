@@ -25,7 +25,7 @@
     @endsection
 
     @section('breadcrumb')
-      {{  Breadcrumbs::render('/avisos') }}
+      {{  Breadcrumbs::render('/chamados') }}
     @endsection
 
     @section('content')
@@ -36,41 +36,44 @@
             <!-- Lista Condôminos -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
-                    <h3 class="panel-title">Lista de Avisos</h3>
+                    <h3 class="panel-title">Lista de Chamados</h3>
                 </div>
                 <div class="panel-body">
-                    @if($_SESSION['usuario']->privilegio == 1)
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="button" class="add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Aviso</button>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Chamado</button>
                         </div>
-                    @endif
+                    </div>
                     <br>
                     <table class="table table-hover table-responsive">
                         <thead>
                             <tr>
-                                <th>Título</th>
-                                <th>Data</th>
-                                <th>Criado Por</th>
+                                <th>Detalhes</th>
+                                <th>Nº Protocolo</th>
+                                <th>Assunto</th>
+                                <th>Aberto Por</th>
+                                <!-- <th>Status</th> -->
                                 @if($_SESSION['usuario']->privilegio == 1)
                                     <th>Ação</th>
                                 @endif
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($avisos as $aviso)
-                                <tr>
-                                    <td class="name">{{ $aviso->descricao }}</td>
-                                    <td class="name">{{ $aviso->created_at }}</td>
-                                    <td>{{ $aviso->nome }}</td>
-                                    @if($_SESSION['usuario']->privilegio == 1)
-                                        <td>
-                                            <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                            <a class="btn btn-default" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        </td>
+                             @foreach ($chamados as $chamado)
+                            <tr>
+                                <td class="name">{{ $chamado->assunto }}</td>
+                                <td class="name">{{ $chamado->descricao }}</td>
+                                <td class="name"></td>
+                                <td class="name"></td>
+                                <td class="name">
+                                @if($_SESSION['usuario']->privilegio == 1)
+                                    <td>
+                                        <a class="btn btn-danger" href="{{route('chamados.destroy', $chamado->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                        <a class="btn btn-default" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    </td>
                                     @endif
-                                </tr>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -82,15 +85,15 @@
                 <div class="modal-content">
                     <div class="modal-header main-color-bg">
                         <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
-                        <h4 class="modal-title">Cadastar Avisos:</h4>
+                        <h4 class="modal-title">Novo Chamado:</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" method="POST" action="{{route('avisos.cadastro')}}" >
+                        <form class="form-horizontal" method="POST" action="{{route('chamados.cadastro')}}" >
                             {{ csrf_field() }}
                             <div class="row">
-                                <div class="col-xs-12 col-md-12 {{ $errors->has('descricao') ? ' has-error' : '' }}">
-                                    <label for="tituloAviso">Título do Aviso:</label>
-                                    <input id="tituloAviso" type="text" name="descricao" class="form-control" placeholder="Título do Aviso" value="{{ old('descricao') }}">
+                                <div class="col-xs-3 col-md-12 {{ $errors->has('descricao') ? ' has-error' : '' }}">
+                                    <label for="tituloAviso" class="control-label">Assunto do Aviso:</label>
+                                    <input id="tituloAviso" type="text" name="assunto" class="form-control">
                                     @if ($errors->has('descricao'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('descricao') }}</strong>
@@ -99,9 +102,15 @@
                                  </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-12 col-md-12{{ $errors->has('mensagem') ? ' has-error' : '' }}">
-                                    <label id="msgAvisos" for="mensagem">Descrição do Aviso:</label>
-                                    <textarea name="mensagem" value="{{ old('mensagem') }}"></textarea>
+                                <div class="col-xs-3 col-md-4{{ $errors->has('mensagem') ? ' has-error' : '' }}">
+                                    <label for="tipoAviso" class="control-label">Tipo:</label>
+                                    <select name="tipoAviso" class="form-control">
+                                        <option value="manutencao">Manutenção</option>
+                                        <option value="reclamacao">Reclamação</option>
+                                        <option value="duvida">Dúvida</option>
+                                        <option value="sugestao">Sugestão</option>
+                                        <option value="elogios">Elogios</option>
+                                    </select>
                                     @if ($errors->has('mensagem'))
                                       <span class="help-block">
                                           <strong>{{ $errors->first('mensagem') }}</strong>
@@ -109,7 +118,17 @@
                                     @endif
                                 </div>
                             </div>
-                            <input type="hidden" name="classe" value="App\Models\Painel\Aviso">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12{{ $errors->has('mensagem') ? ' has-error' : '' }}">
+                                    <label id="msgAvisos" for="mensagem">Descrição:</label>
+                                    <textarea name="mensagem" class="noResize form-control" value="{{ old('mensagem') }}"></textarea>
+                                    @if ($errors->has('mensagem'))
+                                      <span class="help-block">
+                                          <strong>{{ $errors->first('mensagem') }}</strong>
+                                      </span>
+                                    @endif
+                                </div>
+                            </div>
                             <br>
                             <div class="row">
                                 <div class="modal-footer">
@@ -128,22 +147,50 @@
                 <div class="modal-content">
                     <div class="modal-header main-color-bg">
                         <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
-                        <h4 class="modal-title "> Visualizar Aviso</h4>
+                        <h4 class="modal-title "> Visualizar Chamados</h4>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-xs-12 col-md-12">
-                                <label>Título:</label>
+                            <div class="col-xs-12 col-md-6">
+                                <label>Nº Protocolo:</label>
                                 <p></p>
-                            </div> 
+                            </div>
+                             <div class="col-xs-12 col-md-6">
+                                <label>Assunto:</label>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4">
+                                <label>Tipo:</label>
+                                <p></p>
+                            </div>
+                            <!--<div class="col-xs-12 col-md-4">
+                                <label>Status:</label>
+                                <select name="status" class="form-control">
+                                    <option value="Cancelar">Cancelar</option>
+                                    <option value="Pendente">Pendente</option>
+                                    <option value="Resolvido">Resolvido</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                            </div>-->
+                            <div class="col-xs-12 col-md-4">
+                                <label>Data Abertura:</label>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="row"> 
                             <div class="col-xs-12 col-md-12">  
                                 <label>Mensagem:</label>
-                                <textarea class="noResize form-control" rows="5" disabled></textarea>
+                                <div class="displayMensagem">
+                                    <p>s&oacute; um teste</p>
+                                </div>                   
                             </div>
                         </div>
                         <br>
                         <div class="row">
                           <div class="modal-footer">
+                            <button type="submit" class="btn-acess btn btn-success">Responder Chamado</button>
                             <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Cancelar</button>
                           </div>
                         </div>

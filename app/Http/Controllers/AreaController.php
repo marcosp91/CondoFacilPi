@@ -46,21 +46,20 @@ class AreaController extends Controller
         $insert = $this->area->create($area);
         
         if($insert)
-            return redirect()->route('area.index')->with('mensagemSUCESSO', 'Área cadastrada com sucesso!');
+            return redirect()->route('area.index')->with('mensagemSUCESSO', 'Nova Área cadastrada com sucesso!');
         else
-            return redirect()->route('area.index')->with('mensagemERRO', 'Algo deu errado no cadastro da área!');
+            return redirect()->route('area.index')->with('mensagemERRO', 'Ops! Algo aconteceu de errado no cadastro da área!');
     }
     
     public function destroy($id)
     {   
         $area = $this->area->find($id);
-        //dd($area);
         $delete = $area->delete();
         
         if($delete)
-            return redirect()->route('area.index')->with('mensagemSUCESSO', 'Área deletada com sucesso!');
+            return redirect()->route('area.index')->with('mensagemSUCESSO', 'Área Comum deletada com sucesso!');
         else
-            return redirect()->route('area.index')->with('mensagemERRO', 'Algo deu errado na exclusão da área!');
+            return redirect()->route('area.index')->with('mensagemERRO', 'Ops! Algo aconteceu de errado na exclusão da área!');
     }
     
 }

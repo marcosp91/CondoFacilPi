@@ -3,7 +3,7 @@
     @section('painelMensagens')
         @if(session('mensagemSUCESSO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection
