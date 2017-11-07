@@ -15,26 +15,18 @@
         <link href="/css/font-awesome/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" href="/js/jquery-ui-1.11.4/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
+       
         
         <!-- JQuery Bibliotecas -->
         <script src="/js/jquery-3.2.1.min.js"></script>
         <script src="/js/jquery.maskedinput.js" type="text/javascript"></script>
         <script src="/js/ckeditor/ckeditor.js"></script>
-   
-
-        <script>
-
-            jQuery(function ($) {
-                $("#telUsuario").mask("(99) 99999-9999");
-                $("#cepUsuario").mask("99999-999");
-                $("#cpfUsuario").mask("999.999.999-99");
-                $("#cnpjUsuario").mask("99.999.999/9999-99");
-            });
-
-        </script>
+       
     </head>
+   
+    
     <body>
-
+    <div class="loader"></div>  
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -118,6 +110,14 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Loading de página -->
+    <script>
+        $(window).load(function() {
+            $(".loader").fadeOut("slow");
+        });
+    </script>
+
     <!-- Validação de Erros para o Modal( Avisos, Condôminos, Condomínios, Áreas Comuns)-->
     @if(Session::has('errors'))
         <script>
@@ -126,6 +126,17 @@
             });
         </script>
     @endif
+
+     <!-- Mascaras de Input's -->
+    <script>
+        jQuery(function ($) {
+            $("#telUsuario").mask("(99) 99999-9999");
+            $("#cepUsuario").mask("99999-999");
+            $("#cpfUsuario").mask("999.999.999-99");
+            $("#cnpjUsuario").mask("99.999.999/9999-99");
+        });
+
+    </script>
 
     <script>
         $( function() {
@@ -148,6 +159,7 @@
     <script>
         CKEDITOR.replace( 'mensagem' );
     </script>
-   
+    
     </body>
+   
 </html>

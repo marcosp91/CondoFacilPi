@@ -94,35 +94,5 @@
                </div>
             </div>
         </div>
-        <div class="modal fade" id="modal-display">
-             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header main-color-bg">
-                        <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
-                        <h4 class="modal-title ">Nova Reserva</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" method="POST" action="#">
-                        {{ csrf_field() }}
-                            <div class="row">
-                                <div class="col-xs-12 col-md-12">
-                                    <label>Descrição:</label>
-                                </div> 
-                                <div class="col-xs-12 col-md-4">  
-                                    <label>Mensagem:</label>
-                                    <textarea class="noResize form-control"></textarea>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                              <div class="modal-footer">
-                                <button type="submit" class="btn-acess btn btn-success">Salvar</button>
-                                <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Cancelar</button>
-                              </div>
-                            </div>
-                    </form>
-                  </div>
-               </div>
-            </div>
-        </div>
+       
       @endsection

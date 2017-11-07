@@ -50,7 +50,7 @@
                     @if($_SESSION['usuario']->privilegio == 1)
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Aviso</button>
+                            <button type="button" class="btn-add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Aviso</button>
                         </div>
                     </div>
                     @endif
@@ -68,15 +68,15 @@
                         <tbody>
                             @foreach ($avisos as $aviso)
                                 <tr>
-                                    <td class="name">{{ $aviso->descricao }}</td>
-                                    <td class="name">{{ $aviso->created_at }}</td>
+                                    <td>{{ $aviso->descricao }}</td>
+                                    <td>{{ $aviso->created_at }}</td>
                                     <td>{{ $aviso->nome }}</td>
-                                        <td>
-                                            @if($_SESSION['usuario']->privilegio == 1)
-                                            <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                            @endif
-                                            <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        </td>                                   
+                                    <td>
+                                        @if($_SESSION['usuario']->privilegio == 1)
+                                        <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                        @endif
+                                        <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    </td>                                   
                                 </tr>
                             @endforeach
                         </tbody>
@@ -141,11 +141,15 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-12">
                                 <label>Título:</label>
-                                <p name="titulo_aviso" id="titulo_aviso"></p>
+                                <small name="titulo_aviso" id="titulo_aviso"></small>
                             </div> 
+                        </div>
+                        <div class="row">
                             <div class="col-xs-12 col-md-12">  
                                 <label>Mensagem:</label>
-                                <p name="mensagem_aviso" id="mensagem_aviso"></p>
+                                <div class="displayMensagem">
+                                    <p name="mensagem_aviso" id="mensagem_aviso"></p>
+                                </div>
                             </div>
                         </div>
                         <br>
