@@ -44,7 +44,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                              <button type="button" class="add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Condômino</button>
+                              <button type="button" class="btn-add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Condômino</button>
                         </div>
                     </div>
                     <br>
