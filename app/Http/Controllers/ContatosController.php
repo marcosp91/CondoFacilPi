@@ -26,10 +26,10 @@ class ContatosController extends Controller
 		$insert = $this->contato->create($novoContato);
 		if($insert){
 
-			$pathToFile = 'storage/app/ebook.pdf';
+			$pathToFile = '/storage/ebook.pdf';
 			return response()->download($pathToFile);
 
-			return redirect()->route('index.landing');
+			//return redirect()->route('index.landing');
 		}
 
 	}
