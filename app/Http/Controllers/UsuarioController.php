@@ -106,6 +106,8 @@ class UsuarioController extends Controller
     public function update(UsuarioFormRequest $request)
     {
         $dadosForm = $request->all();
+
+        //dd($dadosForm);
         
         $usuario = $this->usuario->find($dadosForm['id']);
         $usuario->nome = $dadosForm['nome'];
