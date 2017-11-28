@@ -55,7 +55,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Chamado</button>
+                            <button type="button" class="btn-add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Chamado</button>
                         </div>
                     </div>
                     <br>
@@ -74,14 +74,14 @@
                         <tbody>
                              @foreach ($chamados as $chamado)
                             <tr>
-                                <td class="name">{{ $chamado->assunto }}</td>
-                                <td class="name">{{ $chamado->id }}</td>
-                                <td class="name">{{ $chamado->descricao }}</td>
-                                <td class="name">{{ $chamado->nome }}</td>
+                                <td>{{ $chamado->assunto }}</td>
+                                <td>{{ $chamado->id }}</td>
+                                <td>{{ $chamado->descricao }}</td>
+                                <td>{{ $chamado->nome }}</td>
                                 
-                                    <td class="name">
+                                    <td>
                                         @if($_SESSION['usuario']->privilegio == 1)
-                                        <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                        <a class="btn btn-danger" href="{{route('chamados.destroy', $chamado->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
                                         @endif
                                         <a data-protocolo="{{ $chamado->id }}"
                                            data-assunto="{{ $chamado->assunto }}"
@@ -124,11 +124,11 @@
                                 <div class="col-xs-3 col-md-4{{ $errors->has('mensagem') ? ' has-error' : '' }}">
                                     <label for="tipo" class="control-label">Tipo:</label>
                                     <select name="tipo" class="form-control">
-                                        <option value="manutencao">Manutenção</option>
-                                        <option value="reclamacao">Reclamação</option>
-                                        <option value="duvida">Dúvida</option>
-                                        <option value="sugestao">Sugestão</option>
-                                        <option value="elogios">Elogios</option>
+                                        <option value="Manutenção">Manutenção</option>
+                                        <option value="Reclamação">Reclamação</option>
+                                        <option value="Dúvida">Dúvida</option>
+                                        <option value="Sugestão">Sugestão</option>
+                                        <option value="Elogios">Elogios</option>
                                     </select>
                                     @if ($errors->has('mensagem'))
                                       <span class="help-block">
@@ -170,19 +170,19 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <label>Nº Protocolo:</label>
-                                <p id="prot_chamado"></p>
+                            <div class="col-xs-12 col-md-4">
+                                <label>Nº Protocolo:&nbsp;</label>
+                                <small id="prot_chamado"></small>
                             </div>
                              <div class="col-xs-12 col-md-6">
                                 <label>Assunto:</label>
-                                <p id="assunto_chamado"></p>                                
+                                <small id="assunto_chamado"></small>                                
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-4">
-                                <label>Tipo:</label>
-                                <p id="tipo_chamado"></p>
+                                <label>Tipo:&nbsp;</label>
+                                <small id="tipo_chamado"></small>
                             </div>
                             <!--<div class="col-xs-12 col-md-4">
                                 <label>Status:</label>
@@ -193,15 +193,17 @@
                                     <option value="Outros">Outros</option>
                                 </select>
                             </div>-->
-                            <div class="col-xs-12 col-md-4">
-                                <label>Data Abertura:</label>
-                                <p id="data_chamado"></p>
+                            <div class="col-xs-12 col-md-6">
+                                <label>Data Abertura:&nbsp;</label>
+                                <small id="data_chamado"></small>
                             </div>
                         </div>
                         <div class="row"> 
-                            <div class="col-xs-12 col-md-12">  
+                            <div class="col-xs-12 col-md-12">
                                 <label>Mensagem:</label>
-                                <p id="mensagem_chamado"></p>
+                                <div class="displayMensagem"> 
+                                    <p id="mensagem_chamado"></p>
+                                </div>
                             </div>
                         </div>
                         <br>

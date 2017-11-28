@@ -49,6 +49,13 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/landing', function () {
+    return view('landingPage');
+});
+
+ Route::post('/landing', 'ContatosController@insereContato')->name('index.landing');
+
+
 Auth::routes();
 
 

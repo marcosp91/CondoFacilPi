@@ -9,9 +9,9 @@ class Condomino extends Model
 {
     public $regras = [
             'nome'  => 'required|min:3|max:100',
-            'cpf' => 'cpf|unique:usuarios,cpf',
-            //'telefone' => 'required|unique:usuarios,telefone',
-            'email' => 'required|email',
+            //'cpf' => 'cpf|unique:usuarios,cpf',
+            'telefone' => 'required',
+            //'email' => 'required|email',
         ];
     
     
@@ -22,8 +22,8 @@ class Condomino extends Model
             'email.required' => 'Preenchimento obrigatório!',
             //'email.unique' => 'Já existe um usuário com este email!',
             //'telefone.unique' => 'Já existe um usuário com este telefone!',
-            //'telefone.required' => 'Preenchimento obrigatório!',
-            'cpf.unique' => 'Já existe um usuário com este CPF!',
+            'telefone.required' => 'Preenchimento obrigatório!',
+            //'cpf.unique' => 'Já existe um usuário com este CPF!',
         ];
     
     public function cadastrar($dadosForm) {
