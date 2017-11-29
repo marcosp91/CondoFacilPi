@@ -44,7 +44,9 @@
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span> {{$_SESSION['usuario']->nome}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            @if($_SESSION['usuario']->privilegio == 1)
+                            @if($_SESSION['usuario']->privilegio == 1 && $_SESSION['usuario']->condominio_id > 0)
+                                <li><a href="{{route('condominio.index')}}">Meu condomínio</a></li>
+                            @elseif($_SESSION['usuario']->privilegio == 1)
                                 <li><a href="{{route('condominio.index')}}">Cadastrar Condomínio</a></li>
                             @endif
                             <li><a href="{{route('perfil.editar')}}">Editar Perfil</a></li>

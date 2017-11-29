@@ -20,8 +20,9 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::post('/avisos', 'DashboardController@cadastrarPublicacao')->name('avisos.cadastro');
    
     
-    Route::get('cadastro/condominio', 'DashboardController@condominio')->name('condominio.index');
-    Route::post('cadastro/condominio', 'DashboardController@cadastrarCondominio')->name('condominio.cadastro');
+    Route::get('cadastro/condominio', 'CondominioController@index')->name('condominio.index');
+    Route::put('cadastro/condominio', 'CondominioController@atualizaCondominio')->name('condominio.atualizar');
+    Route::post('cadastro/condominio', 'CondominioController@cadastrarCondominio')->name('condominio.cadastro');
     
     Route::get('cadastro/condomino', 'UsuarioController@index')->name('condomino.index');
     Route::get('cadastro/condomino/{id}', 'UsuarioController@destroy')->name('condomino.destroy');
