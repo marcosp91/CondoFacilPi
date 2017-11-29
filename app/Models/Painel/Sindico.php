@@ -13,7 +13,7 @@ class Sindico extends Usuario
     
     public $regras = [
             'nome'  => 'required|min:3|max:100',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:usuarios,email',
             'senha' => 'required|min:6',
             'senha-confirm' => 'required|same:senha',
     ];
@@ -23,7 +23,7 @@ class Sindico extends Usuario
             'nome.min' => 'Nome deve conter mais que 03 (três) caracteres!',
             'nome.max' => 'Nome não deve conter mais que 100 caracteres!',
             'email.required' => 'Preenchimento obrigatório!',
-            //'email.unique' => 'Já existe um usuário com este email!',
+            'email.unique' => 'Já existe um usuário com este email!',
             'senha.required' => 'Preenchimento obrigatório!',
             'senha-confirm.required' => 'Preenchimento obrigatório',
             'senha.min' => 'Mínimo 6 caracteres!',

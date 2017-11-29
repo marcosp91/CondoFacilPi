@@ -4,22 +4,22 @@
     @section('painelMensagens')
         @if(session('mensagemERRO'))
             <div class="alert alert-danger text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSUCESSO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSucessoDELETE'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemErroDELETE'))
             <div class="alert alert-danger text-center">
-                <strong><a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong><a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection
@@ -32,6 +32,20 @@
     <div class="col-md-1"></div>
     @if($_SESSION['usuario']->privilegio == 1)
     @endif
+    <script>
+        $(document).on("click", ".visu_chamado", function () {
+            var mychamadoProt = $(this).data('protocolo');
+            var mychamadoAssunto = $(this).data('assunto');
+            var mychamadoTipo = $(this).data('tipo');
+            var mychamadoData = $(this).data('data');
+            var mychamadoMensagem = $(this).data('mensagem');
+            $(".modal-body #prot_chamado").html( mychamadoProt );
+            $(".modal-body #assunto_chamado").html( mychamadoAssunto );
+            $(".modal-body #tipo_chamado").html( mychamadoTipo );
+            $(".modal-body #data_chamado").html( mychamadoData );
+            $(".modal-body #mensagem_chamado").html( mychamadoMensagem );
+        });
+    </script>
         <div id="lista" class="col-xs-12 col-md-8">
             <!-- Lista Condôminos -->
             <div class="panel panel-default">
@@ -48,24 +62,29 @@
                     <table class="table table-hover table-responsive">
                         <thead>
                             <tr>
-                                <th>Detalhes</th>
-                                <th>Nº Protocolo</th>
                                 <th>Assunto</th>
+                                <th>Nº Protocolo</th>
+                                <th>Detalhes</th>
                                 <th>Aberto Por</th>
-                                <th>Status</th>
-                                <th>Tipo</th>
-                                <th>Data</th>
+                                <!-- <th>Status</th> -->
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
                              @foreach ($chamados as $chamado)
                             <tr>
                                 <td class="name">{{ $chamado->assunto }}</td>
+                                <td class="name">{{ $chamado->id }}</td>
                                 <td class="name">{{ $chamado->descricao }}</td>
-                                <td></td>
-                                <td>
-                                    <!--<a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                    <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>-->
+                                <td class="name">{{ $chamado->nome }}</td>
+                                <td class="name">
+                                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                    <a data-protocolo="{{ $chamado->id }}"
+                                       data-assunto="{{ $chamado->assunto }}"
+                                       data-tipo="{{ $chamado->tipo }}"
+                                       data-data="{{ $chamado->created_at }}"
+                                       data-mensagem="{{ $chamado->descricao }}"
+                                       class="btn btn-default visu_chamado" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -115,7 +134,7 @@
                             <div class="row">
                                 <div class="col-xs-12 col-md-12{{ $errors->has('mensagem') ? ' has-error' : '' }}">
                                     <label id="msgAvisos" for="mensagem">Descrição:</label>
-                                    <textarea name="mensagem" value="{{ old('mensagem') }}"></textarea>
+                                    <textarea name="mensagem" class="noResize form-control" value="{{ old('mensagem') }}"></textarea>
                                     @if ($errors->has('mensagem'))
                                       <span class="help-block">
                                           <strong>{{ $errors->first('mensagem') }}</strong>
@@ -133,6 +152,61 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-display">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header main-color-bg">
+                        <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
+                        <h4 class="modal-title "> Visualizar Chamados</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <label>Nº Protocolo:</label>
+                                <p id="prot_chamado"></p>
+                            </div>
+                             <div class="col-xs-12 col-md-6">
+                                <label>Assunto:</label>
+                                <p id="assunto_chamado"></p>                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4">
+                                <label>Tipo:</label>
+                                <p id="tipo_chamado"></p>
+                            </div>
+                            <!--<div class="col-xs-12 col-md-4">
+                                <label>Status:</label>
+                                <select name="status" class="form-control">
+                                    <option value="Cancelar">Cancelar</option>
+                                    <option value="Pendente">Pendente</option>
+                                    <option value="Resolvido">Resolvido</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                            </div>-->
+                            <div class="col-xs-12 col-md-4">
+                                <label>Data Abertura:</label>
+                                <p id="data_chamado"></p>
+                            </div>
+                        </div>
+                        <div class="row"> 
+                            <div class="col-xs-12 col-md-12">  
+                                <label>Mensagem:</label>
+                                <p id="mensagem_chamado"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="modal-footer">
+                            <!--<button type="submit" class="btn-acess btn btn-success">Responder Chamado</button>-->
+                            <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Fechar</button>
+                          </div>
+                        </div>
+                    </div>
+               </div>
             </div>
         </div>
     @endsection

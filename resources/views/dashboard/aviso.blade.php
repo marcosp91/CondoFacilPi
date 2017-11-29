@@ -4,22 +4,22 @@
     @section('painelMensagens')
         @if(session('mensagemERRO'))
             <div class="alert alert-danger text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSUCESSO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSucessoDELETE'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSucessoDELETE')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemErroDELETE'))
             <div class="alert alert-danger text-center">
-                <strong><a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong><a href="" class="alert-link">{{session('mensagemErroDELETE')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection
@@ -32,6 +32,14 @@
     <div class="col-md-1"></div>
     @if($_SESSION['usuario']->privilegio == 1)
     @endif
+     <script>
+        $(document).on("click", ".visu_aviso", function () {
+            var myAvisoTitulo = $(this).data('titulo');
+            var myAvisoMensagem = $(this).data('mensagem');
+            $(".modal-body #titulo_aviso").html( myAvisoTitulo );
+            $(".modal-body #mensagem_aviso").html( myAvisoMensagem );
+        });
+    </script>
         <div id="lista" class="col-xs-12 col-md-8">
             <!-- Lista Condôminos -->
             <div class="panel panel-default">
@@ -65,7 +73,7 @@
                                     @if($_SESSION['usuario']->privilegio == 1)
                                         <td>
                                             <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                            <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                         </td>
                                     @endif
                                 </tr>
@@ -118,6 +126,35 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-display">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header main-color-bg">
+                        <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
+                        <h4 class="modal-title "> Visualizar Aviso</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <label>Título:</label>
+                                <div name="titulo_aviso" id="titulo_aviso"></div>
+                            </div> 
+                            <div class="col-xs-12 col-md-12">  
+                                <label>Mensagem:</label>
+                                <p name="mensagem_aviso" id="mensagem_aviso"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="modal-footer">
+                            <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </div>
+                    </div>
+               </div>
             </div>
         </div>
     @endsection
