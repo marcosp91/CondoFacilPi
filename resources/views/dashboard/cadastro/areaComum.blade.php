@@ -4,17 +4,17 @@
     @section('painelMensagens')
         @if(session('mensagem'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemSUCESSO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemSUCESSO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemERRO'))
             <div class="alert alert-danger text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemERRO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection
@@ -34,7 +34,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="button" class="add btn-acess btn btn-warning"  data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nova Área Comum</button>
+                        <button type="button" class="btn-add btn-acess btn btn-warning"  data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nova Área Comum</button>
                     </div>
                 </div>
                 <br>
@@ -55,7 +55,7 @@
                                 <td>True/False</td>
                                 <td>
                                   <a class="btn btn-danger" href="{{route('areas.destroy', $area->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                  <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                <!--  <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a> -->
                                 </td>
                             </tr>
                         @endforeach

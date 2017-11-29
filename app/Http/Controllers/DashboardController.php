@@ -42,46 +42,10 @@ class DashboardController extends Controller
     public function avisos() {
         return view('dashboard.aviso');
     }
-
-    public function cadastrarCondominio(CondominioFormRequest $request) {
-        $dadosForm = $request->all();
-        $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
-    
-        $insert = $this->condominio->create($dadosForm);
-        
-        $usuario = $this->usuario->find($_SESSION['usuario']->id);
-        
-        $condominio = DB::table('condominios')
-                     ->select('id')
-                     ->where('cnpj', '=', $dadosForm['cnpj'])
-                     ->get()
-                     ->first();
-        
-        $usuario->condominio_id = $condominio->id;
-        $update = $usuario->save();
-
-        if ($update){
-            $usuario = DB::table('usuarios')
-                     ->select('*')
-                     ->where('email', '=', $_SESSION['usuario']->email)
-                     ->get()
-                     ->first();
-            
-            if ($usuario){   
-                $_SESSION['usuario'] = $usuario;
-            }
-        }
-        
-        if($insert == true && $update = true)
-            return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Condomínio cadastrado com sucesso!');
-        else
-            return redirect()->route('condominio.cadastro')->with('mensagemERRO', 'Algo deu errado no cadastro do seu condomínio!');
-    }
-    
     
     public function cadastrarPublicacao(AvisosFormRequest $request){
         $dadosForm = $request->all();
-
+        
         $publicacao = new $dadosForm['classe'];
 
         $novaPublicacao = $publicacao->publicaMensagem($dadosForm);
@@ -89,9 +53,9 @@ class DashboardController extends Controller
         $insert = $publicacao->create($novaPublicacao);
         
         if($insert){
-            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Publicado com sucesso!');
+            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Nova Publicacão cadastrada com sucesso!');
         }else{
-            return redirect()->route('avisos.index')->with('mensagemERRO', 'Algo deu errado na publicação!');
+            return redirect()->route('avisos.index')->with('mensagemERRO', 'Ops! Algo aconteceu de errado na publicação!');
         }
     }
 

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Condominio extends Model
 {
-    protected $fillable = ['nome','cnpj','cep','endereco','numero','bairro','cidade','estado'];
+    protected $fillable = ['nome','cnpj','endereco','numero', 'complemento','cidade','estado','cep','telefone'];
+    public $timestamps = false;
     //protected $guarded = ['id', 'created_at', 'update_at'];
     
     public $regras = [

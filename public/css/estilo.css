@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto+Condensed');
+
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+  	font-family: 'Montserrat', sans-serif;
+}
+
+#guardaNav {
+	height: 60px;
+	min-width: 100%;
+	background-color: #77afde;
+	margin-bottom: 40px;
+}
+
+#guardaNav h5{
+	padding: 15px;
+	color: white;
+}
+
+img {
+	height: 110px;
+	width: 110px;
+}
+
+.sidebar {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: rgba(0,0,0,0.2) 0px 1px 5px;
+  border-radius: 2px;
+  float: right;
+  
+
+}
+
+.main {
+  padding: 20px;
+  min-height: 100%;
+  box-shadow: rgba(0,0,0,0.2) 0px 1px 5px;
+  border-radius: 2px;
+  position: relative;
+  float: left;
+  /*font-family: 'Roboto Condensed', sans-serif;*/
+
+}
+
+#menuRedeSocial {
+	height: 250px;
+	margin-bottom: 20px;
+	padding: 5px;
+}
+
+#menuLanding {
+	height: 350px;
+	padding: 5px;
+}
+
+#extra {
+	height: 42px;
+	font-size: 12px;
+	padding: 5px;
+	
+}
+
+
+#extra ul {
+	
+	list-style:none;
+}
+
+#extra ul li { 
+	border: 1px solid black;
+	display: inline-block;
+	padding: 5px;
+	background-color: #77afde;
+}
+
+.modal-header {
+	background-color: #77afde;
+}

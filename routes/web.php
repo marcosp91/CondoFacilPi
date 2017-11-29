@@ -20,8 +20,9 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::post('/avisos', 'DashboardController@cadastrarPublicacao')->name('avisos.cadastro');
    
     
-    Route::get('cadastro/condominio', 'DashboardController@condominio')->name('condominio.index');
-    Route::post('cadastro/condominio', 'DashboardController@cadastrarCondominio')->name('condominio.cadastro');
+    Route::get('cadastro/condominio', 'CondominioController@index')->name('condominio.index');
+    Route::put('cadastro/condominio', 'CondominioController@atualizaCondominio')->name('condominio.atualizar');
+    Route::post('cadastro/condominio', 'CondominioController@cadastrarCondominio')->name('condominio.cadastro');
     
     Route::get('cadastro/condomino', 'UsuarioController@index')->name('condomino.index');
     Route::get('cadastro/condomino/{id}', 'UsuarioController@destroy')->name('condomino.destroy');
@@ -34,8 +35,9 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('cadastro/reservaArea', 'ReservaController@index')->name('reservaArea.index');
     Route::post('cadastro/reservaArea', 'ReservaController@store')->name('reservaArea.cadastro');
 
-     Route::get('cadastro/chamados', 'ChamadosController@index')->name('chamados.index');
+    Route::get('cadastro/chamados', 'ChamadosController@index')->name('chamados.index');
     Route::post('cadastro/chamados', 'ChamadosController@cadastrarChamado')->name('chamados.cadastro');
+    Route::get('/cadastro/chamados/{id}', 'ChamadosController@destroy')->name('chamados.destroy');
 
     Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');
     Route::post('/perfil', 'UsuarioController@update')->name('perfil.atualizar');
@@ -47,6 +49,13 @@ Route::group(['prefix' => 'dashboard'], function(){
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/landing', function () {
+    return view('landingPage');
+});
+
+ Route::post('/landing', 'ContatosController@insereContato')->name('index.landing');
+
 
 Auth::routes();
 

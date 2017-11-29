@@ -4,12 +4,12 @@
     @section('painelMensagens')
         @if(session('mensagem'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagem')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
         @if(session('mensagemCONDOMINIO'))
             <div class="alert alert-success text-center">
-                <strong> <a href="" class="alert-link">{{session('mensagemCONDOMINIO')}}</a></strong>.<a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong> <a href="" class="alert-link">{{session('mensagemCONDOMINIO')}}</a></strong><a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
         @endif
     @endsection
@@ -24,15 +24,22 @@
             <!-- Editar Perfil -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
-                    <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastrar Condomínio</h3>
+                    @if($_SESSION['usuario']->privilegio == 1 && $_SESSION['usuario']->condominio_id > 0)
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Condomínio</h3>
+                    @elseif($_SESSION['usuario']->privilegio == 1)
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastrar Condomínio</h3>
+                    @endif                  
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{route('condominio.cadastro')}}">
+                    <form class="form-horizontal" method="POST" action="{{route('condominio.atualizar')}}" >
                         {{ csrf_field() }}
+                        @if($_SESSION['usuario']->condominio_id > 0)
+                            {{ method_field('PUT') }}
+                        @endif
                         <div class="row">
                             <div class="col-xs-6 col-md-6{{ $errors->has('nome') ? ' has-error' : '' }}">
                                 <label for="nome" class="control-label">Nome:</label>
-                                <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome do Condominio" value="{{ old('nome') }}">
+                                <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome do Condominio" @if(old('nome')) value="{{old('nome')}}" @elseif($condominio->nome) value="{{$condominio->nome}}" @endif >
                                 @if ($errors->has('nome'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('nome') }}</strong>
@@ -41,7 +48,7 @@
                             </div>
                             <div class="col-xs-6 col-md-6{{ $errors->has('cnpj') ? ' has-error' : '' }}">
                                 <label for="cnpjUsuario" class="control-label">CNPJ:</label>
-                                <input type="text" id="cnpjUsuario" name="cnpj" class="form-control" placeholder="CNPJ" value="{{ old('cnpj') }}">
+                                <input type="text" id="cnpjUsuario" name="cnpj" class="form-control" placeholder="CNPJ" @if(old('cnpj')) value="{{old('cnpj')}}" @elseif($condominio->cnpj) value="{{$condominio->cnpj}}" @endif >
                                 @if ($errors->has('cnpj'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('cnpj') }}</strong>
@@ -52,7 +59,7 @@
                         <div class="row">
                             <div class="col-xs-4 col-md-4{{ $errors->has('telefone') ? ' has-error' : '' }}">
                                 <label for="telefone" class="control-label">Telefone:</label>
-                                <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" value="{{ old('telefone') }}">
+                                <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" @if(old('telefone')) value="{{old('telefone')}}" @elseif($condominio->telefone) value="{{$condominio->telefone}}" @endif >
                                 @if ($errors->has('telefone'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('telefone') }}</strong>
@@ -61,7 +68,7 @@
                             </div>
                             <div class="col-xs-4 col-md-4{{ $errors->has('cep') ? ' has-error' : '' }}">
                                 <label for="cep" class="control-label">CEP:</label>
-                                <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" value="{{ old('cep') }}">
+                                <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" @if(old('cep')) value="{{old('cep')}}" @elseif($condominio->cep) value="{{$condominio->cep}}" @endif >
                                 @if ($errors->has('cep'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('cep') }}</strong>
@@ -85,7 +92,7 @@
                         <div class="row">   
                             <div class="col-xs-6 col-md-6{{ $errors->has('endereco') ? ' has-error' : '' }}">
                                 <label for="endereco" class="control-label">Endereço:</label>
-                                <input type="text" id="numUsuario" name="endereco" class="form-control" placeholder="Numero" value="{{ old('endereco') }}">
+                                <input type="text" id="numUsuario" name="endereco" class="form-control" placeholder="Endereço" @if(old('endereco')) value="{{old('endereco')}}" @elseif($condominio->endereco) value="{{$condominio->endereco}}" @endif >
                                 @if ($errors->has('endereco'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('endereco') }}</strong>
@@ -94,7 +101,7 @@
                             </div>
                               <div class="col-xs-6 col-md-6{{ $errors->has('cidade') ? ' has-error' : '' }}">
                                 <label for="cidade" class="control-label">Cidade:</label>
-                                <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" value="{{ old('cidade') }}">
+                                <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" @if(old('cidade')) value="{{old('cidade')}}" @elseif($condominio->cidade) value="{{$condominio->cidade}}" @endif >
                                 @if ($errors->has('cidade'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('cidade') }}</strong>
@@ -125,11 +132,11 @@
                                 @endif
                             </div>
                             <div class="col-xs-4 col-md-4{{ $errors->has('numero') ? ' has-error' : '' }}">
-                                <label for="numero" class="control-label">Num:</label>
-                                <input type="text" id="numUsuario" name="numero" class="form-control" placeholder="Numero" value="{{ old('numero') }}">
-                                @if ($errors->has('endereco'))
+                                <label for="numero" class="control-label">Número:</label>
+                                <input type="text" id="numUsuario" name="numero" class="form-control" placeholder="Número" @if(old('numero')) value="{{old('numero')}}" @elseif($condominio->numero) value="{{$condominio->numero}}" @endif >
+                                @if ($errors->has('numero'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('endereco') }}</strong>
+                                    <strong>{{ $errors->first('numero') }}</strong>
                                 </span>
                                 @endif
                             </div>

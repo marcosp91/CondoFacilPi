@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 {
     
  	protected $table = 'chamados';
-    protected $fillable = ['assunto', 'id_usuario', 'id_condominio', 'status', 'tipo', 'descricao', 'created_at'];
+    protected $fillable = ['assunto', 'id_usuario', 'id_condominio', 'status', 'tipo', 'descricao'];
 
     public function publicaChamado($dadosForm) {
         
