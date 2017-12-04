@@ -55,7 +55,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn-add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Chamado</button>
+                            <button type="button" class="btn-add btn-acess btn btn-primary" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Chamado</button>
                         </div>
                     </div>
                     <br>

@@ -50,7 +50,7 @@
                     @if($_SESSION['usuario']->privilegio == 1)
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn-add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Aviso</button>
+                            <button type="button" class="btn-add btn-acess btn btn-primary" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Aviso</button>
                         </div>
                     </div>
                     @endif
@@ -71,21 +71,12 @@
                                     <td>{{ $aviso->descricao }}</td>
                                     <td>{{ $aviso->created_at }}</td>
                                     <td>{{ $aviso->nome }}</td>
-<<<<<<< HEAD
-                                    @if($_SESSION['usuario']->privilegio == 1)
-                                        <td>
-                                            <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                            <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        </td>
-                                    @endif
-=======
                                     <td>
                                         @if($_SESSION['usuario']->privilegio == 1)
                                         <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
                                         @endif
                                         <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                    </td>                                   
->>>>>>> 95a980d28b67cee2dfe3a5eb5856e9f65061210b
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -150,13 +141,6 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-12">
                                 <label>Título:</label>
-<<<<<<< HEAD
-                                <div name="titulo_aviso" id="titulo_aviso"></div>
-                            </div> 
-                            <div class="col-xs-12 col-md-12">  
-                                <label>Mensagem:</label>
-                                <p name="mensagem_aviso" id="mensagem_aviso"></p>
-=======
                                 <small name="titulo_aviso" id="titulo_aviso"></small>
                             </div> 
                         </div>
@@ -166,7 +150,6 @@
                                 <div class="displayMensagem">
                                     <p name="mensagem_aviso" id="mensagem_aviso"></p>
                                 </div>
->>>>>>> 95a980d28b67cee2dfe3a5eb5856e9f65061210b
                             </div>
                         </div>
                         <br>

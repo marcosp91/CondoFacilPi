@@ -83,7 +83,7 @@
                             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Dashboard
                         </a>
                         <a href="{{route('avisos.index')}}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp; Avisos</a>
-                        <a href="#sub-dash" class="list-group-item" data-toggle="collapse" data-parent="#dashMenu"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns  
+                        <a href="#sub-dash" class="list-group-item" data-toggle="collapse" data-parent="#dashMenu"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Áreas Comuns
                         </a>
                           <div class="collapse" id="sub-dash">
                             @if($_SESSION['usuario']->privilegio == 1)
