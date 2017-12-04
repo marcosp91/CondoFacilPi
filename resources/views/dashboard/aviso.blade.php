@@ -73,9 +73,11 @@
                                     <td>{{ $aviso->nome }}</td>
                                     <td>
                                         @if($_SESSION['usuario']->privilegio == 1)
-                                        <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                            <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
                                         @endif
-                                        <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-primary visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
                                     </td>
                                 </tr>
                             @endforeach

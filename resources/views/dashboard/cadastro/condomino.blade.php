@@ -67,7 +67,7 @@
                                         <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                         <a class="btn btn-primary" data-toggle="modal" data-target="#modal-mensagem" href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         <a class="btn btn-danger" href="{{route('condomino.destroy', $usuario->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                  </td>
+                                   </td>
                                 </tr>
                             @endforeach
                         </tbody>
