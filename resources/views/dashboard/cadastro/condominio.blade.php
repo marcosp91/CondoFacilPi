@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-xs-6 col-md-6{{ $errors->has('nome') ? ' has-error' : '' }}">
                                 <label for="nome" class="control-label">Nome:</label>
-                                <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome do Condominio" @if(old('nome')) value="{{old('nome')}}" @elseif($condominio->nome) value="{{$condominio->nome}}" @endif >
+                                <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome do Condominio" @if(old('nome')) value="{{old('nome')}}" @elseif(!empty($condominio->nome)) value="{{$condominio->nome}}" @endif >
                                 @if ($errors->has('nome'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('nome') }}</strong>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-xs-6 col-md-6{{ $errors->has('cnpj') ? ' has-error' : '' }}">
                                 <label for="cnpjUsuario" class="control-label">CNPJ:</label>
-                                <input type="text" id="cnpjUsuario" name="cnpj" class="form-control" placeholder="CNPJ" @if(old('cnpj')) value="{{old('cnpj')}}" @elseif($condominio->cnpj) value="{{$condominio->cnpj}}" @endif >
+                                <input type="text" id="cnpjUsuario" name="cnpj" class="form-control" placeholder="CNPJ" @if(old('cnpj')) value="{{old('cnpj')}}" @elseif(!empty($condominio->cnpj)) value="{{$condominio->cnpj}}" @endif >
                                 @if ($errors->has('cnpj'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('cnpj') }}</strong>
@@ -59,7 +59,7 @@
                         <div class="row">
                             <div class="col-xs-4 col-md-4{{ $errors->has('telefone') ? ' has-error' : '' }}">
                                 <label for="telefone" class="control-label">Telefone:</label>
-                                <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" @if(old('telefone')) value="{{old('telefone')}}" @elseif($condominio->telefone) value="{{$condominio->telefone}}" @endif >
+                                <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" @if(old('telefone')) value="{{old('telefone')}}" @elseif(!empty($condominio->telefone)) value="{{$condominio->telefone}}" @endif >
                                 @if ($errors->has('telefone'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('telefone') }}</strong>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-xs-4 col-md-4{{ $errors->has('cep') ? ' has-error' : '' }}">
                                 <label for="cep" class="control-label">CEP:</label>
-                                <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" @if(old('cep')) value="{{old('cep')}}" @elseif($condominio->cep) value="{{$condominio->cep}}" @endif >
+                                <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" @if(old('cep')) value="{{old('cep')}}" @elseif(!empty($condominio->cep)) value="{{$condominio->cep}}" @endif >
                                 @if ($errors->has('cep'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('cep') }}</strong>
@@ -92,7 +92,7 @@
                         <div class="row">   
                             <div class="col-xs-6 col-md-6{{ $errors->has('endereco') ? ' has-error' : '' }}">
                                 <label for="endereco" class="control-label">Endereço:</label>
-                                <input type="text" id="numUsuario" name="endereco" class="form-control" placeholder="Endereço" @if(old('endereco')) value="{{old('endereco')}}" @elseif($condominio->endereco) value="{{$condominio->endereco}}" @endif >
+                                <input type="text" id="numUsuario" name="endereco" class="form-control" placeholder="Endereço" @if(old('endereco')) value="{{old('endereco')}}" @elseif(!empty($condominio->endereco)) value="{{$condominio->endereco}}" @endif >
                                 @if ($errors->has('endereco'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('endereco') }}</strong>
@@ -101,7 +101,7 @@
                             </div>
                               <div class="col-xs-6 col-md-6{{ $errors->has('cidade') ? ' has-error' : '' }}">
                                 <label for="cidade" class="control-label">Cidade:</label>
-                                <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" @if(old('cidade')) value="{{old('cidade')}}" @elseif($condominio->cidade) value="{{$condominio->cidade}}" @endif >
+                                <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" @if(old('cidade')) value="{{old('cidade')}}" @elseif(!empty($condominio->cidade)) value="{{$condominio->cidade}}" @endif >
                                 @if ($errors->has('cidade'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('cidade') }}</strong>
@@ -133,7 +133,7 @@
                             </div>
                             <div class="col-xs-4 col-md-4{{ $errors->has('numero') ? ' has-error' : '' }}">
                                 <label for="numero" class="control-label">Número:</label>
-                                <input type="text" id="numUsuario" name="numero" class="form-control" placeholder="Número" @if(old('numero')) value="{{old('numero')}}" @elseif($condominio->numero) value="{{$condominio->numero}}" @endif >
+                                <input type="text" id="numUsuario" name="numero" class="form-control" placeholder="Número" @if(old('numero')) value="{{old('numero')}}" @elseif(!empty($condominio->numero)) value="{{$condominio->numero}}" @endif >
                                 @if ($errors->has('numero'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('numero') }}</strong>

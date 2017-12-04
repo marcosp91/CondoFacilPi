@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Painel\CondominioFormRequest;
 use App\Models\Painel\Condominio;
+use App\Models\Painel\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function dd;
@@ -37,9 +38,10 @@ class CondominioController extends Controller
         $dadosForm['privilegio'] = (!isset($_SESSION['usuario'])) ? 1 : 0;
     
         $insert = $this->condominio->create($dadosForm);
-        
-        $usuario = $this->usuario->find($_SESSION['usuario']->id);
-        
+
+        $usuario = new Usuario();
+        $usuario = $usuario->find($_SESSION['usuario']->id);
+
         $condominio = DB::table('condominios')
                      ->select('id')
                      ->where('cnpj', '=', $dadosForm['cnpj'])

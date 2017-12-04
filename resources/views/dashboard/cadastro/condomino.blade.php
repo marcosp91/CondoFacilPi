@@ -44,7 +44,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                              <button type="button" class="btn-add btn-acess btn btn-warning" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Condômino</button>
+                              <button type="button" class="btn-add btn-acess btn btn-primary" data-toggle="modal" data-target="#modal-mensagem"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Novo Condômino</button>
                         </div>
                     </div>
                     <br>
@@ -64,8 +64,9 @@
                                    <td>{{ $usuario->email }}</td>
                                    <td>{{ $usuario->cpf }}</td>
                                    <td>
-                                    <a class="btn btn-danger" href="{{route('condomino.destroy', $usuario->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                    <!--<a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>-->
+                                        <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a class="btn btn-primary" data-toggle="modal" data-target="#modal-mensagem" href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a class="btn btn-danger" href="{{route('condomino.destroy', $usuario->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
                                   </td>
                                 </tr>
                             @endforeach

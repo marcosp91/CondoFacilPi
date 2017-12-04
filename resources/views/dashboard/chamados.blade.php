@@ -68,22 +68,19 @@
                                 <th>Aberto Por</th>
                                 <!-- <th>Status</th> -->
                                 <th>Ação</th>
-<<<<<<< HEAD
-=======
-                                
->>>>>>> 95a980d28b67cee2dfe3a5eb5856e9f65061210b
                             </tr>
                         </thead>
                         <tbody>
                              @foreach ($chamados as $chamado)
                             <tr>
-<<<<<<< HEAD
-                                <td class="name">{{ $chamado->assunto }}</td>
-                                <td class="name">{{ $chamado->id }}</td>
-                                <td class="name">{{ $chamado->descricao }}</td>
-                                <td class="name">{{ $chamado->nome }}</td>
-                                <td class="name">
-                                    <a class="btn btn-danger" href="#"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                <td>{{ $chamado->assunto }}</td>
+                                <td>{{ $chamado->id }}</td>
+                                <td>{{ $chamado->descricao }}</td>
+                                <td>{{ $chamado->nome }}</td>
+                                <td>
+                                    @if($_SESSION['usuario']->privilegio == 1)
+                                    <a class="btn btn-danger" href="{{route('chamados.destroy', $chamado->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                    @endif
                                     <a data-protocolo="{{ $chamado->id }}"
                                        data-assunto="{{ $chamado->assunto }}"
                                        data-tipo="{{ $chamado->tipo }}"
@@ -91,26 +88,6 @@
                                        data-mensagem="{{ $chamado->descricao }}"
                                        class="btn btn-default visu_chamado" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                 </td>
-=======
-                                <td>{{ $chamado->assunto }}</td>
-                                <td>{{ $chamado->id }}</td>
-                                <td>{{ $chamado->descricao }}</td>
-                                <td>{{ $chamado->nome }}</td>
-                                
-                                    <td>
-                                        @if($_SESSION['usuario']->privilegio == 1)
-                                        <a class="btn btn-danger" href="{{route('chamados.destroy', $chamado->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                        @endif
-                                        <a data-protocolo="{{ $chamado->id }}"
-                                           data-assunto="{{ $chamado->assunto }}"
-                                           data-tipo="{{ $chamado->tipo }}"
-                                           data-data="{{ $chamado->created_at }}"
-                                           data-mensagem="{{ $chamado->descricao }}"
-                                           class="btn btn-default visu_chamado" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                    
-                                    </td>
-                                   
->>>>>>> 95a980d28b67cee2dfe3a5eb5856e9f65061210b
                             </tr>
                             @endforeach
                         </tbody>
@@ -158,13 +135,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-md-12{{ $errors->has('mensagem') ? ' has-error' : '' }}">
-<<<<<<< HEAD
-                                    <label id="msgAvisos" for="mensagem">Descrição:</label>
-                                    <textarea name="mensagem" class="noResize form-control" value="{{ old('mensagem') }}"></textarea>
-=======
                                     <label id="msgAvisos" for="descricao">Descrição:</label>
                                     <textarea name="descricao" class="noResize form-control" value="{{ old('mensagem') }}"></textarea>
->>>>>>> 95a980d28b67cee2dfe3a5eb5856e9f65061210b
                                     @if ($errors->has('mensagem'))
                                       <span class="help-block">
                                           <strong>{{ $errors->first('mensagem') }}</strong>
@@ -194,55 +166,21 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-<<<<<<< HEAD
-                            <div class="col-xs-12 col-md-6">
-                                <label>Nº Protocolo:</label>
-                                <p id="prot_chamado"></p>
-                            </div>
-                             <div class="col-xs-12 col-md-6">
-                                <label>Assunto:</label>
-                                <p id="assunto_chamado"></p>                                
-=======
                             <div class="col-xs-12 col-md-4">
                                 <label>Nº Protocolo:&nbsp;</label>
                                 <small id="prot_chamado"></small>
                             </div>
                              <div class="col-xs-12 col-md-6">
                                 <label>Assunto:</label>
-                                <small id="assunto_chamado"></small>                                
->>>>>>> 95a980d28b67cee2dfe3a5eb5856e9f65061210b
+                                <small id="assunto_chamado"></small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-4">
-<<<<<<< HEAD
-                                <label>Tipo:</label>
-                                <p id="tipo_chamado"></p>
-=======
                                 <label>Tipo:&nbsp;</label>
                                 <small id="tipo_chamado"></small>
->>>>>>> 95a980d28b67cee2dfe3a5eb5856e9f65061210b
+
                             </div>
-                            <!--<div class="col-xs-12 col-md-4">
-                                <label>Status:</label>
-                                <select name="status" class="form-control">
-                                    <option value="Cancelar">Cancelar</option>
-                                    <option value="Pendente">Pendente</option>
-                                    <option value="Resolvido">Resolvido</option>
-                                    <option value="Outros">Outros</option>
-                                </select>
-                            </div>-->
-<<<<<<< HEAD
-                            <div class="col-xs-12 col-md-4">
-                                <label>Data Abertura:</label>
-                                <p id="data_chamado"></p>
-                            </div>
-                        </div>
-                        <div class="row"> 
-                            <div class="col-xs-12 col-md-12">  
-                                <label>Mensagem:</label>
-                                <p id="mensagem_chamado"></p>
-=======
                             <div class="col-xs-12 col-md-6">
                                 <label>Data Abertura:&nbsp;</label>
                                 <small id="data_chamado"></small>
@@ -254,7 +192,6 @@
                                 <div class="displayMensagem"> 
                                     <p id="mensagem_chamado"></p>
                                 </div>
->>>>>>> 95a980d28b67cee2dfe3a5eb5856e9f65061210b
                             </div>
                         </div>
                         <br>
