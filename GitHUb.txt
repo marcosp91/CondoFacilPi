@@ -1,0 +1,74 @@
+gitSydrack email: sydrack@edu.univali.br / login = sydrack033 / pass = s977173
+gitCondofacil email: condofacilpi@gmail.com / 
+
+adicionar apelido para repositorio = gite remote add [apelido][link repositorio git
+
+git fetch testeSea= Como você acabou de ver, para pegar dados dos seus projetos remotos, você pode executar:
+
+
+git fetch origin(testeSea) = busca qualquer novo trabalho que foi enviado para esse servidor
+
+git remote -v = lista todos os repositorios do git
+
+
+Enviar novo deploy
+
+** verificar se esta conetcado no repositorio remoto = git remote -v **
+git commit -m "Versao do arquivo"
+git add .
+git push [nomeRepositorio]master
+
+Adicionar pastar ao repositorio Github
+
+Entrar na pasta que deseja adicionar c:/xampp//Condo
+
+git init
+
+git remote add origin [link para o repositorio no git]
+
+git status = verifica  o que foi atualizado
+
+
+
+git remote rm - origin = deleta o remote [repositorio github]
+
+Gerar SSH para permissão:
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+**mais de uma ssh adicionar : /c/Users/Leco_/.ssh/id_lecoRox
+**Verificar credenciais no gerenciador de contas do windows
+
+**Buscar arquivos Git Heroku
+
+git add .
+git commit -m "Versao"
+git pull heroku master
+
+os arquivos gerador na pasta CONDOFACILPI copiar para CONDOFACIL
+
+voltar para o commit
+
+git checkout <hash-do-seu-commit>
+
+Voltar para ultimo commit
+git revert HEAD~1
+
+/*** TRABALHANDO COM BRANCH ***\
+CASO TENHA ALTERADO O CÓDIGO, REALIZAR O SEGUINTE COMANDO:
+
+git sash -> para colocar as modificações de lado.
+
+git pull heroku master
+
+APÓS ISSO CRIAR UMA NOVA BRANCH E REALIZAR A APLICAÇÃO DO STASH
+
+git checkout -b NomeDaBranch / checkout -D NomeDaBran (para deletar a branch)   
+git stash apply
+
+
+git add .
+git commit -m
+git checkout master
+git push heroku NovaBranchComStash
+
+
