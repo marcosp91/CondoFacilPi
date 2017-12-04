@@ -103,28 +103,12 @@ class UsuarioController extends Controller
     }
 
  
-    public function update(UsuarioFormRequest $request)
+    public function update(UsuarioFormRequest $request, $id)
     {
         $dadosForm = $request->all();
 
-        //dd($dadosForm);
-        
-        $usuario = $this->usuario->find($dadosForm['id']);
-        $usuario->nome = $dadosForm['nome'];
-        $usuario->cpf = $dadosForm['cpf'];
-        $usuario->email = $dadosForm['email'];
-        $usuario->telefone = $dadosForm['telefone'];
-        $usuario->endereco = $dadosForm['endereco'];
-        $usuario->num_residencia = $dadosForm['num_residencia'];
-        $usuario->bloco = 'B';
-        $usuario->cidade = $dadosForm['cidade'];
-        $usuario->estado = $dadosForm['estado'];
-        $usuario->cep = $dadosForm['cep'];
-        
-        //$usuario->updated_at = Carbon::createFromFormat('Y-m-d H', Carbon::now(), 'America/Sao_Paulo');
-        $usuario->updated_at = Carbon::now(new DateTimeZone('America/Sao_Paulo'));
-        
-                
+        $usuario = $this->usuario->find($id);
+        $usuario = $usuario->fill($request->all());
         $update = $usuario->save();
 
         if ($update){
