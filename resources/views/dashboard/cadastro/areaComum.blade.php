@@ -107,7 +107,7 @@
                             <div class="row">
                                  <div class="col-xs-4 col-md-4">
                                     <label for="valorTaxa" class="control-label">Valor de Locação:</label>
-                                    <input type="text" id="valorTaxa" name="valor_locacao" class="form-control" placeholder="Se houver, especifique um valor..." value="{{ old('valor_locacao') }}>
+                                    <input type="text" id="valorTaxa" name="valor_locacao" class="form-control" placeholder="Se houver, especifique um valor..." value="{{ old('valor_locacao') }}">
                                 </div>
                             </div>
                             <br>
