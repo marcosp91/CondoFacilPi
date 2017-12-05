@@ -53,6 +53,13 @@ git checkout <hash-do-seu-commit>
 Voltar para ultimo commit
 git revert HEAD~1
 
+
+/*** RESOLVENDO MERGE ***\
+git checkout master
+git pull               # to update the state to the latest remote master state
+git merge develop      # to bring changes to local master from your develop branch
+git push origin master # push current HEAD to remote master branch
+
 /*** TRABALHANDO COM BRANCH ***\
 CASO TENHA ALTERADO O CÓDIGO, REALIZAR O SEGUINTE COMANDO:
 
@@ -70,5 +77,6 @@ git add .
 git commit -m
 git checkout master
 git push heroku NovaBranchComStash
+
 
 
