@@ -30,6 +30,8 @@ Route::group(['prefix' => 'dashboard'], function(){
 
     Route::get('cadastro/areaComum', 'AreaController@index')->name('area.index');
     Route::get('cadastro/areaComum/{id}', 'AreaController@destroy')->name('areas.destroy');
+    Route::get('cadastro/areaComum/{id}/editar', 'AreaController@indexEditar')->name('areas.editar');
+    Route::put('cadastro/areaComum/{id}/editar', 'AreaController@update')->name('areas.update');
     Route::post('cadastro/areaComum', 'AreaController@store')->name('area.cadastro');
 
     Route::get('cadastro/reservaArea', 'ReservaController@index')->name('reservaArea.index');

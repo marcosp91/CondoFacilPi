@@ -36,7 +36,30 @@ class AreaController extends Controller
             return view('dashboard.cadastro.areaComum', compact('areas'));
              
     }
-    
+
+    public function indexEditar($id) {
+
+        $area = $this->area->find($id);
+
+        if ($area){
+            return view('dashboard.editar.editarArea', compact('area'));
+        }
+
+
+    }
+
+    public function update(Request $request, $id){
+        $area = $this->area->find($id);
+        $area->fill($request->all());
+        $update = $area->save();
+
+        if($update)
+            return redirect()->route('area.index')->with('mensagemSUCESSO', 'Sua área foi atualizada com sucesso!');
+        else
+            return redirect()->route('areas.editar', $area->id)->with('mensagemERRO', 'Ops! Algo aconteceu de errado na atualização da sua área!');
+
+    }
+
     public function store(AreaFormRequest $request) {
         
         $dadosForm = $request->all();

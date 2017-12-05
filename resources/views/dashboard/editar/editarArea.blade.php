@@ -34,34 +34,41 @@
             <!-- Lista Condôminos -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
-                    <h3 class="panel-title">Editar Avisos</h3>
+                    <h3 class="panel-title">Editar Área</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{route('avisos.update, $')}}" >
+                    <form class="form-horizontal" method="POST" action="{{route('areas.update', $area->id)}}">
                         {{ csrf_field() }}
+                        {{ method_field('PUT') }}
                         <div class="row">
-                            <div class="col-xs-12 col-md-12 {{ $errors->has('descricao') ? ' has-error' : '' }}">
-                                <label for="tituloAviso">Título do Aviso:</label>
-                                <input id="tituloAviso" type="text" name="descricao" class="form-control" placeholder="Título do Aviso" value="{{ old('descricao') }}">
+                            <div class="col-xs-12 col-md-12{{ $errors->has('nome') ? ' has-error' : '' }}">
+                                <label for="nomeAreaComum" class="control-label">Nome da área:</label>
+                                <input type="text" id="nomeAreaComum" name="nome" class="form-control" @if(old('nome')) value="{{old('nome')}}" @elseif(!empty($area->nome)) value="{{$area->nome}}" @endif maxlength="50" placeholder="Ex: Salão de festa externo...">
+                                @if ($errors->has('nome'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nome') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12{{ $errors->has('descricao') ? ' has-error' : '' }}">
+                                <label for="areaDescricao" class="control-label">Descrição do local:</label>
+                                <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10">@if(old('descricao')) {{old('descricao')}} @elseif(!empty($area->descricao)) {{$area->descricao}} @endif
+                                    </textarea>
                                 @if ($errors->has('descricao'))
                                     <span class="help-block">
-                                            <strong>{{ $errors->first('descricao') }}</strong>
-                                        </span>
+                                        <strong>{{ $errors->first('descricao') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12 col-md-12{{ $errors->has('mensagem') ? ' has-error' : '' }}">
-                                <label id="msgAvisos" for="mensagem">Descrição do Aviso:</label>
-                                <textarea name="mensagem" value="{{ old('mensagem') }}"></textarea>
-                                @if ($errors->has('mensagem'))
-                                    <span class="help-block">
-                                          <strong>{{ $errors->first('mensagem') }}</strong>
-                                      </span>
-                                @endif
+                            <div class="col-xs-4 col-md-4">
+                                <label for="valorTaxa" class="control-label">Valor de Locação:</label>
+                                <input type="text" id="valorTaxa" name="valor_locacao" class="form-control" placeholder="Se houver, especifique um valor..." @if(old('valor_locacao')) value="{{old('valor_locacao')}}" @elseif(!empty($area->valor_locacao)) value="{{$area->valor_locacao}}" @endif>
                             </div>
                         </div>
-                        <input type="hidden" name="classe" value="App\Models\Painel\Aviso">
                         <br>
                         <div class="row">
                             <div class="modal-footer">

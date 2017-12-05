@@ -52,10 +52,10 @@
                             <tr>
                                 <td>{{ $area->nome }}</td>
                                 <td>{{ $area->descricao }}</td>
-                                <td>True/False</td>
+                                <td>R${{ $area->valor_locacao }},00</td>
                                 <td>
-                                  <a class="btn btn-danger" href="{{route('areas.destroy', $area->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
-                                <!--  <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a> -->
+                                    <a class="btn btn-primary" href="{{route('areas.editar', $area->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    <a class="btn btn-danger" href="{{route('areas.destroy', $area->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
                                 </td>
                             </tr>
                         @endforeach
@@ -107,7 +107,7 @@
                             <div class="row">
                                  <div class="col-xs-4 col-md-4">
                                     <label for="valorTaxa" class="control-label">Valor de Locação:</label>
-                                    <input type="text" id="valorTaxa" name="valorTaxa" class="form-control" placeholder="Se houver, especifique um valor...">
+                                    <input type="text" id="valorTaxa" name="valor_locacao" class="form-control" placeholder="Se houver, especifique um valor..." value="{{ old('valor_locacao') }}>
                                 </div>
                             </div>
                             <br>
