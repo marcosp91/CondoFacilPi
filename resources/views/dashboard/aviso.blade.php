@@ -82,10 +82,10 @@
                             <td>{{ $aviso->created_at }}</td>
                             <td>{{ $aviso->nome }}</td>
                             <td>
+                                <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                 @if($_SESSION['usuario']->privilegio == 1)
-                                    <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    <a class="btn btn-primary" href="{{route('avisos.editar', $aviso->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 @endif
-                                <a class="btn btn-primary" href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 <button class="delete-modal btn btn-danger" data-id="{{$aviso->id}}">
                                     <span class="fa fa-trash-o fa-lg"></span></button>
                             </td>
