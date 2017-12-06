@@ -98,9 +98,9 @@
                                     <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10" value="{{ old('descricao') }}">
                                     </textarea>
                                     @if ($errors->has('descricao'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('descricao') }}</strong>
-                                    </span>
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('descricao') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>

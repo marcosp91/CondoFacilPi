@@ -96,32 +96,39 @@ class UsuarioController extends Controller
         //
     }
 
-    
-    public function edit()
-    {
-        return view('dashboard.perfil');
+
+    public function indexEditar($id){
+
+        $usuario = $this->usuario->find($id);
+
+        if ($usuario) {
+            return view('dashboard.editar.editarCondomino', compact('usuario'));
+        }
     }
 
  
     public function update(UsuarioFormRequest $request, $id)
     {
-        $dadosForm = $request->all();
 
         $usuario = $this->usuario->find($id);
         $usuario = $usuario->fill($request->all());
         $update = $usuario->save();
 
-        if ($update){
+        if ($update == true && $_SESSION['usuario']->id == $id){
             $usuario = DB::table('usuarios')
                      ->select('*')
-                     ->where('email', '=', $dadosForm['email'])
+                     ->where('email', '=', $request->all()->email)
                      ->get()
                      ->first();
             
             if ($usuario){   
                 $_SESSION['usuario'] = $usuario;
             }
+
             return Redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Seu perfil foi atualizado com sucesso!');
+
+        }elseif($update){
+            return Redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Condomino atualizado com sucesso!');
         }else{
             return redirect()->route('perfil.editar');
         }

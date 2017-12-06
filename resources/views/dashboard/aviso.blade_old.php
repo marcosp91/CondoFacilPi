@@ -40,18 +40,7 @@
             $(".modal-body #mensagem_aviso").html( myAvisoMensagem );
         });
     </script>
-
-    <script>
-        $(document).on('click', '.delete-modal', function() {
-            $('#id_delete').val($(this).data('id'));
-            $('#deleteModal').modal('show');
-            var id = $('#id_delete').val();
-            var url = '/dashboard/avisos/'+id;
-            var link = url;
-            $('#link').attr('href',link);
-        });
-    </script>
-        <div id="lista" class="col-xs-12 col-md-9">
+        <div id="lista" class="col-xs-12 col-md-8">
             <!-- Lista Condôminos -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
@@ -73,6 +62,7 @@
                                 <th>Data</th>
                                 <th>Criado Por</th>
                                 <th>Ação</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -82,11 +72,11 @@
                                     <td>{{ $aviso->created_at }}</td>
                                     <td>{{ $aviso->nome }}</td>
                                     <td>
-                                        <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                         @if($_SESSION['usuario']->privilegio == 1)
                                             <a class="btn btn-primary" href="{{route('avisos.editar', $aviso->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         @endif
-                                        <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                            <a class="btn btn-danger" href="{{route('avisos.destroy', $aviso->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
                                     </td>
                                 </tr>
                             @endforeach
@@ -140,6 +130,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="modal-display">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -170,24 +161,6 @@
                         </div>
                     </div>
                </div>
-            </div>
-        </div>
-         <!-- Modal form to delete a form -->
-        <div id="deleteModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <h3 class="text-center">Deseja mesmo excluir?</h3>
-                        <div class="modal-footer">
-                            <a class="btn-acess btn btn-danger" id="link">Deletar</a>&nbsp;
-                            <a class="btn-acess btn btn-primary" data-dismiss="modal">Fechar</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     @endsection

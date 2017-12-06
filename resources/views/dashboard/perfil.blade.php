@@ -22,12 +22,13 @@
                 <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar Perfil</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal" method="POST" action="{{route('perfil.atualizar')}}">
+                <form class="form-horizontal" method="POST" action="{{route('perfil.update', $usuario->id)}}">
                     {{ csrf_field() }}
+                    {{ method_field('PUT') }}
                     <div class="row">
                         <div class="col-xs-6 col-md-6{{ $errors->has('nome') ? ' has-error' : '' }}">
                             <label for="nomeUsuario" class="control-label">Nome Completo:</label>
-                            <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome Completo" value="{{$_SESSION['usuario']->nome}}">
+                            <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome Completo" @if(old('nome')) value="{{old('nome')}}" @elseif(!empty($usuario->nome)) value="{{$usuario->nome}}" @endif >
                             @if ($errors->has('nome'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('nome') }}</strong>
@@ -36,7 +37,7 @@
                         </div>
                         <div class="col-xs-6 col-md-6{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="emailUsuario" class="control-label">Email:</label>
-                            <input type="text" id="emailUsuario" name="email" class="form-control" placeholder="Email" value="{{$_SESSION['usuario']->email}}">
+                            <input type="text" id="emailUsuario" name="email" class="form-control" placeholder="Email" @if(old('email')) value="{{old('email')}}" @elseif(!empty($usuario->email)) value="{{$usuario->email}}" @endif>
                             @if ($errors->has('email'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -47,7 +48,7 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-6{{ $errors->has('cpf') ? ' has-error' : '' }}">
                             <label for="cpfUsuario" class="control-label">CPF:</label>
-                            <input type="text" id="cpfUsuario" name="cpf" class="form-control" placeholder="CPF" value="{{$_SESSION['usuario']->cpf}}">
+                            <input type="text" id="cpfUsuario" name="cpf" class="form-control" placeholder="CPF" @if(old('cpf')) value="{{old('cpf')}}" @elseif(!empty($usuario->cpf)) value="{{$usuario->cpf}}" @endif>
                             @if ($errors->has('cpf'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('cpf') }}</strong>
@@ -56,7 +57,7 @@
                         </div>
                         <div class="col-xs-6 col-md-6{{ $errors->has('telefone') ? ' has-error' : '' }}">
                             <label for="tel" class="control-label">Telefone:</label>
-                            <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" value="{{$_SESSION['usuario']->telefone}}">
+                            <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" @if(old('telefone')) value="{{old('telefone')}}" @elseif(!empty($usuario->telefone)) value="{{$usuario->telefone}}" @endif>
                             @if ($errors->has('telefone'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('telefone') }}</strong>
@@ -92,7 +93,7 @@
                         </div>
                         <div class="col-xs-6 col-md-6{{ $errors->has('endereco') ? ' has-error' : '' }}">
                             <label for="endUsuario" class="control-label">Endereço:</label>
-                            <input type="text" id="endUsuario" name="endereco" class="form-control" placeholder="Endereço" value="{{$_SESSION['usuario']->endereco}}"/>
+                            <input type="text" id="endUsuario" name="endereco" class="form-control" placeholder="Endereço" @if(old('endereco')) value="{{old('endereco')}}" @elseif(!empty($usuario->endereco)) value="{{$usuario->endereco}}" @endif>
                             @if ($errors->has('endereco'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('endereco') }}</strong>
@@ -101,7 +102,7 @@
                         </div>
                         <div class="col-xs-6 col-md-3{{ $errors->has('num_residencia') ? ' has-error' : '' }}">
                             <label for="numUsuario" class="control-label">Num:</label>
-                            <input type="text" id="numUsuario" name="num_residencia" class="form-control" placeholder="Numero" value="{{$_SESSION['usuario']->num_residencia}}">
+                            <input type="text" id="numUsuario" name="num_residencia" class="form-control" placeholder="Numero" @if(old('num_residencia')) value="{{old('num_residencia')}}" @elseif(!empty($usuario->num_residencia)) value="{{$usuario->num_residencia}}" @endif>
                             @if ($errors->has('num_residencia'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('num_residencia') }}</strong>
@@ -112,7 +113,7 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-4{{ $errors->has('cidade') ? ' has-error' : '' }}">
                             <label for="cidadeUsuario" class="control-label">Cidade:</label>
-                            <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" value="{{$_SESSION['usuario']->cidade}}">
+                            <input type="text" id="telUsuario" name="cidade" class="form-control" placeholder="Cidade" @if(old('cidade')) value="{{old('cidade')}}" @elseif(!empty($usuario->cidade)) value="{{$usuario->cidade}}" @endif>
                             @if ($errors->has('cidade'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('cidade') }}</strong>
@@ -159,7 +160,7 @@
                         </div>
                         <div class="col-xs-6 col-md-4{{ $errors->has('cep') ? ' has-error' : '' }}">
                             <label for="cep" class="control-label">CEP:</label>
-                            <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" value="{{$_SESSION['usuario']->cep}}">
+                            <input type="text" id="cepUsuario" name="cep" class="form-control" placeholder="CEP" @if(old('cep')) value="{{old('cep')}}" @elseif(!empty($usuario->cep)) value="{{$usuario->cep}}" @endif>
                             @if ($errors->has('cep'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('cep') }}</strong>
@@ -170,7 +171,6 @@
                     <div class="form-group text-center">
                         <button type="submit" class="btn-acess btn btn-success">Salvar</button>
                     </div>
-                    <input type="hidden" name="id" value="{{$_SESSION['usuario']->id}}">
                 </form>
             </div><!-- Painel Body -->
         </div><!-- Painel Default -->

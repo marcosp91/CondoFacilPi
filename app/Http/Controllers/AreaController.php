@@ -38,7 +38,6 @@ class AreaController extends Controller
     }
 
     public function indexEditar($id) {
-
         $area = $this->area->find($id);
 
         if ($area){

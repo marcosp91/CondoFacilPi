@@ -58,10 +58,26 @@ class AvisoController extends Controller
         //
     }
 
+    public function indexEditar($id) {
+        $aviso = $this->aviso->find($id);
+
+        if ($aviso){
+            return view('dashboard.editar.editarAviso', compact('aviso'));
+        }
+
+    }
  
     public function update(Request $request, $id)
     {
-        //
+        $aviso = $this->aviso->find($id);
+        $aviso->fill($request->all());
+        $update = $aviso->save();
+
+        if($update)
+            return redirect()->route('avisos.index')->with('mensagemSUCESSO', 'Seu aviso foi atualizado com sucesso!');
+        else
+            return redirect()->route('avisos.editar', $aviso->id)->with('mensagemERRO', 'Ops! Algo aconteceu de errado na atualização do seu aviso!');
+
     }
 
     public function destroy($id)

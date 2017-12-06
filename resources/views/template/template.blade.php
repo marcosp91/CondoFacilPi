@@ -49,7 +49,7 @@
                             @elseif($_SESSION['usuario']->privilegio == 1)
                                 <li><a href="{{route('condominio.index')}}">Cadastrar Condomínio</a></li>
                             @endif
-                            <li><a href="{{route('perfil.editar')}}">Editar Perfil</a></li>
+                            <li><a href="{{route('perfil.editar', $_SESSION['usuario']->id)}}">Editar Perfil</a></li>
                             <li class="divider"></li>
                             <li><a href="{{route('dashboard.logout')}}">Sair <span class="glyphicon glyphicon-log-in"></span></a>
                         </ul>

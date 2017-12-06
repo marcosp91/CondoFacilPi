@@ -15,34 +15,42 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::get('/home', 'DashboardController@home')->name('dashboard.home');
     Route::post('/home', 'DashboardController@home')->name('dashboard.home');
 
-    Route::get('/avisos', 'AvisoController@index')->name('avisos.index');
-    Route::get('/avisos/{id}', 'AvisoController@destroy')->name('avisos.destroy');
-    Route::post('/avisos', 'DashboardController@cadastrarPublicacao')->name('avisos.cadastro');
+    Route::get('avisos', 'AvisoController@index')->name('avisos.index');
+    Route::get('avisos/{id}', 'AvisoController@destroy')->name('avisos.destroy');
+    Route::get('avisos/{id}/editar', 'AvisoController@indexEditar')->name('avisos.editar');
+    Route::put('avisos/{id}/editar', 'AvisoController@update')->name('avisos.update');
+    Route::post('avisos', 'DashboardController@cadastrarPublicacao')->name('avisos.cadastro');
    
     
-    Route::get('cadastro/condominio', 'CondominioController@index')->name('condominio.index');
-    Route::put('cadastro/condominio', 'CondominioController@atualizaCondominio')->name('condominio.atualizar');
-    Route::post('cadastro/condominio', 'CondominioController@cadastrarCondominio')->name('condominio.cadastro');
-    
-    Route::get('cadastro/condomino', 'UsuarioController@index')->name('condomino.index');
-    Route::get('cadastro/condomino/{id}', 'UsuarioController@destroy')->name('condomino.destroy');
-    Route::post('cadastro/condomino', 'UsuarioController@store')->name('condomino.cadastro');
+    Route::get('condominio', 'CondominioController@index')->name('condominio.index');
+    Route::put('condominio', 'CondominioController@atualizaCondominio')->name('condominio.atualizar');
+    Route::post('condominio', 'CondominioController@cadastrarCondominio')->name('condominio.cadastro');
 
-    Route::get('cadastro/areaComum', 'AreaController@index')->name('area.index');
-    Route::get('cadastro/areaComum/{id}', 'AreaController@destroy')->name('areas.destroy');
-    Route::get('cadastro/areaComum/{id}/editar', 'AreaController@indexEditar')->name('areas.editar');
-    Route::put('cadastro/areaComum/{id}/editar', 'AreaController@update')->name('areas.update');
-    Route::post('cadastro/areaComum', 'AreaController@store')->name('area.cadastro');
+    Route::get('condomino', 'UsuarioController@index')->name('condomino.index');
+    Route::get('condomino/{id}', 'UsuarioController@destroy')->name('condomino.destroy');
+    Route::get('condomino/{id}/editar', 'UsuarioController@indexEditar')->name('condomino.editar');
+    Route::put('condomino/{id}/editar', 'UsuarioController@update')->name('condomino.update');
+    Route::post('condomino', 'UsuarioController@store')->name('condomino.cadastro');
 
-    Route::get('cadastro/reservaArea', 'ReservaController@index')->name('reservaArea.index');
-    Route::post('cadastro/reservaArea', 'ReservaController@store')->name('reservaArea.cadastro');
+    Route::get('areaComum', 'AreaController@index')->name('area.index');
+    Route::get('areaComum/{id}', 'AreaController@destroy')->name('areas.destroy');
+    Route::get('areaComum/{id}/editar', 'AreaController@indexEditar')->name('areas.editar');
+    Route::put('areaComum/{id}/editar', 'AreaController@update')->name('areas.update');
+    Route::post('areaComum', 'AreaController@store')->name('area.cadastro');
 
-    Route::get('cadastro/chamados', 'ChamadosController@index')->name('chamados.index');
-    Route::post('cadastro/chamados', 'ChamadosController@cadastrarChamado')->name('chamados.cadastro');
-    Route::get('/cadastro/chamados/{id}', 'ChamadosController@destroy')->name('chamados.destroy');
+    Route::get('reservaArea', 'ReservaController@index')->name('reservaArea.index');
+    Route::get('reservaArea/{id}/editar', 'ReservaController@indexEditar')->name('reservaArea.editar');
+    Route::put('reservaArea/{id}/editar', 'ReservaController@update')->name('reservaArea.update');
+    Route::post('reservaArea', 'ReservaController@store')->name('reservaArea.cadastro');
 
-    Route::get('/perfil', 'UsuarioController@edit')->name('perfil.editar');
-    Route::post('/perfil', 'UsuarioController@update')->name('perfil.atualizar');
+    Route::get('chamados', 'ChamadosController@index')->name('chamados.index');
+    Route::get('chamados/{id}', 'ChamadosController@destroy')->name('chamados.destroy');
+    Route::get('chamado/{id}/editar', 'ChamadosController@indexEditar')->name('chamados.editar');
+    Route::put('chamado/{id}/editar', 'ChamadosController@update')->name('chamados.update');
+    Route::post('chamados', 'ChamadosController@cadastrarChamado')->name('chamados.cadastro');
+
+    Route::get('perfil/{id}/editar', 'UsuarioController@indexEditar')->name('perfil.editar');
+    Route::put('perfil{id}/editar', 'UsuarioController@update')->name('perfil.update');
     
             
     Route::get('/logout', 'DashboardController@logout')->name('dashboard.logout');
