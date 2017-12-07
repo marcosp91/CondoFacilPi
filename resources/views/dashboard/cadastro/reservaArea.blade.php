@@ -39,20 +39,18 @@
             </div>
                 <div class="panel-body">
                     <div class="container-fluid">
-                        @foreach($areas->chunk(3) as $area)
-                               @foreach($area as $add)
+                               @foreach($areas as $area)
                                <div class="col-md-4">
                                     <div class="colImage thumbnail">
-                                        <h3>{{ $add->nome }}</h3>
+                                        <h3>{{ $area->nome }}</h3>
                                         <img src="/img/testeLogo.png" class="img-reponsive">
                                         <div class="caption">
-                                            <p class="text-muted">{{ $add->descricao }}</p>
-                                            <a data-id="{{ $add->id }}"  class="btn-acess btn btn-info id-area" data-toggle="modal" data-target="#modal-mensagem" role="button">Reservar</a>
+                                            <p class="text-muted">{{ $area->descricao }}</p>
+                                            <a data-id="{{ $area->id }}"  class="btn-acess btn btn-info id-area" data-toggle="modal" data-target="#modal-mensagem" role="button">Reservar</a>
                                         </div>
                                     </div>
                                </div>
                                @endforeach
-                        @endforeach
                     </div>
                 </div><!-- Painel Body -->
             </div><!-- Painel Default -->
