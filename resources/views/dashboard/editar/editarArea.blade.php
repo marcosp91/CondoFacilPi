@@ -25,13 +25,13 @@
     @endsection
 
     @section('breadcrumb')
-      {{  Breadcrumbs::render('/avisos') }}
+        {{  Breadcrumbs::render('cadastro/novaArea') }}
     @endsection
 
     @section('content')
     <div class="col-md-1"></div>
         <div id="lista" class="col-xs-12 col-md-8">
-            <!-- Lista Condôminos -->
+            <!-- / ** Editar Áreas ** \ -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
                     <h3 class="panel-title">Editar Área</h3>
@@ -65,8 +65,8 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-4 col-md-4">
-                                <label for="valorTaxa" class="control-label">Valor de Locação:</label>
-                                <input type="text" id="valorTaxa" name="valor_locacao" class="form-control" placeholder="Se houver, especifique um valor..." @if(old('valor_locacao')) value="{{old('valor_locacao')}}" @elseif(!empty($area->valor_locacao)) value="{{$area->valor_locacao}}" @endif>
+                                <label for="asd" class="control-label">Valor de Locação:</label>
+                                <input type="text" id="valorReal" name="valor_locacao" class="form-control" placeholder="Se houver, especifique um valor..." @if(old('valor_locacao')) value="{{old('valor_locacao')}}" @elseif(!empty($area->valor_locacao)) value="{{$area->valor_locacao}}" @endif>
                             </div>
                         </div>
                         <br>
@@ -80,5 +80,4 @@
                 </div><!-- Painel Body Lista -->
             </div><!-- Painel Default Lista -->
         </div><!-- Coluna Lista -->
-
     @endsection

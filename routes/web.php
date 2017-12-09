@@ -50,7 +50,7 @@ Route::group(['prefix' => 'dashboard'], function(){
     Route::post('chamados', 'ChamadosController@cadastrarChamado')->name('chamados.cadastro');
 
     Route::get('perfil/{id}/editar', 'UsuarioController@indexEditar')->name('perfil.editar');
-    Route::put('perfil{id}/editar', 'UsuarioController@update')->name('perfil.update');
+    Route::put('perfil/{id}/editar', 'UsuarioController@update')->name('perfil.update');
     
             
     Route::get('/logout', 'DashboardController@logout')->name('dashboard.logout');

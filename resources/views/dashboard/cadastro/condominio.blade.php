@@ -38,7 +38,7 @@
                         @endif
                         <div class="row">
                             <div class="col-xs-6 col-md-6{{ $errors->has('nome') ? ' has-error' : '' }}">
-                                <label for="nome" class="control-label">Nome:</label>
+                                <label for="nome" class="control-label"><span class="obgCampo">* </span>Nome:</label>
                                 <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome do Condominio" @if(old('nome')) value="{{old('nome')}}" @elseif(!empty($condominio->nome)) value="{{$condominio->nome}}" @endif >
                                 @if ($errors->has('nome'))
                                 <span class="help-block">
@@ -47,7 +47,7 @@
                                 @endif
                             </div>
                             <div class="col-xs-6 col-md-6{{ $errors->has('cnpj') ? ' has-error' : '' }}">
-                                <label for="cnpjUsuario" class="control-label">CNPJ:</label>
+                                <label for="cnpjUsuario" class="control-label"><span class="obgCampo">* </span>CNPJ:</label>
                                 <input type="text" id="cnpjUsuario" name="cnpj" class="form-control" placeholder="CNPJ" @if(old('cnpj')) value="{{old('cnpj')}}" @elseif(!empty($condominio->cnpj)) value="{{$condominio->cnpj}}" @endif >
                                 @if ($errors->has('cnpj'))
                                 <span class="help-block">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-4 col-md-4{{ $errors->has('telefone') ? ' has-error' : '' }}">
-                                <label for="telefone" class="control-label">Telefone:</label>
+                                <label for="telefone" class="control-label"><span class="obgCampo">* </span>Telefone:</label>
                                 <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" @if(old('telefone')) value="{{old('telefone')}}" @elseif(!empty($condominio->telefone)) value="{{$condominio->telefone}}" @endif >
                                 @if ($errors->has('telefone'))
                                 <span class="help-block">
@@ -76,15 +76,15 @@
                                 @endif
                             </div>
                             <div class="col-xs-4 col-md-4{{ $errors->has('complemento') ? ' has-error' : '' }}">
-                                <label for="complemento" class="control-label">Complemento:</label>
+                                <label for="complemento" class="control-label">Tipo:</label>
                                 <select name="complemento" class="form-control">
                                     <option value="" disabled selected="selected">Selecione</option>
                                     <option value="Predial">Predial</option>
                                     <option value="Residencial">Residencial</option>
                                 </select>
-                                @if ($errors->has('complemento'))
+                                @if ($errors->has('tipo'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('complemento') }}</strong>
+                                    <strong>{{ $errors->first('tipo') }}</strong>
                                 </span>
                                 @endif
                             </div>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-4 col-md-4{{ $errors->has('tipo') ? ' has-error' : '' }}">
-                                <label for="tipo" class="control-label">Tipo:</label>
+                                <label for="tipo" class="control-label">Complemento:</label>
                                 <select name="tipo" class="form-control">
                                     <option value="" disabled selected="selected">Tipo</option>
                                     <option value="Avenida">Avenida</option>
@@ -125,9 +125,9 @@
                                     <option value="Servidao">Servidão</option>
                                     <option value="Travessa">Travessa</option>
                                 </select>   
-                                @if ($errors->has('tipo'))
+                                @if ($errors->has('complemento'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('tipo') }}</strong>
+                                    <strong>{{ $errors->first('complemento') }}</strong>
                                 </span>
                                 @endif
                             </div>
@@ -179,6 +179,9 @@
                                 @endif
                             </div>
                         </div> <!-- Row Cidade -->
+                        <div id="guardaObgEditar">
+                            <span class="obgCampo">* </span><strong>Campo Obrigatório.</strong>
+                        </div> 
                         <div class="form-group">
                             <div class="row text-center">
                                 <button type="submit" class="btn-acess btn btn-success">Salvar</button>

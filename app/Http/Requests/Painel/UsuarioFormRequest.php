@@ -18,7 +18,7 @@ class UsuarioFormRequest extends FormRequest
             //'cpf' => 'cpf',
             'telefone' => 'required',
            // 'email' => 'required|email',
-            'estado' => 'required'
+            'estado' => 'required',
         ];
     }
     

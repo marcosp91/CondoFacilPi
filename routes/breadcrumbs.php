@@ -17,17 +17,16 @@
 	    $breadcrumbs->push('Áreas Comuns');
 	});
 
-
-	// Dashoard > [Áreas Comuns] > Cadastrar Área Comun
+	// Dashoard > [Áreas Comuns] > Cadastrar
 	Breadcrumbs::register('cadastro/areaComum', function ($breadcrumbs) {
 	    $breadcrumbs->parent('cadastro/novaArea');
-	    $breadcrumbs->push('Cadastrar Área Comum', route('area.index'));
+	    $breadcrumbs->push('Cadastrar', route('area.index'));
 	});
 
-	// Dashoard > [Áreas Comuns] > Reservar Área Comun
+	// Dashoard > [Áreas Comuns] > Reservar
 	Breadcrumbs::register('cadastro/reservaArea', function ($breadcrumbs) {
 	    $breadcrumbs->parent('cadastro/novaArea');
-	    $breadcrumbs->push('Reservar Área Comum', route('reservaArea.cadastro'));
+	    $breadcrumbs->push('Reservar', route('reservaArea.cadastro'));
 	});
 
 	// Dashboard > Cadastro Condôminos

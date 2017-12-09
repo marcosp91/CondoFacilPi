@@ -20,6 +20,14 @@
         <!-- JQuery Bibliotecas -->
         <script src="/js/jquery-3.2.1.min.js"></script>
         <script src="/js/jquery.maskedinput.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+        <script src="/js/jquery.maskMoney.js" type="text/javascript"></script>
+
+        <!-- Bootstrap Core & JavaScript & JQUery -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="/js/ckeditor/ckeditor.js"></script>
        
     </head>
@@ -95,17 +103,51 @@
                             <a href="{{route('condomino.index')}}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Condôminos</a>
                         @endif
                             <a href="{{ route('chamados.index') }}" class="list-group-item" data-parent="#dashMenu"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; Contate o Síndico</a>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Modal form to delete a form -->
+            <div id="deleteModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="text-center">Deseja mesmo excluir?</h3>
+                            <br />
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" id="id_delete">
+                                </div>
+                            </form>
+                            <div class="modal-footer">
+                                <a class="btn-acess btn btn-danger" id="link">Deletar</a>&nbsp;
+                                <a class="btn-acess btn btn-primary" data-dismiss="modal">Fechar</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             @yield('content')
-
         </div><!-- Container -->
     </section>
 
+
     <!-- Mascaras de Input's -->
+    <script>
+       (function( $ ) {
+             $(function(){
+             $("#valorReal").maskMoney({symbol:'R$ ', 
+            showSymbol:false, thousands:'.', decimal:',', symbolStay: true});
+             });
+        })(jQuery);
+    </script>
+
+    <!-- SCRIPT MASCARA CAMPOS FORMULARIO -->  
     <script>
         jQuery(function ($) {
             $("#telUsuario").mask("(99) 99999-9999");
@@ -113,13 +155,13 @@
             $("#cpfUsuario").mask("999.999.999-99");
             $("#cnpjUsuario").mask("99.999.999/9999-99");
         });
-    </script>
 
-    <!-- Bootstrap Core & JavaScript & JQUery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </script>
+    
+    <!-- SCRIPT MODAL CAMPO MENSAGEM -->   
+    <script>
+        CKEDITOR.replace( 'mensagem' );
+    </script>
 
     <!-- Validação de Erros para o Modal( Avisos, Condôminos, Condomínios, Áreas Comuns)-->
     @if(Session::has('errors'))
@@ -130,8 +172,7 @@
         </script>
     @endif
 
-
-
+    <!-- SCRIPT MODAL CAMPO DATA -->
     <script>
         $( function() {
             $( "#datepicker" ).datepicker({
@@ -150,10 +191,18 @@
         } );
     </script>
 
+    <!-- SCRIPT MODAL EXCLUIR -->
     <script>
-        CKEDITOR.replace( 'mensagem' );
+        $(document).on('click', '.delete-modal', function() {
+            $('#id_delete').val($(this).data('id'));
+            $('#deleteModal').modal('show');
+            var id = $('#id_delete').val();
+            var url_atual = window.location.href+"/" + id;
+            
+            $('#link').attr('href',url_atual);
+        });
     </script>
-    
+
     </body>
    
 </html>

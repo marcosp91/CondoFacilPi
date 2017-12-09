@@ -22,13 +22,7 @@ class CondominioFormRequest extends FormRequest
             'nome'  => 'required|min:3|max:100',
             'cnpj' => 'required|cnpj|unique:condominios,cnpj',
             'telefone' => 'required',
-            'tipo' => 'required',
-            'endereco' => 'required|min:3',
-            'numero' => 'required',
-            'complemento' => 'required',
-            'cidade' => 'required',
-            'estado' => 'required',
-            'cep' => 'required',
+
         ];
     }
     

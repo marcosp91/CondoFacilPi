@@ -40,19 +40,8 @@
             $(".modal-body #mensagem_aviso").html( myAvisoMensagem );
         });
     </script>
-
-    <script>
-        $(document).on('click', '.delete-modal', function() {
-            $('#id_delete').val($(this).data('id'));
-            $('#deleteModal').modal('show');
-            var id = $('#id_delete').val();
-            var url = '/dashboard/avisos/'+id;
-            var link = url;
-            $('#link').attr('href',link);
-        });
-    </script>
     <div id="lista" class="col-xs-12 col-md-8">
-        <!-- Lista Condôminos -->
+        <!-- / ** Lista Avisos ** \ -->
         <div class="panel panel-default">
             <div class="panel-heading main-color-bg">
                 <h3 class="panel-title">Lista de Avisos</h3>
@@ -82,10 +71,10 @@
                             <td>{{ $aviso->created_at }}</td>
                             <td>{{ $aviso->nome }}</td>
                             <td>
-                                <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                 @if($_SESSION['usuario']->privilegio == 1)
-                                    <a class="btn btn-primary" href="{{route('avisos.editar', $aviso->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    <a data-mensagem="{{ $aviso->mensagem }}" data-titulo="{{ $aviso->descricao }}" class="btn btn-default visu_aviso" data-toggle="modal" href="#modal-display"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                 @endif
+                                <a class="btn btn-primary" href="{{route('avisos.editar', $aviso->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 <button class="delete-modal btn btn-danger" data-id="{{$aviso->id}}">
                                     <span class="fa fa-trash-o fa-lg"></span></button>
                             </td>
@@ -96,6 +85,8 @@
             </div><!-- Painel Body Lista -->
         </div><!-- Painel Default Lista -->
     </div><!-- Coluna Lista -->
+
+    <!-- / ** MODAL CADASTRAR AVISOS ** \-->
     <div class="modal fade" id="modal-mensagem">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -120,7 +111,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-12{{ $errors->has('mensagem') ? ' has-error' : '' }}">
                                 <label id="msgAvisos" for="mensagem">Descrição do Aviso:</label>
-                                <textarea name="mensagem" value="{{ old('mensagem') }}"></textarea>
+                                <textarea name="mensagem" id="mensagem" value="{{ old('mensagem') }}"></textarea>
                                 @if ($errors->has('mensagem'))
                                     <span class="help-block">
                                           <strong>{{ $errors->first('mensagem') }}</strong>
@@ -141,6 +132,8 @@
             </div>
         </div>
     </div>
+
+    <!-- / ** MODAL VIZUALIZAR AVISO ** \ -->
     <div class="modal fade" id="modal-display">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -168,30 +161,6 @@
                         <div class="modal-footer">
                             <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal form to delete a form -->
-    <div id="deleteModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body">
-                    <h3 class="text-center">Deseja mesmo excluir?</h3>
-                    <br />
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <input type="hidden" class="form-control" id="id_delete">
-                        </div>
-                    </form>
-                    <div class="modal-footer">
-                        <a class="btn-acess btn btn-danger" id="link">Deletar</a>&nbsp;
-                        <a class="btn-acess btn btn-primary" data-dismiss="modal">Fechar</a>
                     </div>
                 </div>
             </div>

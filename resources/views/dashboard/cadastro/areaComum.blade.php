@@ -22,11 +22,13 @@
     @section('breadcrumb')
       {{  Breadcrumbs::render('cadastro/areaComum') }}
     @endsection
+    
+        
 
     @section('content')
     <div class="col-md-1"></div>
     <div class="col-xs-12 col-md-8">
-        <!-- Lista Condôminos -->
+        <!-- / ** Lista Áreas Comuns ** \ -->
         <div class="panel panel-default">
             <div class="panel-heading main-color-bg">
                 <h3 class="panel-title"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Áreas Comuns</h3>
@@ -52,10 +54,11 @@
                             <tr>
                                 <td>{{ $area->nome }}</td>
                                 <td>{{ $area->descricao }}</td>
-                                <td>R${{ $area->valor_locacao }},00</td>
+                                <td><strong> R$ </strong> {{ $area->valor_locacao }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{route('areas.editar', $area->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                    <a class="btn btn-danger" href="{{route('areas.destroy', $area->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                    <button class="delete-modal btn btn-danger" data-id="{{$area->id}}">
+                                    <span class="fa fa-trash-o fa-lg"></span></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -64,6 +67,7 @@
             </div><!-- Painel Body Lista -->
         </div><!-- Painel Default Lista -->
     </div><!-- Coluna Lista -->
+
     @if(Session::has('errors'))
         <script>
             $(document).ready(function(){
@@ -71,55 +75,57 @@
             });
         </script>
     @endif
-        <div class="modal fade" id="modal-mensagem">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header main-color-bg">
-                        <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
-                        <h4 class="modal-title ">Cadastar Área Comum</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" method="POST" action="{{route('area.cadastro')}}">
-                        {{ csrf_field() }}
-                            <div class="row">
-                                <div class="col-xs-12 col-md-12{{ $errors->has('nome') ? ' has-error' : '' }}">
-                                    <label for="nomeAreaComum" class="control-label">Nome da área:</label>
-                                    <input type="text" id="nomeAreaComum" name="nome" class="form-control" value="{{ old('nome') }}" maxlength="50" placeholder="Ex: Salão de festa externo...">
-                                    @if ($errors->has('nome'))
+
+    <!-- ** MODAL CADASTRAR AREA COMUM ** -->
+    <div class="modal fade" id="modal-mensagem">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header main-color-bg">
+                    <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
+                    <h4 class="modal-title ">Cadastar Área Comum</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="POST" action="{{route('area.cadastro')}}">
+                    {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12{{ $errors->has('nome') ? ' has-error' : '' }}">
+                                <label for="nomeAreaComum" class="control-label">Nome da área:</label>
+                                <input type="text" id="nomeAreaComum" name="nome" class="form-control" value="{{ old('nome') }}" maxlength="50" placeholder="Ex: Salão de festa externo...">
+                                @if ($errors->has('nome'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('nome') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12{{ $errors->has('descricao') ? ' has-error' : '' }}">
+                                <label for="areaDescricao" class="control-label">Descrição do local:</label>
+                                <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10" value="{{ old('descricao') }}">
+                                </textarea>
+                                @if ($errors->has('descricao'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('nome') }}</strong>
+                                        <strong>{{ $errors->first('descricao') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
+                                @endif
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12 col-md-12{{ $errors->has('descricao') ? ' has-error' : '' }}">
-                                    <label for="areaDescricao" class="control-label">Descrição do local:</label>
-                                    <textarea id="areaDescricao" name="descricao" class="form-control" maxlength="300" rows="5" cols="10" value="{{ old('descricao') }}">
-                                    </textarea>
-                                    @if ($errors->has('descricao'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('descricao') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                        </div>
+                        <div class="row">
+                             <div class="col-xs-4 col-md-4">
+                                <label for="valorTaxa" class="control-label">Valor de Locação:</label>
+                                <input type="text" id="valorReal" name="valor_locacao" class="form-control" placeholder="Se houver, especifique um valor..." value="{{ old('valor_locacao') }}"/>
                             </div>
-                            <div class="row">
-                                 <div class="col-xs-4 col-md-4">
-                                    <label for="valorTaxa" class="control-label">Valor de Locação:</label>
-                                    <input type="text" id="valorTaxa" name="valor_locacao" class="form-control" placeholder="Se houver, especifique um valor..." value="{{ old('valor_locacao') }}">
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                              <div class="modal-footer">
-                                    <button type="submit" class="btn-acess btn btn-success">Salvar</button>
-                                    <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Cancelar</button>
-                              </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="modal-footer">
+                                <button type="submit" class="btn-acess btn btn-success">Salvar</button>
+                                <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-      @endsection
+    </div>
+    @endsection

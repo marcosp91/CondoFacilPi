@@ -25,7 +25,7 @@
     @endsection
 
     @section('breadcrumb')
-      {{  Breadcrumbs::render('/avisos') }}
+      {{  Breadcrumbs::render('cadastro/condomino') }}
     @endsection
 
     @section('content')
@@ -34,7 +34,7 @@
             <!-- Lista Condôminos -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
-                    <h3 class="panel-title">Editar Condominos</h3>
+                    <h3 class="panel-title">Editar Condôminos</h3>
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{route('perfil.update', $usuario->id)}}">
@@ -42,7 +42,7 @@
                         {{ method_field('PUT') }}
                         <div class="row">
                             <div class="col-xs-6 col-md-6{{ $errors->has('nome') ? ' has-error' : '' }}">
-                                <label for="nomeUsuario" class="control-label">Nome Completo:</label>
+                                <label for="nomeUsuario" class="control-label"><span class="obgCampo">* </span>Nome Completo:</label>
                                 <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome Completo" @if(old('nome')) value="{{old('nome')}}" @elseif(!empty($usuario->nome)) value="{{$usuario->nome}}" @endif >
                                 @if ($errors->has('nome'))
                                     <span class="help-block">
@@ -71,7 +71,7 @@
                                 @endif
                             </div>
                             <div class="col-xs-6 col-md-6{{ $errors->has('telefone') ? ' has-error' : '' }}">
-                                <label for="tel" class="control-label">Telefone:</label>
+                                <label for="tel" class="control-label"><span class="obgCampo">* </span>Telefone:</label>
                                 <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" @if(old('telefone')) value="{{old('telefone')}}" @elseif(!empty($usuario->telefone)) value="{{$usuario->telefone}}" @endif>
                                 @if ($errors->has('telefone'))
                                     <span class="help-block">
@@ -136,7 +136,7 @@
                                 @endif
                             </div>
                             <div class="col-xs-6 col-md-4{{ $errors->has('estado') ? ' has-error' : '' }}">
-                                <label for="estado" class="control-label">UF:</label>
+                                <label for="estado" class="control-label"><span class="obgCampo">* </span>UF:</label>
                                 <select name="estado" class="form-control">
                                     <option value="" selected="selectd" disabled>Escolha seu Estado</option>
                                     <option value="AC">Acre</option>
@@ -183,6 +183,9 @@
                                 @endif
                             </div>
                         </div>
+                        <div id="guardaObgEditar">
+                            <span class="obgCampo">* </span><strong>Campo Obrigatório.</strong>
+                        </div> 
                         <div class="form-group text-center">
                             <button type="submit" class="btn-acess btn btn-success">Salvar</button>
                         </div>

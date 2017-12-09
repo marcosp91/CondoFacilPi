@@ -36,7 +36,7 @@
     @section('content')
     <div class="col-md-1"></div>
         <div class="col-xs-12 col-md-8">
-          <!-- Lista Condôminos -->
+          <!-- / ** Lista Condôminos ** \ -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
                     <h3 class="panel-title">Lista de Condôminos</h3>
@@ -66,7 +66,8 @@
                                    <td>
                                         <a class="btn btn-default" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                         <a class="btn btn-primary" href="{{route('condomino.editar', $usuario->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a class="btn btn-danger" href="{{route('condomino.destroy', $usuario->id)}}"><i class="fa fa-trash-o fa-lg"></i></a>&nbsp;
+                                        <button class="delete-modal btn btn-danger" data-id="{{$usuario->id}}">
+                                        <span class="fa fa-trash-o fa-lg"></span></button>
                                    </td>
                                 </tr>
                             @endforeach
@@ -75,19 +76,21 @@
                 </div><!-- Painel Body Lista -->
             </div><!-- Painel Default Lista -->
         </div><!-- Coluna Lista -->
+
+        <!-- ** MODAL CADASTRAR CONDÔMINO ** -->
         <div class="modal fade" id="modal-mensagem">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header main-color-bg">
                       <button type="button" class="close" data-dismiss="modal"><span class="closeModal">×</span></button>
-                      <h4 class="modal-title">Cadastar Condômino</h4>
+                      <h4 class="modal-title">Cadastrar Condômino</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" method="POST" action="{{route('condomino.cadastro')}}">
                         {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-xs-6 col-md-6{{ $errors->has('nome') ? ' has-error' : '' }}">
-                                    <label for="nomeUsuario" class="control-label">Nome Completo:</label>
+                                    <label for="nomeUsuario" class="control-label"><span class="obgCampo">* </span> Nome Completo:</label>
                                     <input type="text" id="nomeUsuario" name="nome" class="form-control" placeholder="Nome Completo" value="{{ old('nome') }}">
                                         @if ($errors->has('nome'))
                                         <span class="help-block">
@@ -116,7 +119,7 @@
                                   @endif
                                 </div>
                                 <div class="col-xs-6 col-md-6{{ $errors->has('telefone') ? ' has-error' : '' }}">
-                                    <label for="tel" class="control-label">Telefone:</label>
+                                    <label for="tel" class="control-label"><span class="obgCampo">* </span>Telefone:</label>
                                     <input type="text" id="telUsuario" name="telefone" class="form-control" placeholder="Telefone" value="{{ old('telefone') }}">
                                     @if ($errors->has('telefone'))
                                     <span class="help-block">
@@ -178,7 +181,7 @@
                                      @endif
                                 </div>
                                 <div class="col-xs-6 col-md-4{{ $errors->has('estado') ? ' has-error' : '' }}">
-                                    <label for="estado" class="control-label">UF:</label>
+                                    <label for="estado" class="control-label"><span class="obgCampo">* </span>UF:</label>
                                     <select name="estado" class="form-control">
                                          <option value="" selected="selectd" disabled>Escolha</option>
                                          <option value="AC">Acre</option>
@@ -230,6 +233,9 @@
                             <input type="hidden" name="classe" value="Condomino">
                             <div class="row">
                                 <div class="modal-footer">
+                                    <div id="guardaObg">
+                                        <span class="obgCampo">* </span><strong>Campo Obrigatório.</strong>
+                                    </div>    
                                     <button type="submit" class="btn-acess btn btn-success">Salvar</button>
                                     <button type="submit" class="btn-acess btn btn-danger" data-dismiss="modal">Cancelar</button>
                                 </div>
