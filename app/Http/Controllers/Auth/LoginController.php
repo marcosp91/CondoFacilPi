@@ -53,9 +53,8 @@ class LoginController extends Controller
         
         if(isset($_SESSION['usuario']))
         {
-            
-            if($_SESSION['usuario']->condominio_id == null && $_SESSION['usuario']->id == 1){
-                return redirect()->route('condominio.index')->with('mensagemCONDOMINIO', 'Bem vindo, comece cadastrando seu condominio.');
+            if($_SESSION['usuario']->condominio_id == null){
+                return redirect()->route('condominio.index')->with('mensagemCONDOMINIO', 'Bem vindo, vamos começar cadastrando seu condominio.');
             }
             else{
                 return redirect()->route('dashboard.home')->with('mensagemSUCESSO', 'Seja Bem Vindo!');
